@@ -1,5 +1,5 @@
 # qrentWebsiteV3
-This is version 3 off the qrent website - to be implement using PHP, Java and Javascipt
+This is version 3 of the qrent website - to be implement using PHP, Java and Javascipt
 
 ## Rules
   - Follow spacing and indent conventions
@@ -12,6 +12,7 @@ This is version 3 off the qrent website - to be implement using PHP, Java and Ja
   - Keep Directories Clean
     - keep all test files in a test folder
     - name files and folders intuively
+    - Keep all java(Admin), php(Client) and js(Service Provider) files separated
 
 ### This is no longer about the grade
 
