@@ -11,7 +11,7 @@ This is version 3 off the qrent website - to be implement using PHP, Java and Ja
     - keep comments outside of functions/methods
   - Keep Directories Clean
     - keep all test files in a test folder
-    - names files and folders intuively
+    - name files and folders intuively
 
 ### This is no longer about the grade
 
