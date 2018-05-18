@@ -1,7 +1,16 @@
 <?php
 
+	/**
+	*
+	*	itemimgae.php
+	*
+	*	A php file that serves item images from the qrent database
+	*
+	*	@author David Paul Brackin
+	*/
+
 	if(isset($_GET['img'])){
-		require "./php/connectToDb.php";
+		require_once "connectToDb.php";
 
 		$id = $_GET['img'];
 

@@ -1,7 +1,17 @@
 <?php
 
+	/**
+	* 	index.php
+	*
+	* 	Homepage of www.qrent.com
+	*
+	*	@author David Paul Brackin
+	*/
+
 	include_once "util/userSession.php";
 	include_once "util/connectToDb.php";
+	include_once "util/search.php";
+	include_once "util/generators.php";
 
 ?>
 
@@ -26,7 +36,18 @@
 		?>
 
 		<div class = "container">
-			
+
+			<?php
+
+				$s = searchForItem("axis00");
+
+				foreach($s as $item){
+					echo $item['itemName'];
+					echo "<br/>";
+				}
+
+			?>
+
 		</div>
 
 	</body>

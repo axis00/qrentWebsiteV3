@@ -1,5 +1,14 @@
 <?php
 
+    /**
+    *
+    *   navbar.php
+    *
+    *   A php file meant to be included in all pages that require a navigation bar.
+    *
+    *   @author David Paul Brackin
+    */
+
     include_once "/../util/userSession.php";
 
 ?>
@@ -13,10 +22,10 @@
 
 
                 <div class="col l2 hide-on-med-and-down">
-                    <a href="#" class="brand-logo">Qrent</a>
+                    <a href="/" class="brand-logo">Qrent</a>
                 </div>
 
-                <div class = "col l6 m8 s9" style = "height : 100%">
+                <div class = "col l6 m10 s9" style = "height : 100%">
                     <form>
                         <div class="input-field" style = "padding: .4rem">
                             <input id="search" type="search" autocomplete="off" required>
@@ -30,8 +39,8 @@
                         <li>
                             <?php
 
-                                if(true){
-                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>User<i class='material-icons right'>arrow_drop_down</i></a>
+                                if(isset($_SESSION['user'])){
+                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$user<i class='material-icons right'>arrow_drop_down</i></a>
                                             <!-- Dropdown for user -->
                                             <ul id='UserDropMenu' class='dropdown-content'>
                                                 <li><a href='/profile.php?=$user'>Profile</a></li>
@@ -52,8 +61,17 @@
 </nav>
 
 <ul class="sidenav" id="mobile-usermenu">
-    <li><a href='/profile.php?=$user'>Profile</a></li>
-    <li><a href='/logout.php'>Logout</a></li>
+    <?php
+
+        if(isset($_SESSION['user'])){
+            echo "  <li><a href='/profile.php?=$user'>Profile</a></li>
+                    <li><a href='/logout.php'>Logout</a></li>";
+        }else{
+            echo "  <li><a href='/login.php'>Login</a></li>";
+        }
+
+    ?>
+    
 </ul>
 
 <script src = "/../scripts/navScript.js"></script>

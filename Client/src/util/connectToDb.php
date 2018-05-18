@@ -1,4 +1,14 @@
 <?php
+
+	/**
+	*
+	*	connectToDb.php
+	*
+	*	A php file meant to be included in all pages that require a connection to the qrent database
+	*
+	*	@author David Paul Brackin
+	*/
+
     $url = 'qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com';
     $user = 'root';
     $pass = 'letmein12#';
