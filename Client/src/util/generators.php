@@ -26,11 +26,11 @@
 
         $thumbImgId = getItemImgIDs($itemRow['itemno']);
 
-        $html = "<div class = 'row card'>
-                    <div class = 'col l4'>
+        $html = "<div class = 'card horizontal hoverable'>
+                    <div class = 'card-image' style = 'overflow: hidden; max-width: 30%'>
                         <img class='responsive-img' src = /util/itemimage.php?img=".$thumbImgId[0].">
                     </div>
-                    <div class = 'col l8'>
+                    <div class = 'card-content'>
                         <div>
                             <h3>".$itemRow['itemName']."</h3>
                         </div>

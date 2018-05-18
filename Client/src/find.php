@@ -46,9 +46,12 @@
 
         <div class = "container">
         	<div class = "row">
-	        	<div class = "col l4">
+	        	<div class = "col l3">
+	        		<div class = "card">
+	        			asdf
+	        		</div>
 	        	</div>
-	        	<div class = "col l8">
+	        	<div class = "col l9">
 
 	        	<?php
 

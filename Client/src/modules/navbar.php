@@ -25,7 +25,7 @@
                     <a href="/" class="brand-logo">Qrent</a>
                 </div>
 
-                <div class = "col l6 m10 s9" style = "height : 100%">
+                <div class = "col l8 m10 s9" style = "height : 100%">
                     <form action="find.php" method="GET">
                         <div class="input-field" style = "padding: .4rem">
                             <input name = "q" id="search" type="search" autocomplete="off" class = "validate" required>
@@ -34,7 +34,7 @@
                         </div>
                   </form>
                 </div>
-                <div class = "col l4 hide-on-med-and-down">
+                <div class = "col l2 hide-on-med-and-down">
                     <ul id="nav-mobile" class="center-align">
                         <li>
                             <?php
