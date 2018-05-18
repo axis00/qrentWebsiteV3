@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <title>Post Item</title>
+    <link rel="icon" href="qrent-logo.png">
+</head>
+
+<body>
+    <div class="page-header">
+            <nav class="navbar navbar-expand-lg navbar-light">
+    			<a class="navbar-brand" href="/"><h1>Qrent</h1></a>
+			    <ul class = "nav navbar-nav navbar-right">
+			    	<li class="nav-item">
+			    		<a class = "nav-link" href="/logout">Logout</a>
+			    	</li>
+			    	<li class="nav-item">
+			    		<a class = "nav-link" href="/console">Console</a>
+			    	</li>
+			    	<li class="nav-item">
+			    		<a class = "nav-link" href="/console/reservations">Reservations</a>
+			    	</li>
+			    </ul>
+    		</nav>
+        </div>
+    <div class="content-postItem">
+        <div class="jumbotron">
+            <p> Post Item</p>
+            <form action="/postItem" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" name="title" placeholder="Item Name" class="form-control">
+                    <textarea type="text" rows="5" name="description" placeholder="Description" class="form-control" resize="none"></textarea>
+                    <select class="form-control" id="brand" name = "brand">
+        
+                        <option>Canon</option>
+                        <option>Nikon</option>
+                        <option>Pentax</option>
+                        <option>Sony</option>
+                        <option>Olympus</option>
+                        <option>Fujifilm</option>
+                        <option>GoPro</option>
+                        <option>Leica</option>
+                        <option>Red</option>
+                        <option>Others</option>
+
+                    </select>
+                    <input type="Number" name="rentPrice" id="rentPrice" placeholder="Rent Price -- PHP/Day" class="form-control">
+                    <input type="Number" name="origPrice" id="origPrice" placeholder="Original Price -- PHP" class="form-control">
+                    <input type="file" name="images" multiple="multiple" class="form-control">
+<!--
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-7 form-group">
+                            <input type="text" name="brand" placeholder="Brand" class="form-control">
+                        </div>
+                        <div class="col-lg-6 col-lg-offset-3 form-group">
+                            <input type="Number" name="rentPrice" id="rentPrice" placeholder="Rent Price" class="form-control">
+                            <label for="rentPice">PHP/Day</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 form-group">
+                            <input type="Number" name="origPrice" id="origPrice" placeholder="Original Price" class="form-control">
+                            <label for="origPice">PHP</label>
+                        </div>
+                        <div class="col-lg-6 form-group">
+                            <input type="file" name="images" multiple="multiple" class="form-control">
+                        </div>
+                    </div>
+-->
+                </div>
+                <input type="submit" value="Post Item" class="btn btn-success">
+                
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
