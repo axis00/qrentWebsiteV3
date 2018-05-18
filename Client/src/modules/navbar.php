@@ -26,9 +26,9 @@
                 </div>
 
                 <div class = "col l6 m10 s9" style = "height : 100%">
-                    <form>
+                    <form action="find.php" method="GET">
                         <div class="input-field" style = "padding: .4rem">
-                            <input id="search" type="search" autocomplete="off" required>
+                            <input name = "q" id="search" type="search" autocomplete="off" class = "validate" required>
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
                             <i class="material-icons">close</i>
                         </div>

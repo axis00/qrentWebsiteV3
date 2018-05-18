@@ -1,18 +1,27 @@
 <?php
 
-    /**
-    *   index.php
+	/**
+    *   find.php
     *
-    *   Homepage of www.qrent.com
+    *   Displays the search results of the query
     *
     *   @author David Paul Brackin
     */
 
-    include_once "util/userSession.php";
+	include_once "util/userSession.php";
     include_once "util/connectToDb.php";
     include_once "util/search.php";
     include_once "util/generators.php";
 
+	if(isset($_GET['q'])){
+
+		$items = searchForItems($_GET['q']);
+
+	}else{
+		header("Location: /");
+		die();
+	}
+	
 ?>
 
 <!DOCTYPE html>
@@ -35,11 +44,26 @@
             include_once "modules/navbar.php";
         ?>
 
-
         <div class = "container">
+        	<div class = "row">
+	        	<div class = "col l4">
+	        	</div>
+	        	<div class = "col l8">
+
+	        	<?php
+
+	        		foreach ($items as $i) {
+	        			echo generateItemSearchResult($i);
+	        		}
+
+	        	?>
+
+	        	</div>
+        	</div>
 
         </div>
 
     </body>
 
 </html>
+
