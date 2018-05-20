@@ -26,13 +26,17 @@
 
         $thumbImgId = getItemImgIDs($itemRow['itemno']);
 
-        $html = "<div class = 'card horizontal hoverable'>
-                    <div class = 'card-image' style = 'overflow: hidden; max-width: 30%'>
-                        <img class='responsive-img' src = /util/itemimage.php?img=".$thumbImgId[0].">
+        $html = "<div class = 'card card-panel horizontal hoverable row'>
+                    <div class = 'col l4' style = 'overflow: hidden; max-height: 10rem'>
+                        <img class='searchres-img' src = /util/itemimage.php?img=".$thumbImgId[0].">
                     </div>
-                    <div class = 'card-content'>
+                    <div class = 'col l8'>
                         <div>
                             <h3>".$itemRow['itemName']."</h3>
+                            <a><h5>".$itemRow['itemOwner']."</h5></a>
+                            <div class = 'right-align'>
+                                <a href='/itemview.php?q=".$itemRow['itemno']."''><button class = 'waves-effect waves-light btn'>View</button><a>
+                            </div>
                         </div>
                     </div>
                 </div>";
