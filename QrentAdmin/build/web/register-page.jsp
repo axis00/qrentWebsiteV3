@@ -28,7 +28,7 @@
             </div>
             <%@include file="supernav.html"%>
             <div class="signup-form">
-                <form method="post" action="register.jsp" onsubmit="return checkAll()">
+                <form method="post" class="form" action="register.jsp">
                     <div class="form-group">
                         <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()"/><span id="usernameExists"></span>
                     </div>
@@ -42,7 +42,7 @@
                         <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name"/>
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" />
                     </div>
                     <div class="form-group">
                         <input type="text" name="email" id="email" class="form-control" onblur="checkEmail()" placeholder="Email"/><span id="emailExists"></span>
@@ -53,6 +53,10 @@
         </div>
 
         <script>
+            $(document).ready(function(){
+                $('#registerButton').prop('disabled', true);
+            });
+            
             function checkUsername() {
                 var xmlhttp;
                 var username = document.getElementById("username").value;
@@ -72,18 +76,18 @@
                 xmlhttp.open("GET", urls, true);
                 xmlhttp.send();
             }
-            
-            function checkPassword(){
+
+            function checkPassword() {
                 var pw = document.getElementById("password").value;
                 var repw = document.getElementById("repassword").value;
-                
-                if(pw === repw){
+
+                if (pw === repw) {
                     document.getElementById("checkPW").innerHTML = "OK";
                 } else {
                     document.getElementById("checkPW").innerHTML = "Passwords do not match!";
                 }
             }
-            
+
             function checkEmail() {
                 var xmlhttp;
                 var email = document.getElementById("email").value;
@@ -102,9 +106,29 @@
                 }
                 xmlhttp.open("GET", urls, true);
                 xmlhttp.send();
+                
             }
             
+            $('#usernameExists').on('DOMSubtreeModified', function (){
+                if (($('#usernameExists').text().trim() == "OK") && ($('#checkPW').text() == "OK") && ($('#emailExists').text().trim() == "OK")) {
+                    $('#registerButton').prop('disabled', false);
+                    console.log("called");
+                }
+            });
             
+            $('#checkPW').on('DOMSubtreeModified', function (){
+                if (($('#usernameExists').text().trim() == "OK") && ($('#checkPW').text() == "OK") && ($('#emailExists').text().trim() == "OK")) {
+                    $('#registerButton').prop('disabled', false);
+                    console.log("called");
+                }
+            });
+            
+            $('#emailExists').on('DOMSubtreeModified', function (){
+                if (($('#usernameExists').text().trim() == "OK") && ($('#checkPW').text() == "OK") && ($('#emailExists').text().trim() == "OK")) {
+                    $('#registerButton').prop('disabled', false);
+                }
+            });
+
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

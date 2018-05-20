@@ -9,9 +9,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script><script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        
         <title>Approve Pending Users</title>
     </head>
     <body id="body">
@@ -46,21 +51,16 @@
                     </ul>
                 </div>
             </nav>
-            <table class="table">
+           
+            <table class="bootstrap-table table table-no-bordered" id="approval" data-toggle="table">
                 <thead>
                     <tr>
-                        <th scope="col">Username</th>
-                        <th></th>
-                        <th scope="col">First Name</th>
-                        <th></th>
-                        <th scope="col">Last Name</th>
-                        <th></th>
-                        <th scope="col">Email</th>
-                        <th></th>
-                        <th scope="col">Type</th>
-                        <th></th>
+                        <th scope="col" data-field="username" data-sortable="true">Username</th>
+                        <th scope="col" data-field="firstname" data-sortable="true">First Name</th>
+                        <th scope="col" data-field="lastname" data-sortable="true">Last Name</th>
+                        <th scope="col" data-field="email" data-sortable="true">Email</th>
                         <th scope="col">Status</th>
-                        <th></th>
+                        <th scope="col" data-field="type" data-sortable="true">Type</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -79,12 +79,12 @@
 
                         while (res.next()) {
                             out.println("<tr scope='row' class='row-hover'>");
-                            out.println("<td>" + res.getString("username") + "<td>");
-                            out.println("<td>" + res.getString("firstname") + "<td>");
-                            out.println("<td>" + res.getString("lastname") + "<td>");
-                            out.println("<td>" + res.getString("email") + "<td>");
-                            out.println("<td>" + res.getString("type") + "<td>");
-                            out.println("<td>" + res.getString("status").toUpperCase() + "<td>");
+                            out.println("<td>" + res.getString("username") + "</td>");
+                            out.println("<td>" + res.getString("firstname") + "</td>");
+                            out.println("<td>" + res.getString("lastname") + "</td>");
+                            out.println("<td>" + res.getString("email") + "</td>");
+                            out.println("<td><span class=\"badge badge-warning\">" + res.getString("status").toUpperCase() + "</span></td>");
+                            out.println("<td>" + res.getString("type") + "</td>");
                             out.println("<td><form action = 'approve-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
                                     + res.getString("username") + "><input type = 'submit' value = 'Approve' class='btn btn-success' id='btn-approve'></form></td>");
                             out.println("<td><form action = 'reject-client.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
@@ -96,6 +96,6 @@
                     }
                 %>
             </table>
-        </div>
+           </div>
     </body>
 </html>

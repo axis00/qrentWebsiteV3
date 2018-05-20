@@ -31,10 +31,13 @@
 
 .itemBtn {
 	padding-bottom: 20px;
+	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
-#reviewSubmit {
-	padding-bottom: 20px;
+#reserve-title {
+	padding-top: 20px;
+	margin-top: 20px;
 }
 
 a{
