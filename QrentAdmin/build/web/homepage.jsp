@@ -146,7 +146,7 @@
                                 out.println(ex);
                             }
                         %>
-                         <a href="approved-user.jsp">View users transactions</a>
+                         <a href="user-transaction.jsp">View users transactions</a>
                     </div>
                 </div>
             </div>
