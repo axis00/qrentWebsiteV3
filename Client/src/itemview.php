@@ -21,6 +21,7 @@
 
         <!-- Materialize-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <link rel="stylesheet" href="./styles/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
@@ -31,13 +32,12 @@
             <?php include 'modules/navbar.php';?>
         </div>
 
-        <h2 id = "itemViewHeader">Item View</h2>
+        
 
         <div class="container">
+        	<h2 id = "itemViewHeader">Item View</h2>
 		    <div class="card">
-		        <div class="card-img-top" style="height : 30rem; overflow : hidden">
-		            <div class="carousel slide" id="carouselControls" data-ride="carousel" style="height : 100%">
-		                <div class="carousel-inner" style="height : 100%">
+		    	<div class="carousel carousel-slider">
 		                	<?php
 
 		                		if(isset($_GET['q'])){
@@ -61,60 +61,52 @@
 		                			$first = true;
 		                			while($imgRow = $imgRes->fetch_assoc()){
 		                				if($first){
-		                					echo "<div class = 'carousel-item active'><img class = 'card-img-top' src = '/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
+		                					echo "<div class = 'carousel-item'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
 		                					$first = false;
 		                				}else{
-		                					echo "<div class = 'carousel-item'><img class = 'card-img-top' src = '/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
+		                					echo "<div class = 'carousel-item'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
 		                				}
-		                			}
+		                			} 
 
 		                		}else{
 		                			die();
 		                		}
-
-		                		
-
-
 		                	?>
-		                </div>
-		                <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev"><span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next"><span class="carousel-control-next-icon" aria-hidden="true"></span><span class="sr-only">Next</span></a>
-		            </div>
 		        </div>
-		        <div class="card-body">
-		            <h2 class="card-title"><?php echo $res['itemName']; ?></h2>
-		            <h5 class="card-text"><?php echo $res['itemBrand']; ?></h5>
-		            <p class="card-text"><?php echo $res['itemDescription']; ?></p>
-		            <div class="container">
-		                <div class="row">
-		                    <div class="col-lg-3">
-		                        <h7><?php echo $res['itemRentPrice'] ?> PHP/DAY</h7>
-		                    </div>
-		                    <div class="col-lg-3">
-		                        <h7><?php echo $res['itemCondition'] ?></h7>
-		                    </div>
-		                    <div>
-		                    	<td> <button class='reserveBtn btn btn-success' data-resId=".$row['itemno'].">Reserve</button>
-		                    </div>
-		                </div>
-		            </div>
+		        <div class="divider"></div>
+		        <div class="row">
+			        <div class="col m8" id="itemName"><?php echo $res['itemName']; ?></div>
+			        <div class="col m4" id="itemRentPrice"><?php echo $res['itemRentPrice'] ?> PHP/DAY</div>
+			        <div class="col m8" id="itemBrand"><?php echo $res['itemBrand']; ?></div>
+			        <div class="col m4" id="itemCondition"><?php echo $res['itemCondition'] ?></div>
+			        <div class="col s8" id="itemDesc"><?php echo $res['itemDescription']; ?></p> </div>
+		        </div>
+		        <div class="center-align">
+		           <td> <button class='waves-effect waves-light btn-large' id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
 		        </div>
 		    </div>
-		</div>
+		
+
 		<div id = "reserveFormCont" style="display: none">
-          <div class = "card form-group">
-                <h2 class = "card-title">Reservation Form</h2>
+            <div class = "card">
+                <h2 class = "card-title center-align" id="reserve-title">Reservation Form</h2>
                 <form action="../php/reserve.php" method="POST">
+                	<div class="container">
                     <input id = "resid" name = "resId" type = "hidden">
                     <label for="startdate">Start Date</label>
-                <input class="form-control" type='date' name = 'startdate' id = 'startdate' required="required">
+                	<input class="form-control" type='date' name = 'startdate' id = 'startdate' required="required">
                     <label for="duration">Rental Duration</label>
                     <input class="form-control" type='number' name = 'duration' id = "duration" required="required">
-                    <input type="submit" value="Reserve" class="btn btn-primary">
-                    <input type="reset" value="cancel" class="btn btn-danger" id = "cancelResBtn">
+                    	<div class="center-align">
+		                    <input type="submit" value="Reserve" class="btn btn-primary">
+		                    <input type="reset" value="cancel" class="btn btn-danger" id = "cancelResBtn">
+		            	</div>
+                    </div>
                 </form>
             </div>
         </div>
-        <script src="../scripts/reserve.js"></script>
+     </div>
+        <script src="./scripts/reserve.js"></script>
 
 	</body>
 </html>
