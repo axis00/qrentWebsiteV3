@@ -89,15 +89,18 @@
 		
 		<div id ="reviewForm" style="display: none">
 			<div class="card">
+				<div class="container">
 		    <form action="#" method="POST">
 			    <p class="range-field">
-			      <input type="range" id="test5" min="0" max="100" onchange="updateTextInput(this.value);" />
+			      <input type="range" id="test5" min="0" max="100" oninput="updateTextInput(this.value);" />
 			      <div class="center-align">
-				      <input type="text" class="center-align" id="textInput" value="">
+				      <p type="text" class="center-align" id="textInput" value="Rating"></p>
 				      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
+				      <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
 			  	</div>
 			    </p>
 			</form>
+		</div>
 			</div>
 		</div>
 

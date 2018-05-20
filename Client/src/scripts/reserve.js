@@ -19,6 +19,7 @@ $(document).ready(function(){
 
 	$('#cancelResBtn').on('click',function(){
 		$('#reserveFormCont').fadeOut();
+		$('#reviewForm').fadeOut();
 
 	});
 
@@ -29,7 +30,7 @@ function showReview(event){
 }
 
 function updateTextInput(val) {
-          document.getElementById('textInput').value=val; 
+          $('#textInput').html(val)
         }
 
 function showReserveForm(event){
