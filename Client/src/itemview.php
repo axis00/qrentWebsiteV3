@@ -79,13 +79,27 @@
 			        <div class="col m4" id="itemRentPrice"><?php echo $res['itemRentPrice'] ?> PHP/DAY</div>
 			        <div class="col m8" id="itemBrand"><?php echo $res['itemBrand']; ?></div>
 			        <div class="col m4" id="itemCondition"><?php echo $res['itemCondition'] ?></div>
-			        <div class="col s8" id="itemDesc"><?php echo $res['itemDescription']; ?></p> </div>
+			        <div class="col m8" id="itemDesc"><?php echo $res['itemDescription']; ?></p> </div>
+			        <div class="col m4" id="itemReview"> <input type="button" value="Review Item" class="btn itemBtn"></div>
 		        </div>
 		        <div class="center-align itemBtn">
 		           <td> <button class='waves-effect waves-light btn-large btnReserve' id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
 		        </div>
 		    </div>
 		
+		<div id ="reviewForm" style="display: none">
+			<div class="card">
+		    <form action="#" method="POST">
+			    <p class="range-field">
+			      <input type="range" id="test5" min="0" max="100" onchange="updateTextInput(this.value);" />
+			      <div class="center-align">
+				      <input type="text" class="center-align" id="textInput" value="">
+				      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
+			  	</div>
+			    </p>
+			</form>
+			</div>
+		</div>
 
 		<div id = "reserveFormCont" style="display: none">
             <div class = "card">
