@@ -22,30 +22,51 @@
 
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
-                
+
                 MessageDigest mdAlgorithm = MessageDigest.getInstance("MD5");
                 mdAlgorithm.update(password.getBytes());
                 byte[] digest = mdAlgorithm.digest();
                 StringBuffer hex = new StringBuffer();
-                
-                for (int i = 0; i < digest.length; i++){
+
+                for (int i = 0; i < digest.length; i++) {
                     password = Integer.toHexString(0xFF & digest[i]);
-                    
-                    if (password.length() < 2){
+
+                    if (password.length() < 2) {
                         password = "0" + password;
                     }
-                    
+
                     hex.append(password);
                 }
                 password = hex.toString();
+                
+                //hashing default pw "resPW"
+                String resPW = "password123";
+                mdAlgorithm.update(resPW.getBytes());
+                byte[] digest2 = mdAlgorithm.digest();
+                StringBuffer hex2 = new StringBuffer();
+                for (int i = 0; i < digest2.length; i++) {
+                    resPW = Integer.toHexString(0xFF & digest2[i]);
 
-                PreparedStatement ps = con.prepareStatement("SELECT username, password, status FROM users WHERE ((type='Admin') AND (username = ?))");
+                    if (resPW.length() < 2) {
+                        resPW = "0" + resPW;
+                    }
+
+                    hex2.append(resPW);
+                }
+                resPW = hex2.toString();
+
+                //if pw entered is the same as default password after super admin reset
+                PreparedStatement ps = con.prepareStatement("SELECT username, password, status FROM users WHERE ((type='Admin') AND (username = ?) AND (status<>'disabled'))");
                 ps.setString(1, username);
 
                 ResultSet res = ps.executeQuery();
 
                 if (res.next()) {
-                    if (res.getString("password").equals(password)) {
+                    if (res.getString("password").equals(resPW)) {
+                        session.setAttribute("username", username);
+                        session.setMaxInactiveInterval(3600);
+                        response.sendRedirect("admin-reset-page.jsp");
+                    } else if (res.getString("password").equals(password)) {
                         session.setAttribute("username", username);
                         session.setMaxInactiveInterval(3600);
                         if (res.getString("username").equals("super")) {
@@ -58,9 +79,10 @@
                         out.println("<script>window.location='index.jsp'</script>");
                     }
                 } else {
-                    out.println("<script>alert('The username you’ve entered doesn’t match any account.')</script>");
+                    out.println("<script>alert('The username you’ve entered doesn’t match any account or your account might have been disabled.')</script>");
                     out.println("<script>window.location='index.jsp'</script>");
                 }
+
             } catch (SQLException ex) {
                 out.println(ex);
             }
