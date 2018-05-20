@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	console.log('loaded');
 
+	$('.datepicker').datepicker();
 	$('#reserve').on('click',showReserveForm);
 	$("#reserve").click(function() {
     $('html, body').animate({

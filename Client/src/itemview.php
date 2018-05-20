@@ -61,10 +61,10 @@
 		                			$first = true;
 		                			while($imgRow = $imgRes->fetch_assoc()){
 		                				if($first){
-		                					echo "<div class = 'carousel-item'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
+		                					echo "<div class = 'carousel-item valign-wrapper'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
 		                					$first = false;
 		                				}else{
-		                					echo "<div class = 'carousel-item'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
+		                					echo "<div class = 'carousel-item valign-wrapper'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
 		                				}
 		                			} 
 
@@ -81,8 +81,8 @@
 			        <div class="col m4" id="itemCondition"><?php echo $res['itemCondition'] ?></div>
 			        <div class="col s8" id="itemDesc"><?php echo $res['itemDescription']; ?></p> </div>
 		        </div>
-		        <div class="center-align">
-		           <td> <button class='waves-effect waves-light btn-large' id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
+		        <div class="center-align itemBtn">
+		           <td> <button class='waves-effect waves-light btn-large btnReserve' id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
 		        </div>
 		    </div>
 		
@@ -94,12 +94,12 @@
                 	<div class="container">
                     <input id = "resid" name = "resId" type = "hidden">
                     <label for="startdate">Start Date</label>
-                	<input class="form-control" type='date' name = 'startdate' id = 'startdate' required="required">
+                	<input class="datepicker" type='text' name = 'startdate' id = 'startdate' required="required">
                     <label for="duration">Rental Duration</label>
                     <input class="form-control" type='number' name = 'duration' id = "duration" required="required">
                     	<div class="center-align">
-		                    <input type="submit" value="Reserve" class="btn btn-primary">
-		                    <input type="reset" value="cancel" class="btn btn-danger" id = "cancelResBtn">
+		                    <input type="submit" value="Reserve" class="btn itemBtn">
+		                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
 		            	</div>
                     </div>
                 </form>
