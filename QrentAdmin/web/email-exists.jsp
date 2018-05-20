@@ -16,7 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
-        <title>Register New Admin User</title>
+        <title></title>
     </head>
     <body>
         <%

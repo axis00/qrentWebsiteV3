@@ -43,9 +43,7 @@
                     out.println("Username exists.");
                     out.println("</font>");
                 } else {
-                    out.println("<font color='green'>");
                     out.println("OK");
-                    out.println("</font>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);
