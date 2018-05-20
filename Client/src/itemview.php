@@ -87,41 +87,65 @@
 		        </div>
 		    </div>
 		
-		<div id ="reviewForm" style="display: none">
-			<div class="card">
-				<div class="container">
-		    <form action="#" method="POST">
-			    <p class="range-field">
-			      <input type="range" id="test5" min="0" max="100" oninput="updateTextInput(this.value);" />
-			      <div class="center-align">
-				      <p type="text" class="center-align" id="textInput" value="Rating"></p>
-				      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
-				      <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
-			  	</div>
-			    </p>
-			</form>
-		</div>
-			</div>
-		</div>
+		<?php 
+			if(isset($_SESSION['user'])){
+				echo '<div id ="reviewForm" style="display: none">
+						<div class="card">
+							<div class="container">
+								
+							    <form action="rateItem.php" method="POST">
+								    <p class="range-field">
+								      <input name = "rating" type="range" id="test5" min="0" max="100" oninput="updateTextInput(this.value);" />
+								      <input name = "itemno" value= '.$_GET['q'].' type = "hidden" >
+								      <input name = "user" value = '.$_SESSION['user']. '>
+								      <div class="center-align">
+									      <p type="text" class="center-align" id="textInput" value="Rating"></p>
+									      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
+									      <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
+								  	</div>
+								    </p>
+								</form>
+							</div>
+						</div>
+					</div>';
 
-		<div id = "reserveFormCont" style="display: none">
-            <div class = "card">
-                <h2 class = "card-title center-align" id="reserve-title">Reservation Form</h2>
-                <form action="../php/reserve.php" method="POST">
-                	<div class="container">
-                    <input id = "resid" name = "resId" type = "hidden">
-                    <label for="startdate">Start Date</label>
-                	<input class="datepicker" type='text' name = 'startdate' id = 'startdate' required="required">
-                    <label for="duration">Rental Duration</label>
-                    <input class="form-control" type='number' name = 'duration' id = "duration" required="required">
-                    	<div class="center-align">
-		                    <input type="submit" value="Reserve" class="btn itemBtn">
-		                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
-		            	</div>
-                    </div>
-                </form>
-            </div>
-        </div>
+				echo '	<div id = "reserveFormCont" style="display: none">
+				            <div class = "card">
+				                <h2 class = "card-title center-align" id="reserve-title">Reservation Form</h2>
+				                <form action="/reserve.php" method="POST">
+				                	<div class="container">
+				                    <input id = "resid" name = "resId" type = "hidden" value = '.$_GET['q'].'>
+				                    <label for="startdate">Start Date</label>
+				                	<input class="datepicker" type="text" name = "startdate" id = "startdate" required="required">
+				                    <label for="duration">Rental Duration</label>
+				                    <input class="form-control" type="number" name = "duration" id = "duration" required="required">
+				                    	<div class="center-align">
+						                    <input type="submit" value="Reserve" class="btn itemBtn">
+						                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
+						            	</div>
+				                    </div>
+				                </form>
+				            </div>
+				        </div>';
+			}else{
+				echo '	<div id = "reviewForm" style="display:none">
+							<div class = "red lighten-1 card card-panel">
+								<div class = "container">
+									<h4 class = "white-text center-align">You must be logged in! <a class = "" href = "/login.php">Login here</a></h4>
+								</div>
+							</div>
+						</div>';
+
+				echo '	<div id = "reserveFormCont" style="display:none">
+							<div class = "red lighten-1 card card-panel">
+								<div class = "container">
+									<h4 class = "white-text center-align">You must be logged in! <a href = "/login.php">Login here</a></h4>
+								</div>
+							</div>
+						</div>';
+			}
+		?>
+
      </div>
         <script src="./scripts/reserve.js"></script>
 
