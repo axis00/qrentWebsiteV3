@@ -74,7 +74,8 @@
                 
                         ps.execute();
                             
-                        response.sendRedirect("superhomepage.jsp"); 
+                        out.println("<script>alert('New Admin Registered!')</script>");
+                        out.println("<script>window.location='superhomepage.jsp'</script>"); 
                     } catch (SQLException ex){
                         out.println(ex);
                     }

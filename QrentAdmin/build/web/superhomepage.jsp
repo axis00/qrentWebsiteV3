@@ -23,11 +23,11 @@
                 }
             %>
             <div class="page-header">
-                <h1>Admin Home Page</h1>
+                <h1>Super Admin Home Page</h1>
             </div>
             <%@include file="supernav.html"%>
             <div class="pricing-header">
-                <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("username"));%></b>!</h1>
+                <h1 class="display-4">Welcome <b>Super Admin</b>!</h1>
             </div>
             <br><br>
             <div class="card-deck">
