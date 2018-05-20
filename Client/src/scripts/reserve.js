@@ -45,6 +45,8 @@ function showReserveForm(event){
 }
 
 // carousel js
-  $('.carousel.carousel-slider').carousel({
+$('.carousel.carousel-slider').carousel({
     fullWidth: true
-  });
+});
+
+$('.materialboxed').materialbox();

@@ -60,12 +60,7 @@
 
 		                			$first = true;
 		                			while($imgRow = $imgRes->fetch_assoc()){
-		                				if($first){
-		                					echo "<div class = 'carousel-item valign-wrapper'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
-		                					$first = false;
-		                				}else{
-		                					echo "<div class = 'carousel-item valign-wrapper'><img src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
-		                				}
+		                				echo "<div class = 'carousel-item valign-wrapper'><img class='materialboxed' width = '100%' src = '/util/itemimage.php?img=".$imgRow['itemimageid']."'></div>";
 		                			} 
 
 		                		}else{
