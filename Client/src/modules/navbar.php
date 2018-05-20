@@ -60,18 +60,4 @@
     </div>
 </nav>
 
-<ul class="sidenav" id="mobile-usermenu">
-    <?php
-
-        if(isset($_SESSION['user'])){
-            echo "  <li><a href='/profile.php?=$user'>Profile</a></li>
-                    <li><a href='/logout.php'>Logout</a></li>";
-        }else{
-            echo "  <li><a href='/login.php'>Login</a></li>";
-        }
-
-    ?>
-    
-</ul>
-
 <script src = "/../scripts/navScript.js"></script>

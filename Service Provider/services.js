@@ -180,6 +180,7 @@ exports.getItems = function(usr,lowLim,upLim,filter,callback){
 		}else{
 			filterSql += "?)";
 		}
+
 		val.push(filters[i]);
 	}
 

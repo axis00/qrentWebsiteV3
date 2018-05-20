@@ -1,0 +1,12 @@
+.featured-slider{
+	height: 60vh !important;
+}
+
+.featured-slider img{
+	object-fit: fill;
+}
+
+.featured-title {
+	background-color: rgba(0,0,0,.3);
+	width: 100%;
+}

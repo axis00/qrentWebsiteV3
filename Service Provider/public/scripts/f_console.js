@@ -1,5 +1,5 @@
 var last = false;
-var _filters = ['returned','loaned','missing'];
+var _filters = ['available','loaned','missing'];
 
 $(document).ready(function () {
 

@@ -1,6 +1,6 @@
 <?php
 
-	/**
+    /**
     *   find.php
     *
     *   Displays the search results of the query
@@ -8,20 +8,31 @@
     *   @author David Paul Brackin
     */
 
-	include_once "util/userSession.php";
+    include_once "util/userSession.php";
     include_once "util/connectToDb.php";
     include_once "util/search.php";
     include_once "util/generators.php";
 
-	if(isset($_GET['q'])){
+    if(isset($_GET['q'])){
 
-		$items = searchForItems($_GET['q']);
+        $url = "/find.php?q=".$_GET['q'];
 
-	}else{
-		header("Location: /");
-		die();
-	}
-	
+        $cond = "";
+        $page = 0;
+        $pageCount = 10;
+
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+            $cond .= "Limit " . (($page-1) * 10) . "," . $pageCount;
+        }
+
+        $items = searchForItems($_GET['q'],$cond);
+
+    }else{
+        header("Location: /");
+        die();
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -48,24 +59,62 @@
         ?>
 
         <div class = "container">
-        	<div class = "row">
-	        	<div class = "col l3">
-	        		<div class = "card">
-	        			asdf
-	        		</div>
-	        	</div>
-	        	<div class = "col l9">
+            <div class = "row">
+                <div col = "col l12 m12 s12">
+                    <?php
+                        echo '<h3>Search Results for "'.$_GET['q'].'"'
+                    ?>
+                </div>
+            </div>
+            <div class = "row">
+                <div class = "col l3">
+                    <div class = "card card-panel">
+                        <div class = "card-title">Filter</div>
+                        <div>
+                            <form action="find.php" method="GET">
+                                <input type = "hidden" name ="q" value = <?php echo $_GET['q']?> >
+                                <label>
+                                    <input name="Available" id="indeterminate-checkbox" type="checkbox" />
+                                    <span>Available</span>
+                                </label>
+                                <div class="center-align filter-submit-cont">
+                                    <input type = "submit" value = "Apply" class="btn waves-effect waves-light">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col l9">
 
-	        	<?php
+                <?php
 
-	        		foreach ($items as $i) {
-	        			echo generateItemSearchResult($i);
-	        		}
+                    foreach ($items as $i) {
+                        echo generateItemSearchResult($i);
+                    }
 
-	        	?>
+                ?>
 
-	        	</div>
-        	</div>
+                </div>
+            </div>
+            <!--page nav-->
+            <div class = "row center-align page-nav">
+                <div class="col" style = "float: none">
+                    <?php
+                        if($page <= 1){
+                            echo '<a><i class="material-icons">navigate_before</i>Prev</a>';
+                        }else{
+                            echo '<a href= '.$url.'&page='.($page - 1).'><i class="material-icons">navigate_before</i>Prev</a>';
+                        }
+
+                        if(count($items) < $pageCount){
+                            echo '<a>Next<i class="material-icons">navigate_next</i></a>';
+                        }else{
+                            echo '<a href= '.$url.'&page='.($page + 1).'>Next<i class="material-icons">navigate_next</i></a>';
+                        }
+
+                    ?>
+                </div>
+            </div>
 
         </div>
 

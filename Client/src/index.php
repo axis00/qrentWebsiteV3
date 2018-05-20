@@ -12,6 +12,7 @@
     include_once "util/connectToDb.php";
     include_once "util/search.php";
     include_once "util/generators.php";
+    include_once "util/helpers.php";
 
 ?>
 
@@ -28,6 +29,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
+        <link rel="stylesheet" href="/styles/homepage.css">
+
     </head>
 
     <body>
@@ -37,9 +40,34 @@
 
 
         <div class = "container">
+            <h3>Featured Items</h3>
+            <div class = "row">
+                <?php
+
+                    $featured = getFeaturedItems();
+
+                    echo generateItemShowCase($featured);
+                ?>
+            </div>
 
         </div>
 
+        <ul class="sidenav" id="mobile-usermenu">
+            <?php
+
+                if(isset($_SESSION['user'])){
+                    echo "  <li><a href='/profile.php?=$user'>Profile</a></li>
+                            <li><a href='/logout.php'>Logout</a></li>";
+                }else{
+                    echo "  <li><a href='/login.php'>Login</a></li>";
+                }
+
+            ?>
+            
+        </ul>
+
     </body>
+
+    <script src = "/scripts/homepage.js"></script>
 
 </html>
