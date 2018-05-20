@@ -1,0 +1,99 @@
+#body {
+    background-color: #F7EBEC;
+}
+
+#login-logo{
+    width: 25vh;
+    margin-top: 50px;
+    margin-bottom: 2.5px;
+}
+
+#formblock {
+    padding-right: 40%;
+    padding-left: 40%;
+}
+
+
+#loginButton{
+    background-color: #0B5351;
+    border-color: #0B5351;
+}
+
+#loginButton:hover{
+    background-color: #37888E;
+    border-color: #37888E;
+}
+
+#top-nav-container{
+    height: auto;
+    padding-top: 5px;
+    margin-bottom: 5px;
+    
+}
+
+#nav-logo{
+    width: 10vh;
+    margin: auto;
+}
+
+#navbar-container{
+    background-color: #37888E;
+    border-radius: 20px;
+}
+
+#page-header{
+    margin: auto;
+}
+
+.nav-link{
+    color: white;
+}
+
+.nav-link:hover{
+    color: #C33C54;
+    
+}
+
+.nav-item{
+    margin-right: 20px;
+}
+
+#active-item{
+    color: #C33C54;
+}
+
+#active-item:hover{
+    text-decoration: none;
+}
+
+.nav-link2{
+    color: #37888E;
+}
+
+.nav-link2:hover{
+    color: #C33C54;
+    text-decoration: none;
+}
+
+.nav-link3{
+    background-color: #37888E;
+    color: white;
+    border-radius: 10px;
+}
+
+.nav-link3:hover{
+    color: #C33C54;
+    text-decoration: none;
+}
+
+.row-hover:hover{
+    background-color: #37888E;
+    color: white;
+}
+
+.search-control{
+    margin: 5px;
+    border-radius: 5px;
+    width: 25%;
+}
+
