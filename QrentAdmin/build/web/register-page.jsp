@@ -27,19 +27,29 @@
 
             </div>
             <%@include file="supernav.html"%>
-            <form method="post" action="register.jsp">
-                <p>Username:</p>
-                <input type="text" name="username" id="username" onblur="checkUsername()"/><span id="usernameExists"></span>
-                <p>Password:</p>
-                <input type="password" name="password" id="password"/>
-                <p>First Name:</p>
-                <input type="text" name="firstname" id="firstname"/>
-                <p>Last Name:</p>
-                <input type="text" name="lastname" id="lastname"/>
-                <p>Email</p>
-                <input type="text" name="email" id="email" onblur="checkEmail()"/><span id="emailExists"></span>
-                <br><br><input class="btn btn-primary btn-lg" type="submit" value="Register" id="registerButton"/>
-            </form>
+            <div class="signup-form">
+                <form method="post" action="register.jsp" onsubmit="return checkAll()">
+                    <div class="form-group">
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()"/><span id="usernameExists"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="repassword" id="repassword" class="form-control" onblur="checkPassword()" placeholder="Re-type password"/><span id="checkPW"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="email" id="email" class="form-control" onblur="checkEmail()" placeholder="Email"/><span id="emailExists"></span>
+                    </div>
+                    <br><br><input class="btn btn-primary btn-lg" type="submit" value="Register" id="registerButton"/>
+                </form>
+            </div>
         </div>
 
         <script>
@@ -61,8 +71,19 @@
                 }
                 xmlhttp.open("GET", urls, true);
                 xmlhttp.send();
-                console.log("called");
             }
+            
+            function checkPassword(){
+                var pw = document.getElementById("password").value;
+                var repw = document.getElementById("repassword").value;
+                
+                if(pw === repw){
+                    document.getElementById("checkPW").innerHTML = "OK";
+                } else {
+                    document.getElementById("checkPW").innerHTML = "Passwords do not match!";
+                }
+            }
+            
             function checkEmail() {
                 var xmlhttp;
                 var email = document.getElementById("email").value;
@@ -81,8 +102,9 @@
                 }
                 xmlhttp.open("GET", urls, true);
                 xmlhttp.send();
-                console.log("called2")
             }
+            
+            
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

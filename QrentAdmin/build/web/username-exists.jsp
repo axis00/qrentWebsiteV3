@@ -25,7 +25,6 @@
             
             Connection con;
             try {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
@@ -40,11 +39,13 @@
                 
                 
                 if(val.next()){
-                    out.println("<font color=red>");
-                    out.println("Username taken.");
+                    out.println("<font color='red'>");
+                    out.println("Username exists.");
                     out.println("</font>");
                 } else {
-                    out.print("OK");
+                    out.println("<font color='green'>");
+                    out.println("OK");
+                    out.println("</font>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);

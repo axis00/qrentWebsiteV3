@@ -1,6 +1,12 @@
 $(document).ready(function(){
+	console.log('loaded');
 
-	$('.reserveBtn').on('click',showReserveForm);
+	$('#reserve').on('click',showReserveForm);
+	$("#reserve").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#reserveFormCont").offset().top
+    }, 2000);
+});
 	$('#cancelResBtn').on('click',function(){
 		$('#reserveFormCont').fadeOut();
 
@@ -18,3 +24,8 @@ function showReserveForm(event){
 	$('#resid').attr('value',id);
 
 }
+
+// carousel js
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true
+  });

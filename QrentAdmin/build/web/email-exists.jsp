@@ -48,7 +48,7 @@
                     out.println("Email taken.");
                     out.println("</font>");
                 } else {
-                    out.print("OK");
+                    out.println("OK");
                 }
                 
             } catch (SQLException ex) {
