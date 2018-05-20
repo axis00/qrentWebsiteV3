@@ -54,7 +54,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        <h5 class="card-title">User Count</h5>
+                        <h5 class="card-title">Pending Users</h5>
                         <%
                             Connection con;
                             try {
@@ -81,13 +81,14 @@
                                 out.println(ex);
                             }
                         %>
+                        <a href="approve-accounts.jsp">Approve pending users</a>
                     </div>
 
                 </div>
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        <h5 class="card-title">User Count</h5>
+                        <h5 class="card-title">Active Users</h5>
                         <%
                             try {
 
@@ -113,6 +114,7 @@
                                 out.println(ex);
                             }
                         %>
+                        <a href="approved-user.jsp">Manage active users</a>
                     </div>               
                 </div>
 
@@ -144,6 +146,7 @@
                                 out.println(ex);
                             }
                         %>
+                         <a href="user-transaction.jsp">View users transactions</a>
                     </div>
                 </div>
             </div>

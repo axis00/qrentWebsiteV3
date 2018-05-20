@@ -16,6 +16,9 @@
         <title>Transaction History</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <script>
             function searchword() {
                 var input, search, table, tr, td, i;
@@ -59,17 +62,17 @@
             <%@include file="nav.html"%>
             <%}%>
             <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search transaction no..." class="search search-control">
-            <table class="table" id="transaction">
+            <table class="bootstrap-table table table-no-bordered" data-toggle="table" id="users">
                 <thead>
                     <tr>
-                        <th>Transaction Date</th>
-                        <th>Transaction No.</th>
-                        <th>Username</th>
-                        <th>Rented Item</th>
-                        <th>Item No.</th>
-                        <th>Rent Duration (Days)</th>
-                        <th>Price</th>
-                        <th>Mode of payment</th>
+                        <th scope="col" data-field="date" data-sortable="true">Trans. Date</th>
+                        <th scope="col" data-field="num" data-sortable="true">Trans. No.</th>
+                        <th scope="col" data-field="username" data-sortable="true">Username</th>
+                        <th scope="col" data-field="item" data-sortable="true">Item Name</th>
+                        <th scope="col" data-field="itemnum" data-sortable="true">Item No.</th>
+                        <th scope="col" data-field="days" data-sortable="true">Rent Duration</th>
+                        <th scope="col" data-field="price" data-sortable="true">Rent Price</th>
+                        <th scope="col" data-field="payment" data-sortable="true">Mode of Payment</th>
                         <th></th>
                     </tr>
                 </thead>
