@@ -39,7 +39,7 @@
                         <?php
 
                             if(isset($_SESSION['user'])){
-                                echo " <li><a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$loggedin_user<i class='material-icons right'>arrow_drop_down</i></a>
+                                echo " <li><a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$session_first<i class='material-icons right'>arrow_drop_down</i></a>
                                         <!-- Dropdown for user -->
                                         <ul id='UserDropMenu' class='dropdown-content'>
                                             <li><a href='/profile?user=$loggedin_user'>Profile</a></li>
