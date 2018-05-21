@@ -2,8 +2,8 @@
 	width: 100%;
 }
 
-input:focus::-webkit-inner-spin-button,
-input:focus::-webkit-calendar-picker-indicator {
+input[type="date"]:focus::-webkit-inner-spin-button,
+input[type="date"]:focus::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
 }
