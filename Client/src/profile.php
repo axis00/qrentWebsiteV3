@@ -1,11 +1,10 @@
-
 <?php
-    include_once "util/userSession.php";
     include_once "util/connectToDb.php";
+    include_once "util/session.php";
 ?>
 
-<!DOCTYPE HTML>
-<html>
+    <!DOCTYPE HTML>
+    <html>
 
     <head>
         <meta charset="utf-8">
@@ -20,15 +19,50 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
+        <!--Icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="styles/profile.css" />
+
         <title>Qrent</title>
     </head>
 
     <body>
         <?php include 'modules/navbar.php'?>
 
-        <?php
-            
-        ?>
+        <div class="container">
+            <div class="row">
+                <div class="col s3">
+                    <div class="profile-picture">
+                        <img class="avatar" width="230" height="230" />
+                    </div>
+                    <div class="names">
+                        <?php
+                        echo "<span class='fullname d-block'>$session_first $session_last</span>";
+                        echo "<span class='username d-block'>$session_username</span>"
+                    ?>
+                    </div>
+                    <div class="divider"></div>
+                    <ul class="details">
+                        <li>
+                            <i class="material-icons">location_on</i>
+                            <?php 
+                                echo "<span class='label'>$session_address</span>";
+                            ?>
+                        </li>
+                        <li>
+                            <i class="material-icons">contact_phone</i>
+                            <?php 
+                                echo "<span class='label'>$session_contact</span>";
+                            ?>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s9">
+                    <p>Stuff goes here</p>
+                </div>
+            </div>
+        </div>
     </body>
 
-</html>
+    </html>

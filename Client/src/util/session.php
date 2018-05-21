@@ -1,6 +1,5 @@
 <?php
     require_once "connectToDb.php";
-
     session_start();
     $checkUser = $_SESSION['user'];
     $sessionSql = mysqli_query($conn, "SELECT CONCAT(firstname, ', ', lastname) AS name, username, firstname, lastname, birthdate, CONCAT(addressno, ' ', street,' ', municipality,' ', province) AS address, addressno, street, municipality, province, postalcode, contactno, email FROM users NATURAL JOIN customers where username = '$checkUser';");
