@@ -22,9 +22,15 @@
                     response.sendRedirect("index.jsp");
                 }
             %>
-            <div class="page-header">
-                <h1>Super Admin Home Page</h1>
+            <div class="row hidden-xs topper" id="top-nav-container">
+                <div class="cols-xs-7 col-sm-7">
+                    <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
+                </div>
+                <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
+                    <h1>Super Admin Homepage</h1>
+                </div>
             </div>
+
             <%@include file="supernav.html"%>
             <div class="pricing-header">
                 <h1 class="display-4">Welcome <b>Super Admin</b>!</h1>
