@@ -3,28 +3,29 @@
 	<head>
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="../scripts/f_login.js"></script>
-        <link rel="stylesheet" type="text/css" href="../styles/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="../styles/style.css">
         <title>Login</title>
         <link rel="icon" href="qrent-logo.png">
         
 	</head>
 	<body>
-        <div class="loginContainer">
-            <div id="loginHeader">
+        <div class="container loginContainer white">
+            <div class="container loginHeader">
                 <img class="img" src="../qrent-logo.png" id=qrentLogo>
                 <p id="qrentTag">Qrent</p>
             </div>
-            <form id = "loginform" action="/login" method="POST">
-                <div class="form-group">
+            <form  action="/login" method="POST">
+                <div>
                     
                     <p class ="loginTag">Login</p>
-                    <input name = "username" type="text" placeholder="username" class="form-control">
-                    <input name = "password" type="password" placeholder="password" class="form-control">
+                    <input name = "username" type="text" placeholder="username" >
+                    <input name = "password" type="password" placeholder="password" >
                 </div>
-                    <input type = "submit" value="login" class="btn btn-primary btn-login">
+                    <input type = "submit" value="login" class="btn btn-login">
             </form>
             <p id=registerTag>Not yet registered? <a href = '/register'>Register here.</a></p>
         </div>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
 	</body>
 </html>

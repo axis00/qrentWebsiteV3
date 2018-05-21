@@ -28,8 +28,22 @@
     </head>
 
     <body>
-        <?php include 'modules/navbar.php'?>
-
+        <?php
+            $userQuery = $_GET['user'];
+            $sessionSql = mysqli_query($conn, "SELECT CONCAT(firstname, ', ', lastname) AS name, username, firstname, lastname, CONCAT(addressno, ' ', street,' ', municipality,' ', province) AS address, contactno, email FROM users NATURAL JOIN customers where username = '$userQuery';");
+            $row = mysqli_fetch_array($sessionSql, MYSQLI_ASSOC);
+            $session_user = $row['name'];
+            $session_username = $row['username'];
+            $session_first = $row['firstname'];
+            $session_last = $row['lastname'];
+            $session_address = $row['address'];
+            $session_contact = $row['contactno'];
+            $session_email = $row['email'];
+        ?>
+        
+        <?php include 'modules/navbar.php';
+        ?>
+        
         <div class="container">
             <div class="row">
                 <div class="col s3">
@@ -42,6 +56,11 @@
                         echo "<span class='username d-block'>$session_username</span>"
                     ?>
                     </div>
+                    <?php
+                        if($_SESSION['user'] == $_GET['user']) {
+                            echo "<a class='waves-effect waves-light btn' href='#'>Edit Profile</a>";
+                        }
+                    ?>
                     <div class="divider"></div>
                     <ul class="details">
                         <li>
