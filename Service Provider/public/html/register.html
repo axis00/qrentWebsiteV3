@@ -22,36 +22,60 @@
                 <img class="img" src="../qrent-logo.png" id=qrentLogo>
                 <p id="qrentTag">Qrent</p>
             </div>
+            <p class=signUpTag>Basic Info</p>
             <form action="/register" method="POST" >
-                <div class = "formcont">
-                    <div class="form-group">  
-                        <p class=signUpTag>Basic Info</p>
-                        <input type="text" name="firstName" placeholder="First Name" class="form-control" required="required">
-
-                        <input type="text" name="lastName" placeholder="Last Name" class="form-control" required="required">
-
-                        <input type="email" name="email" placeholder="E-mail Address" class="form-control" required="required">
-
-                        <input type="text" name="mobileNumber" placeholder="Mobile Number" class="form-control" required="required">
-
-                        <input type="text" name="username" placeholder="Username" class="form-control" required="required">
-
-                        <input type="password" id = "password" name="password" placeholder="Password" class="form-control" required="required">
-                        <input type="password" placeholder="Confirm Password" class="form-control" required="required" oninput = "validate(this)">
-
+                <div>
+                    <div >   
+                        <div class="input-field">
+                            <input type="text" name="firstName" id="firstName" required="required">
+                            <label class="active" for="firstName">First Name</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="lastName" id="lastName" required="required">
+                            <label class="active" for="lastName">Last Name</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="email" name="email" id="email" class="validate" required="required">
+                            <label class="active" for="email">E-mail Address</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="mobileNumber" id="mobileNumber" required="required">
+                            <label class="active" for="mobileNumber">Mobile Number</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="username" id="username" required="required">
+                            <label class="active" for="username">Username</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" id = "password" name="password" required="required">
+                            <label class="active" for="password">Password</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="password" id="confPass" required="required" oninput = "validate(this)">
+                            <label class="active" for="confPass">Confirm Password</label>
+                        </div>
                     </div>
                     <div>
                         <p class=signUpTag>Birthday</p>
-                        <input type="date" name="birthday" placeholder="Birthday" class="form-control" required="required">
+                        <input type="date" name="birthday" placeholder="Birthday" required="required">
 
                         <p class=signUpTag>Address</p>
-                        <input type="text" name="street" placeholder="Street" class="form-control" required="required"> 
-
-                        <input type="text" name=" municipality" placeholder="Municipality" class="form-control" required="required"> 
-
-                        <input type="text" name="province" placeholder="Province" class="form-control" required="required"> 
-
-                        <input type="text" name="postalCode" placeholder="Postal Code" class="form-control" required="required"> 
+                        <div class="input-field">
+                            <input type="text" name="street" id="street" required="required"> 
+                            <label class="active" for="street">Street</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name=" municipality" id="municipality" required="required"> 
+                            <label class="active" for="municipality">Municipality</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="province" id="province" required="required"> 
+                            <label class="active" for="province">Province</label>
+                        </div>
+                        <div class="input-field">
+                            <input type="text" name="postalCode" id="postalCode" required="required"> 
+                            <label class="active" for="postalCode">Postal Code</label>
+                        </div>
                     </div>
 
                     <input type="submit" value="Register" class="btn btn-primary btn-login">
@@ -60,6 +84,6 @@
 
             </form>
         </div>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 	</body>
 </html>

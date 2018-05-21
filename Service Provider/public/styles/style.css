@@ -20,6 +20,10 @@ h1{
     padding: 20px;
 }
 
+.btn-primary{
+    background-color: #00695c;   
+}
+
 /*login*/
 .loginContainer{
     padding: 2em;
@@ -213,6 +217,29 @@ textarea {
     text-align: center;
     width: 50%;
     margin: 0 auto;
+    margin-top: 30px;
+    height: 100%;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.postItemContainer{
+    width: 90%;
+    height: 100%;
+    margin: 5vh auto;
+    margin-bottom: 50px;
+}
+
+
+#postTag{
+    font-size: 40px;
+    text-align: center;
+}
+
+.postInput{
+    padding-bottom: 20px;
+    margin: 0 0 15px;
 }
 
 /*reservations*/
