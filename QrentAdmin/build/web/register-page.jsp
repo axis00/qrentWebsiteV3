@@ -28,24 +28,25 @@
             </div>
             <%@include file="supernav.html"%>
             <div class="signup-form">
-                <form method="post" class="form" action="register.jsp">
+                <p>Create a new administrator account. Fill up all the input fields.</p>
+                <form method="post" class="form" action="register.jsp" >
                     <div class="form-group">
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()"/><span id="usernameExists"></span>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()" onchange="checkAll()" required/><span id="usernameSpan"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password"/>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" onblur="validatePW()" onkeyup="checkPassword()" onchange="checkAll()" required/><span id="pwSpan"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="repassword" id="repassword" class="form-control" onblur="checkPassword()" placeholder="Re-type password"/><span id="checkPW"></span>
+                        <input type="password" name="repassword" id="repassword" class="form-control" onkeyup="checkPassword()" placeholder="Re-type password" onchange="checkAll()" required/><span id="checkSpan"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name"/>
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name" onblur="validateFirstN()" onchange="checkAll()" required/><span id="firstSpan"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" />
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" onblur="validateLastN()" onchange="checkAll()" required/><span id="lastSpan"></span>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="email" id="email" class="form-control" onblur="checkEmail()" placeholder="Email"/><span id="emailExists"></span>
+                        <input type="text" name="email" id="email" class="form-control" onblur="checkEmail()" placeholder="Email" onchange="checkAll()" required/><span id="emailSpan"></span>
                     </div>
                     <br><br><input class="btn btn-primary btn-lg" type="submit" value="Register" id="registerButton"/>
                 </form>
@@ -53,10 +54,8 @@
         </div>
 
         <script>
-            $(document).ready(function(){
-                $('#registerButton').prop('disabled', true);
-            });
-            
+            $('#registerButton').prop('disabled', true);
+
             function checkUsername() {
                 var xmlhttp;
                 var username = document.getElementById("username").value;
@@ -68,9 +67,11 @@
                     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4) {
-                        document.getElementById("usernameExists").innerHTML = "";
-                        document.getElementById("usernameExists").innerHTML = xmlhttp.responseText;
+                    if (username == "") {
+                        document.getElementById("usernameSpan").innerHTML = "Please enter a username.";
+                    } else if (xmlhttp.readyState == 4) {
+                        document.getElementById("usernameSpan").innerHTML = "";
+                        document.getElementById("usernameSpan").innerHTML = xmlhttp.responseText;
                     }
                 }
                 xmlhttp.open("GET", urls, true);
@@ -81,10 +82,12 @@
                 var pw = document.getElementById("password").value;
                 var repw = document.getElementById("repassword").value;
 
-                if (pw === repw) {
-                    document.getElementById("checkPW").innerHTML = "OK";
+                if (pw == "") {
+                    document.getElementById("checkSpan").innerHTML = "";
+                } else if (pw === repw) {
+                    document.getElementById("checkSpan").innerHTML = "OK";
                 } else {
-                    document.getElementById("checkPW").innerHTML = "Passwords do not match!";
+                    document.getElementById("checkSpan").innerHTML = "Passwords do not match!";
                 }
             }
 
@@ -99,40 +102,94 @@
                     xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
                 }
                 xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4) {
-                        document.getElementById("emailExists").innerHTML = "";
-                        document.getElementById("emailExists").innerHTML = xmlhttp.responseText;
+                    if (email == "") {
+                        document.getElementById("emailSpan").innerHTML = "Please enter an email address.";
+                    } else if (xmlhttp.readyState == 4) {
+                        document.getElementById("emailSpan").innerHTML = "";
+                        document.getElementById("emailSpan").innerHTML = xmlhttp.responseText;
                     }
                 }
                 xmlhttp.open("GET", urls, true);
                 xmlhttp.send();
-                
+
             }
-            
-            $('#usernameExists').on('DOMSubtreeModified', function (){
-                if (($('#usernameExists').text().trim() == "OK") && ($('#checkPW').text() == "OK") && ($('#emailExists').text().trim() == "OK")) {
-                    $('#registerButton').prop('disabled', false);
-                    console.log("called");
+
+            function validateUsername() {
+                if ($('#usernameSpan').text().trim() == "OK") {
+                    return true;
                 }
-            });
-            
-            $('#checkPW').on('DOMSubtreeModified', function (){
-                if (($('#usernameExists').text().trim() == "OK") && ($('#checkPW').text() == "OK") && ($('#emailExists').text().trim() == "OK")) {
-                    $('#registerButton').prop('disabled', false);
-                    console.log("called");
+            }
+
+            function validatePW() {
+                var pw = document.getElementById("password").value;
+
+                if (pw != "") {
+                    document.getElementById("pwSpan").innerHTML = "";
+                    return true;
+                } else {
+                    document.getElementById("pwSpan").innerHTML = "Please enter a password.";
                 }
+            }
+
+            function validateRePW() {
+                if ($('#checkSpan').text() == "OK") {
+                    return true;
+                }
+            }
+
+            function validateFirstN() {
+                var firstN = document.getElementById("firstname").value;
+
+                if (firstN != "") {
+                    document.getElementById("firstSpan").innerHTML = "";
+                    return true;
+                } else {
+                    document.getElementById("firstSpan").innerHTML = "Please enter the first name.";
+                }
+            }
+
+            function validateLastN() {
+                var lastN = document.getElementById("lastname").value;
+
+                if (lastN != "") {
+                    document.getElementById("lastSpan").innerHTML = "";
+                    return true;
+                } else {
+                    document.getElementById("lastSpan").innerHTML = "Please enter the last name.";
+                }
+            }
+
+            function validateEmail() {
+                if ($('#emailSpan').text().trim() == "OK") {
+                    return true;
+                }
+            }
+
+            $('#usernameSpan').on('DOMSubtreeModified', function () {
+                checkAll();
             });
-            
-            $('#emailExists').on('DOMSubtreeModified', function (){
-                if (($('#usernameExists').text().trim() == "OK") && ($('#checkPW').text() == "OK") && ($('#emailExists').text().trim() == "OK")) {
+
+            $('#emailSpan').on('DOMSubtreeModified', function () {
+                checkAll();
+            });
+
+            $('#checkSpan').on('DOMSubtreeModified', function () {
+                checkAll();
+            });
+
+            function checkAll() {
+                console.log("called");
+                if (validateUsername() == true && validatePW() == true && validateRePW() == true && validateFirstN() == true && validateLastN() == true && validateEmail() == true) {
                     $('#registerButton').prop('disabled', false);
                 }
-            });
+            }
+
 
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
     </body>

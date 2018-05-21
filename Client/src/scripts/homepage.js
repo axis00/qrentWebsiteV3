@@ -6,3 +6,5 @@ $('.carousel.carousel-slider').carousel({
 setInterval(function() {
     $('.carousel').carousel('next');
 }, 5000);
+
+$('.sidenav').sidenav();

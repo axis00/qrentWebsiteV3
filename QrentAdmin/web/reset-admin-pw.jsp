@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Register New Admin User</title>
     </head>
     <body>
@@ -54,8 +55,8 @@
 
                     ps.execute();
 
-                    out.println("<script>alert('Your password has been reset!')</script>");
-                    out.println("<script>window.location='homepage.jsp'</script>");
+                    out.println("<script>swal('Successful!', 'You have successfully reset your password!', 'success');</script>");
+                        out.println("<script>setTimeout(\"window.location.href ='homepage.jsp';\",1800);</script>");
                     
                 } catch (SQLException ex) {
                     out.println(ex);

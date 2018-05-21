@@ -22,42 +22,27 @@
                     response.sendRedirect("index.jsp");
                 }
             %>
-            <div class="page-header">
-                <h1>Super Admin Home Page</h1>
+           <div class="row hidden-xs topper" id="top-nav-container">
+                <div class="cols-xs-7 col-sm-7">
+                    <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
+                </div>
+                <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
+                    <h1>Password Reset</h1>
+                </div>
             </div>
+
+
             <%@include file="supernav.html"%>
             <div class="signup-form">
                 <form method="post" action="reset-pw.jsp">
                     <div class="form-group">
                         <p>Enter Admin Username</p>
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()"/><span id="usernameExists"></span>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Username"/><span id="usernameExists"></span>
                     </div>
                     <br><br><input class="btn btn-primary btn-lg" type="submit" value="Reset" id="resetButton"/>
                 </form>
             </div>
         </div>
-
-        <script>
-            function checkUsername() {
-                var xmlhttp;
-                var username = document.getElementById("username").value;
-                var urls = "username-exists.jsp?username=" + username;
-
-                if (window.XMLHttpRequest) {
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function () {
-                    if (xmlhttp.readyState == 4) {
-                        document.getElementById("usernameExists").innerHTML = "";
-                        document.getElementById("usernameExists").innerHTML = xmlhttp.responseText;
-                    }
-                }
-                xmlhttp.open("GET", urls, true);
-                xmlhttp.send();
-            }
-        </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

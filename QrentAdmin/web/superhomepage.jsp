@@ -22,9 +22,15 @@
                     response.sendRedirect("index.jsp");
                 }
             %>
-            <div class="page-header">
-                <h1>Super Admin Home Page</h1>
+            <div class="row hidden-xs topper" id="top-nav-container">
+                <div class="cols-xs-7 col-sm-7">
+                    <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
+                </div>
+                <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
+                    <h1>Super Admin Homepage</h1>
+                </div>
             </div>
+
             <%@include file="supernav.html"%>
             <div class="pricing-header">
                 <h1 class="display-4">Welcome <b>Super Admin</b>!</h1>
@@ -42,7 +48,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        <h5 class="card-title">User Count</h5>
+                        <h5 class="card-title">Pending Users</h5>
                         <%
                             Connection con;
                             try {
@@ -61,7 +67,7 @@
                                 } else {
                                     res.previous();
                                     while (res.next()) {
-                                        out.println("<p class=\"card-text\">There are <b>" + res.getString("COUNT(username)") + "</b> pending users in Qrent.</p>");
+                                        out.println("<p class=\"card-text\">There are <b><a href=\"approve-accounts.jsp\">" + res.getString("COUNT(username)") + "</a></b> pending users in Qrent.</p>");
 
                                     }
                                 }
@@ -69,13 +75,14 @@
                                 out.println(ex);
                             }
                         %>
+                       
                     </div>
 
                 </div>
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        <h5 class="card-title">User Count</h5>
+                        <h5 class="card-title">Active Users</h5>
                         <%
                             try {
 
@@ -93,7 +100,7 @@
                                 } else {
                                     res.previous();
                                     while (res.next()) {
-                                        out.println("<p class=\"card-text\">There are <b>" + res.getString("COUNT(username)") + "</b> active users in Qrent.</p>");
+                                        out.println("<p class=\"card-text\">There are <b><a href=\"approved-user.jsp\">" + res.getString("COUNT(username)") + "</a></b> active users in Qrent.</p>");
 
                                     }
                                 }
@@ -101,6 +108,7 @@
                                 out.println(ex);
                             }
                         %>
+                        
                     </div>               
                 </div>
 
@@ -124,7 +132,7 @@
                                 } else {
                                     res.previous();
                                     while (res.next()) {
-                                        out.println("<p class=\"card-text\">There is/are <b>" + res.getString("COUNT(paymentID)") + "</b> transaction/s in Qrent.</p>");
+                                        out.println("<p class=\"card-text\">There is/are <b><a href=\"user-transaction.jsp\">" + res.getString("COUNT(paymentID)") + "</a></b> transaction/s in Qrent.</p>");
 
                                     }
                                 }
@@ -132,6 +140,7 @@
                                 out.println(ex);
                             }
                         %>
+                         
                     </div>
                 </div>
             </div>

@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title>Register New Admin User</title>
     </head>
     <body>
@@ -61,15 +62,17 @@
                         ps.setString(2, username);
 
                         ps.execute();
-
-                        out.println("<script>alert('Their password has been reset!')</script>");
-                        out.println("<script>window.location='superhomepage.jsp'</script>");
+                        
+                        out.println("<script>swal('Successful!', 'The password for "+ username +" has been reset!', 'success');</script>");
+                        out.println("<script>setTimeout(\"window.location.href ='super-reset-pw.jsp';\",1800);</script>");
+                        
                     } catch (SQLException ex) {
                         out.println(ex);
                     }
 
                 } else {
-                    out.println("User does not exist.");
+                    out.println("<script>swal('Error!', 'The username "+ username +" does not exist!', 'error');</script>");
+                    out.println("<script>setTimeout(\"window.location.href ='super-reset-pw.jsp';\",1800);</script>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);

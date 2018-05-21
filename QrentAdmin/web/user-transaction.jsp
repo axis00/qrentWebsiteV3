@@ -67,7 +67,7 @@
                     <tr>
                         <th scope="col" data-field="date" data-sortable="true">Trans. Date</th>
                         <th scope="col" data-field="num" data-sortable="true">Trans. No.</th>
-                        <th scope="col" data-field="username" data-sortable="true">Username</th>
+                        <th scope="col" data-field="username" data-sortable="true">Client</th>
                         <th scope="col" data-field="item" data-sortable="true">Item Name</th>
                         <th scope="col" data-field="itemnum" data-sortable="true">Item No.</th>
                         <th scope="col" data-field="days" data-sortable="true">Rent Duration</th>

@@ -7,38 +7,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
-        <script src="notify.js"
-        <script src="notify.min.js"
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script>
-            function searchword() {
-                var input, search, table, tr, td, i;
-                input = document.getElementById("keyword");
-                search = input.value.toUpperCase();
-                table = document.getElementById("users");
-                tr = table.getElementsByTagName("tr");
-                
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[0];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(search) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
-        </script>
         <title>Approve Pending Users</title>
     </head>
     <body id="body">
@@ -47,7 +25,7 @@
                 response.sendRedirect("index.jsp");
             }
         %>
-        <div class="container">
+        <div class="container" >
             <div class="row hidden-xs topper" id="top-nav-container">
                 <div class="cols-xs-7 col-sm-7">
                     <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
@@ -62,20 +40,51 @@
            <%}else{%>
            <%@include file="nav.html"%>
            <%}%>
-              
-            <nav class="navbar bg-faded">
-                <div class="navbar-collapse justify-content-md-center">
-                    <ul class="navbar nav">
-                        <li class="nav-item">View by:</li>
-                        <li class="nav-item"><a href="manage-users.jsp" class="nav-link2" id="active-item">All Users</a></li>
-                        <li class="nav-item"><a href="approved-user.jsp" class="nav-link2" >Active Users</a></li>
-                        <li class="nav-item"><a href="rejected-user.jsp" class="nav-link2">Rejected Users</a></li>
-                        <li class="nav-item"><a href="removed-user.jsp" class="nav-link2" >Removed Users</a></li>
-                    </ul>
-                </div>
-            </nav>
-           <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search username..." class="search search-control"></input>
-            <table class="bootstrap-table table table-no-bordered" data-toggle="table" id="users">
+           <br>
+           <div class="row">
+            <div class="col-sm-4">
+                <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+            </div>
+            <div class="col-sm-1">
+                View:
+            </div>
+            <div class="col-sm-3">
+               
+                <select class="form-control form-control-sm" id="options" onchange="changepage()">
+                    <option value="" selected disable hidden>Choose account status here</option>
+                    <option value="1"  hidden>All Accounts</option>
+                    <option value="2"><b>Enabled Accounts</b></option>
+                    <option value="4" >Disabled Accounts</option>
+                    <option value="3" >Rejected Accounts</option>
+                             
+                </select>
+                
+                <script>
+                    function changepage() {
+                        var x = document.getElementById("options").value;
+                        if(x == '1'){
+                            window.location.href ='manage-users.jsp';
+                        }else if(x == '2'){
+                            window.location.href ='approved-user.jsp';
+                        }else if(x == '3'){
+                            window.location.href ='rejected-user.jsp';
+                        }else if(x == '4'){
+                            window.location.href ='removed-user.jsp';
+                        }
+                    }
+                    
+                    $(document).ready(function(){
+                        $("#keyword").on("keyup", function() {
+                          var value = $(this).val().toLowerCase();
+                          $("#users tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                          });
+                        });
+                    });
+                </script>
+            </div>
+           </div>
+            <table class="bootstrap-table table table-striped table-no-bordered" data-toggle="table">
                 <thead>
                     <tr>
                         <th scope="col" data-field="username" data-sortable="true">Username</th>
@@ -98,10 +107,12 @@
                         PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status != 'pending'");
 
                         ResultSet res = ps.executeQuery();
-
+                        
+                        out.println("<tbody id='users'>");
                         while (res.next()) {
-                            out.println("<tr scope='row' class='row-hover'>");
-                            out.println("<td>" + res.getString("username") + "</td>");
+                            
+                            out.println("<tr scope='row' classtablecontent='row-hover'>");
+                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input type='submit' value='" + res.getString("username") + "'/></form></td>");
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
@@ -109,17 +120,18 @@
                               out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");  
                               out.println("<td></td>");
                             }else if(res.getString("status").equals("approved")){
-                              out.println("<td><span class=\"badge badge-success\">" + res.getString("status").toUpperCase() + "</span></td>");
+                              out.println("<td><span class=\"badge badge-success\">ENABLED</span></td>");
                               out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE ACCOUNT' class='btn btn-danger'></form></td>");
+                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-danger btn-sm'></form></td>");
                             }else{
                               out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>"); 
                               out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE ACCOUNT' class='btn btn-success'></form></td>");
+                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success btn-sm'></form></td>");
                             }
                             out.println("<td>" + res.getString("type") + "</td>");
                             out.println("</tr>");
                         }
+                         out.println("</tbody>");
                     } catch (SQLException ex) {
                         out.println(ex);
                     }

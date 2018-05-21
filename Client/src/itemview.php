@@ -75,35 +75,39 @@
 			        <div class="col m8" id="itemBrand"><?php echo $res['itemBrand']; ?></div>
 			        <div class="col m4" id="itemCondition"><?php echo $res['itemCondition'] ?></div>
 			        <div class="col m8" id="itemDesc"><?php echo $res['itemDescription']; ?></p> </div>
-			        <div class="col m4" id="itemReview"> <input type="button" value="Review Item" class="btn itemBtn"></div>
+			        <div class="col m4" id="itemReview"><a class="waves-effect waves-light btn modal-trigger" href="#review-modal">Review</a></div>
 		        </div>
 		        <div class="center-align itemBtn">
 		           <td> <button class='waves-effect waves-light btn-large btnReserve' id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
 		        </div>
 		    </div>
+
+			  <!-- review modal -->
+		    <div id="review-modal" class="modal">
+		    	<form>
+				    <div class="modal-content">
+				      	<h4>Review This Item</h4>
+				      	<div class="input-field col s12">
+				          	<textarea id="review-text" class="materialize-textarea"></textarea>
+				          	<label for="review-text">Review</label>
+				        </div>
+				      	<p class="range-field">
+					      	<input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" />
+					      	<label for="rangeRating">Rate this product (slide)</label>
+					      	<input name = "itemno" value= <?php echo $_GET['q']?> type = "hidden" >
+					      	<div class="center-align">
+							      <p class="center-align" id="textInput" value="Rating">50</p>
+							      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
+							      <input type="reset" value="cancel" class="btn modal-close itemBtn" id = "cancelResBtn">
+						  	</div>
+						</p>
+
+				    </div>
+				</form>
+		    </div>
 		
 		<?php 
 			if(isset($_SESSION['user'])){
-				echo '<div id ="reviewForm" style="display: none">
-						<div class="card">
-							<div class="container">
-								
-							    <form action="rateItem.php" method="POST">
-								    <p class="range-field">
-								      <input name = "rating" type="range" id="test5" min="0" max="100" oninput="updateTextInput(this.value);" />
-								      <input name = "itemno" value= '.$_GET['q'].' type = "hidden" >
-								      <input name = "user" value = '.$_SESSION['user']. '>
-								      <div class="center-align">
-									      <p type="text" class="center-align" id="textInput" value="Rating"></p>
-									      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
-									      <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
-								  	</div>
-								    </p>
-								</form>
-							</div>
-						</div>
-					</div>';
-
 				echo '	<div id = "reserveFormCont" style="display: none">
 				            <div class = "card">
 				                <h2 class = "card-title center-align" id="reserve-title">Reservation Form</h2>
@@ -123,14 +127,6 @@
 				            </div>
 				        </div>';
 			}else{
-				echo '	<div id = "reviewForm" style="display:none">
-							<div class = "red lighten-1 card card-panel">
-								<div class = "container">
-									<h4 class = "white-text center-align">You must be logged in! <a class = "" href = "/login.php">Login here</a></h4>
-								</div>
-							</div>
-						</div>';
-
 				echo '	<div id = "reserveFormCont" style="display:none">
 							<div class = "red lighten-1 card card-panel">
 								<div class = "container">
