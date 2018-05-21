@@ -103,3 +103,7 @@
     width: 25%;
 }
 
+.bootstrap-table .table.table-no-bordered > tbody > tr:hover{
+    background-color: #48a3aa;
+} 
+
