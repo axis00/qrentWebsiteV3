@@ -56,7 +56,7 @@
             <?php
 
                 if(isset($_SESSION['user'])){
-                    echo "  <li><a href='/profile.php?=$user'>Profile</a></li>
+                    echo "  <li><a href='/profile.php?=$session_user'>Profile</a></li>
                             <li><a href='/logout.php'>Logout</a></li>";
                 }else{
                     echo "  <li><a href='/login.php'>Login</a></li>";

@@ -8,14 +8,9 @@ $(document).ready(function(){
 	$("#reserve").click(function() {
     	$('html, body').animate({
         	scrollTop: $("#reserveFormCont").offset().top
-    }, 		2000);
-});
+    	}, 		2000);
+	});
 
-		$("#itemReview").click(function() {
-    	$('html, body').animate({
-        	scrollTop: $("#reviewForm").offset().top
-    }, 		2000);
-});
 
 	$('#cancelResBtn').on('click',function(){
 		$('#reserveFormCont').fadeOut();
@@ -50,3 +45,5 @@ $('.carousel.carousel-slider').carousel({
 });
 
 $('.materialboxed').materialbox();
+
+$('.modal').modal();

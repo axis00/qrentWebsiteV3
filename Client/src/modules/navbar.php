@@ -40,10 +40,10 @@
                             <?php
 
                                 if(isset($_SESSION['user'])){
-                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$user<i class='material-icons right'>arrow_drop_down</i></a>
+                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$session_user<i class='material-icons right'>arrow_drop_down</i></a>
                                             <!-- Dropdown for user -->
                                             <ul id='UserDropMenu' class='dropdown-content'>
-                                                <li><a href='/profile.php?=$user'>Profile</a></li>
+                                                <li><a href='/profile.php?=$session_user'>Profile</a></li>
                                                 <li><a href='/logout.php'>Logout</a></li>
                                             </ul>";
                                 }else{

@@ -11,10 +11,10 @@
 
 	session_start();
 
-	$user;
+	$session_user;
 
 	if(isset($_SESSION['user'])){
-		$user = $_SESSION['user'];
+		$session_user = $_SESSION['user'];
 	}
 
 ?>

@@ -24,6 +24,9 @@
 	font-size: 20px;
 }
 
+#itemReview a{
+	position: static !important;
+}
 
 .divider {
 	margin: 5px;
@@ -35,11 +38,33 @@
 	margin-top: 20px;
 }
 
+.itemBtn button{
+	position: static !important;
+}
+
 #reserve-title {
 	padding-top: 20px;
 	margin-top: 20px;
 }
 
+.form-header{
+	height: 10vh;
+}
+
+.form-header img{
+	height: 100%;
+	width: auto;
+}
+
+.form-header h2{
+	display: inline;
+}
+
+.materialboxed{
+	z-index: 9999999;
+}
+
 a{
 	color: #00796b;
 }
+
