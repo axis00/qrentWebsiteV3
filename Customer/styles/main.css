@@ -1,0 +1,33 @@
+body {
+    background-color: teal;
+}
+
+nav {
+    background-color: teal;
+}
+
+a:hover {
+    text-decoration: none;
+}
+.btn{
+    background-color: black;
+}
+
+#edit-form {
+    width: 70%;
+}
+
+#index-form {
+    width: 100%;
+    margin-top: 20vh;
+}
+
+#login-form {
+    padding: 3vh;
+    width: 30%;
+}
+
+#logo {
+    width: 50%;
+    height: auto;
+}

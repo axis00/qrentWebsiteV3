@@ -76,7 +76,7 @@
                         ps.execute();
                             
                         out.println("<script>swal('Successful!', 'You have registered the admin account " + username + "', 'success');</script>");
-                        out.println("<script>setTimeout(\"window.location.href ='register-page.jsp';\",1800);</script>");
+                        out.println("<script>setTimeout(\"window.location.href ='register-page.jsp';\",3600);</script>");
                     } catch (SQLException ex){
                         out.println(ex);
                     }
