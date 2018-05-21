@@ -16,26 +16,7 @@
         <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script>
-            function searchword() {
-                var input, search, table, tr, td, i;
-                input = document.getElementById("keyword");
-                search = input.value.toUpperCase();
-                table = document.getElementById("users");
-                tr = table.getElementsByTagName("tr");
-                
-                for (i = 0; i < tr.length; i++) {
-                    td = tr[i].getElementsByTagName("td")[0];
-                    if (td) {
-                        if (td.innerHTML.toUpperCase().indexOf(search) > -1) {
-                            tr[i].style.display = "";
-                        } else {
-                            tr[i].style.display = "none";
-                        }
-                    }
-                }
-            }
-        </script>
+        <link rel="icon" href="qrent-logo.png">
         <title>Approve Pending Users</title>
     </head>
     <body id="body">
@@ -128,7 +109,7 @@
                         out.println("<tbody id='users'>");
                         while (res.next()) {
                             out.println("<tr scope='row' class='row-hover'>");
-                            out.println("<td>" + res.getString("username") + "</td>");
+                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");

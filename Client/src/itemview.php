@@ -21,9 +21,11 @@
 
         <!-- Materialize-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-        <link rel="stylesheet" href="./styles/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+
+        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/itemview.css">
 
         <title>Qrent</title>
 	</head>
@@ -78,12 +80,17 @@
 			        <div class="col m4" id="itemReview"><a class="waves-effect waves-light btn modal-trigger" href="#review-modal">Review</a></div>
 		        </div>
 		        <div class="center-align itemBtn">
-		           <td> <button class='waves-effect waves-light btn-large btnReserve' id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
+		           <td> <button class='waves-effect waves-light btn-large btnReserve modal-trigger' href="#reserve-modal" id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
 		        </div>
 		    </div>
 
 			  <!-- review modal -->
-		    <div id="review-modal" class="modal">
+
+
+		<?php 
+			if(isset($_SESSION['user'])){
+				echo'
+			<div id="review-modal" class="modal">
 		    	<form>
 				    <div class="modal-content">
 				      	<h4>Review This Item</h4>
@@ -94,7 +101,7 @@
 				      	<p class="range-field">
 					      	<input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" />
 					      	<label for="rangeRating">Rate this product (slide)</label>
-					      	<input name = "itemno" value= <?php echo $_GET['q']?> type = "hidden" >
+					      	<input name = "itemno" value= "echo $_GET["q"]" type = "hidden" >
 					      	<div class="center-align">
 							      <p class="center-align" id="textInput" value="Rating">50</p>
 							      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
@@ -105,15 +112,15 @@
 				    </div>
 				</form>
 		    </div>
-		
-		<?php 
-			if(isset($_SESSION['user'])){
-				echo '	<div id = "reserveFormCont" style="display: none">
+		    <div id="reserve-modal" class="modal">
+		    	<form>
+		    		<div class="modal-content">
+		    			<div id = "reserveFormCont" style="display: none">
 				            <div class = "card">
 				                <h2 class = "card-title center-align" id="reserve-title">Reservation Form</h2>
 				                <form action="/reserve.php" method="POST">
 				                	<div class="container">
-				                    <input id = "resid" name = "resId" type = "hidden" value = '.$_GET['q'].'>
+				                    <input id = "resid" name = "resId" type = "hidden" value = ".$_GET["q"].">
 				                    <label for="startdate">Start Date</label>
 				                	<input class="datepicker" type="text" name = "startdate" id = "startdate" required="required">
 				                    <label for="duration">Rental Duration</label>
@@ -125,7 +132,10 @@
 				                    </div>
 				                </form>
 				            </div>
-				        </div>';
+				        </div>
+				    </div>
+				</form>
+			</div>';
 			}else{
 				echo '	<div id = "reserveFormCont" style="display:none">
 							<div class = "red lighten-1 card card-panel">

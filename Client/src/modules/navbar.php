@@ -9,7 +9,7 @@
     *   @author David Paul Brackin
     */
 
-    include_once "/../util/userSession.php";
+    include_once "/../util/session.php";
 
 ?>
 
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class = "col l8 m10 s9" style = "height : 100%">
-                    <form action="find.php" method="GET">
+                    <form action="find" method="GET">
                         <div class="input-field" style = "padding: .4rem">
                             <input name = "q" id="search" type="search" autocomplete="off" class = "validate" required>
                             <label class="label-icon" for="search"><i class="material-icons">search</i></label>
@@ -40,14 +40,15 @@
                             <?php
 
                                 if(isset($_SESSION['user'])){
-                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$session_user<i class='material-icons right'>arrow_drop_down</i></a>
+                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$loggedin_user<i class='material-icons right'>arrow_drop_down</i></a>
                                             <!-- Dropdown for user -->
                                             <ul id='UserDropMenu' class='dropdown-content'>
-                                                <li><a href='/profile.php?=$session_user'>Profile</a></li>
-                                                <li><a href='/logout.php'>Logout</a></li>
+                                                <li><a href='/profile?user=$loggedin_user'>Profile</a></li>
+                                                <li><a href='/Reservations'>Reservations</a></li>
+                                                <li><a href='/logout'>Logout</a></li>
                                             </ul>";
                                 }else{
-                                    echo "  <a href='/login.php'>Login</a>";
+                                    echo "  <a href='/login'>Login</a>";
                                 }
 
                             ?>

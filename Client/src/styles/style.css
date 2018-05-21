@@ -68,3 +68,20 @@ a{
 	color: #00796b;
 }
 
+.material-icons{
+	vertical-align: middle !important;
+}
+
+.page-nav a{
+	margin: 2rem;
+	font-size: 2em !important;
+}
+
+.filter-submit-cont{
+	margin-top: 1rem;
+}
+
+#cancel-modal{
+	padding: 2rem;
+}
+
