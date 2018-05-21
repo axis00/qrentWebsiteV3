@@ -34,7 +34,7 @@ $(document).ready(function () {
         loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
 
     });
-
+    $('.sidenav').sidenav();
 });
     
 function loaditems(lower,upper,filter) {
@@ -50,7 +50,7 @@ function loaditems(lower,upper,filter) {
         success: function(data){
             last = data.length < 10;
             for(var i = 0; i < data.length; i++){
-                var itemCont = $('<div class="jumbotron">');
+                var itemCont = $('<div class="card card-panel horizontal hoverable row">');
                 var imgCont = $('<div>');
                 var itemLink = $('<a class = "qrent-link">');
                 var itemNameTitle = $('<h2 class="card-title">');
@@ -106,3 +106,4 @@ function loaditems(lower,upper,filter) {
         }  
     });
 }
+
