@@ -5,12 +5,6 @@ $(document).ready(function(){
 	$('#itemReview').on('click',showReview);
 	$('#reserve').on('click',showReserveForm);
 
-	$("#reserve").click(function() {
-    	$('html, body').animate({
-        	scrollTop: $("#reserveFormCont").offset().top
-    	}, 		2000);
-	});
-
 
 	$('#cancelResBtn').on('click',function(){
 		$('#reserveFormCont').fadeOut();
