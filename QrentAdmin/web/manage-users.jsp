@@ -112,7 +112,7 @@
                         while (res.next()) {
                             
                             out.println("<tr scope='row' classtablecontent='row-hover'>");
-                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
