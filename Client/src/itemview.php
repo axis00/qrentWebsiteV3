@@ -89,8 +89,9 @@
 
 		<?php 
 			if(isset($_SESSION['user'])){
-				echo'
-			<div id="review-modal" class="modal">
+				$itemno = $_GET['q'];
+			echo
+			'<div id="review-modal" class="modal">
 		    	<form>
 				    <div class="modal-content">
 				      	<h4>Review This Item</h4>
@@ -101,7 +102,7 @@
 				      	<p class="range-field">
 					      	<input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" />
 					      	<label for="rangeRating">Rate this product (slide)</label>
-					      	<input name = "itemno" value= "echo $_GET["q"]" type = "hidden" >
+					      	<input name = "itemno" value= '.$itemno.' type = "hidden" >
 					      	<div class="center-align">
 							      <p class="center-align" id="textInput" value="Rating">50</p>
 							      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
@@ -111,26 +112,26 @@
 
 				    </div>
 				</form>
-		    </div>
-		    <div id="reserve-modal" class="modal">
-		    	<form>
+		    </div>';
+		    echo 
+		    '<div id="reserve-modal" class="modal">
+		    	<form action="/util/reserve.php" method="POST">
 		    		<div class="modal-content">
 		    			<div id = "reserveFormCont" style="display: none">
-				            <div class = "card">
-				                <h2 class = "card-title center-align" id="reserve-title">Reservation Form</h2>
-				                <form action="/reserve.php" method="POST">
-				                	<div class="container">
-				                    <input id = "resid" name = "resId" type = "hidden" value = ".$_GET["q"].">
-				                    <label for="startdate">Start Date</label>
-				                	<input class="datepicker" type="text" name = "startdate" id = "startdate" required="required">
-				                    <label for="duration">Rental Duration</label>
-				                    <input class="form-control" type="number" name = "duration" id = "duration" required="required">
-				                    	<div class="center-align">
-						                    <input type="submit" value="Reserve" class="btn itemBtn">
-						                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
-						            	</div>
-				                    </div>
-				                </form>
+				            <div>
+				                <h2 class = "center-align" id="reserve-title">Reservation Form</h2>
+			                	<div class="container">
+			                    
+			                    <label for="startdate">Start Date</label>
+			                	<input class="datepicker" type="text" name = "startdate" id = "startdate" required="required">
+			                    <label for="duration">Rental Duration</label>
+			                    <input class="form-control" type="number" name = "duration" id = "duration" required="required">
+			                    <input id = "resid" name = "resId" type = "hidden" value = '.$itemno.'>
+			                    	<div class="center-align">
+					                    <input type="submit" value="Reserve" class="btn itemBtn">
+					                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
+					            	</div>
+			                    </div>
 				            </div>
 				        </div>
 				    </div>

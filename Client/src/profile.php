@@ -1,4 +1,4 @@
-<?php
+ <?php
     include_once "util/connectToDb.php";
     include_once "util/session.php";
 ?>
@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <?php include 'modules/navbar.php'?>
+        <?php include 'modules/navbar.php' ?>
 
         <div class="container">
             <div class="row">
