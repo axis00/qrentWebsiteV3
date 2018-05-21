@@ -49,6 +49,7 @@
 
         <!--Custom Css-->
         <link href="styles/search.css" rel="stylesheet">
+        <link href="styles/style.css" rel="stylesheet">
 
     </head>
 
@@ -70,7 +71,7 @@
                     <div class = "card card-panel">
                         <div class = "card-title">Filter</div>
                         <div>
-                            <form action="find.php" method="GET">
+                            <form action="find" method="GET">
                                 <input type = "hidden" name ="q" value = <?php echo $_GET['q']?> >
                                 <label>
                                     <input name="Available" id="indeterminate-checkbox" type="checkbox" />

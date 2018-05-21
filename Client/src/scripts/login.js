@@ -3,7 +3,7 @@ function userNotFound(){
 }
 
 function successfulLogin(){
-	window.location.assign('/');
+	window.history.back();
 }
 
 function wrongPassword(){
