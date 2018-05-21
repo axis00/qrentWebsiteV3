@@ -76,7 +76,7 @@
 			        <div class="col m4" id="itemRentPrice"><?php echo $res['itemRentPrice'] ?> PHP/DAY</div>
 			        <div class="col m8" id="itemBrand"><?php echo $res['itemBrand']; ?></div>
 			        <div class="col m4" id="itemCondition"><?php echo $res['itemCondition'] ?></div>
-			        <div class="col m8" id="itemDesc"><?php echo $res['itemDescription']; ?></p> </div>
+			        <div class="col m8" id="itemDesc"><?php echo $res['itemDescription']; ?> </div>
 			        <div class="col m4" id="itemReview"><a class="waves-effect waves-light btn modal-trigger" href="#review-modal">Review</a></div>
 		        </div>
 		        <div class="center-align itemBtn">
@@ -121,10 +121,12 @@
 				                <form action="/reserve.php" method="POST">
 				                	<div class="container">
 				                    <input id = "resid" name = "resId" type = "hidden" value = ".$_GET["q"].">
+                                    
 				                    <label for="startdate">Start Date</label>
 				                	<input class="datepicker" type="text" name = "startdate" id = "startdate" required="required">
+                                    
 				                    <label for="duration">Rental Duration</label>
-				                    <input class="form-control" type="number" name = "duration" id = "duration" required="required">
+				                    <input class="form-control" type="number" name = "duration" id = "duration" required="required" min="1">
 				                    	<div class="center-align">
 						                    <input type="submit" value="Reserve" class="btn itemBtn">
 						                    <input type="reset" value="cancel" class="btn modal-close itemBtn " id = "cancelResBtn">
@@ -149,6 +151,5 @@
 
      </div>
         <script src="./scripts/reserve.js"></script>
-
 	</body>
 </html>

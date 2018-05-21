@@ -41,3 +41,4 @@ $('.carousel.carousel-slider').carousel({
 $('.materialboxed').materialbox();
 
 $('.modal').modal();
+
