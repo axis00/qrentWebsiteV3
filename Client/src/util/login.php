@@ -2,7 +2,7 @@
 
 	if(isset($_POST['user']) && isset($_POST['password'])){
 
-		require_once "userSession.php";
+		require_once "session.php";
 		require_once "connectToDb.php";
 
 		$sql = "SELECT username, password FROM users WHERE username = ?";

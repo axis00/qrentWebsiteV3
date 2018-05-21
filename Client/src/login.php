@@ -1,6 +1,6 @@
 <?php
 
-	require_once 'util/userSession.php';
+	require_once 'util/session.php';
 
 	if(isset($_SESSION['user'])){
 		header('Location: /');
