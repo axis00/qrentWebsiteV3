@@ -106,5 +106,5 @@
 
 .bootstrap-table .table.table-no-bordered > tbody > tr:hover{
     background-color: #cbeef0;
-    
+    color: black !important;
 } 
