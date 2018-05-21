@@ -109,13 +109,13 @@
                               out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");  
                               out.println("<td></td>");
                             }else if(res.getString("status").equals("approved")){
-                              out.println("<td><span class=\"badge badge-success\">" + res.getString("status").toUpperCase() + "</span></td>");
+                              out.println("<td><span class=\"badge badge-success\">ENABLED</span></td>");
                               out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE ACCOUNT' class='btn btn-danger'></form></td>");
+                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE ' class='btn btn-danger'></form></td>");
                             }else{
                               out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>"); 
                               out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE ACCOUNT' class='btn btn-success'></form></td>");
+                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success'></form></td>");
                             }
                             out.println("<td>" + res.getString("type") + "</td>");
                             out.println("</tr>");

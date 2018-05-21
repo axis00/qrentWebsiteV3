@@ -42,7 +42,7 @@
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        <h5 class="card-title">User Count</h5>
+                        <h5 class="card-title">Pending Users</h5>
                         <%
                             Connection con;
                             try {
@@ -61,7 +61,7 @@
                                 } else {
                                     res.previous();
                                     while (res.next()) {
-                                        out.println("<p class=\"card-text\">There are <b>" + res.getString("COUNT(username)") + "</b> pending users in Qrent.</p>");
+                                        out.println("<p class=\"card-text\">There are <b><a href=\"approve-accounts.jsp\">" + res.getString("COUNT(username)") + "</a></b> pending users in Qrent.</p>");
 
                                     }
                                 }
@@ -69,13 +69,14 @@
                                 out.println(ex);
                             }
                         %>
+                       
                     </div>
 
                 </div>
                 <div class="card bg-light mb-3" style="max-width: 18rem;">
                     <div class="card-header">Statistics</div>
                     <div class="card-body">
-                        <h5 class="card-title">User Count</h5>
+                        <h5 class="card-title">Active Users</h5>
                         <%
                             try {
 
@@ -93,7 +94,7 @@
                                 } else {
                                     res.previous();
                                     while (res.next()) {
-                                        out.println("<p class=\"card-text\">There are <b>" + res.getString("COUNT(username)") + "</b> active users in Qrent.</p>");
+                                        out.println("<p class=\"card-text\">There are <b><a href=\"approved-user.jsp\">" + res.getString("COUNT(username)") + "</a></b> active users in Qrent.</p>");
 
                                     }
                                 }
@@ -101,6 +102,7 @@
                                 out.println(ex);
                             }
                         %>
+                        
                     </div>               
                 </div>
 
@@ -124,7 +126,7 @@
                                 } else {
                                     res.previous();
                                     while (res.next()) {
-                                        out.println("<p class=\"card-text\">There is/are <b>" + res.getString("COUNT(paymentID)") + "</b> transaction/s in Qrent.</p>");
+                                        out.println("<p class=\"card-text\">There is/are <b><a href=\"user-transaction.jsp\">" + res.getString("COUNT(paymentID)") + "</a></b> transaction/s in Qrent.</p>");
 
                                     }
                                 }
@@ -132,6 +134,7 @@
                                 out.println(ex);
                             }
                         %>
+                         
                     </div>
                 </div>
             </div>

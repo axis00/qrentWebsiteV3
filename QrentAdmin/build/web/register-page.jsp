@@ -28,6 +28,7 @@
             </div>
             <%@include file="supernav.html"%>
             <div class="signup-form">
+                <p>Create a new administrator account. Fill up all the input fields.</p>
                 <form method="post" class="form" action="register.jsp">
                     <div class="form-group">
                         <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()"/><span id="usernameExists"></span>
