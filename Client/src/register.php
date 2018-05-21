@@ -2,23 +2,23 @@
     function passwordValidationF()
     {
         alert("Password does not match");
-        window.location.href = "http://laboratory/pages/register.php";
+        window.location.href = " /register";
     }
     function usernameValidate()
     {
         alert("Username already exists");
-        window.location.href = "http://laboratory/pages/register.php";
+        window.location.href = " /register";
     }
     function emailValidate()
     {
         alert("Email already exists");
-        window.location.href = "http://laboratory/pages/register.php";      
+        window.location.href = " /register";      
     }
     
     function successfull()
     {
         alert("Registration Success!");
-        window.location.href = "http://laboratory/pages/home";
+        window.location.href = " /";
     }
     function allFields()
     {
@@ -28,7 +28,7 @@
 
 <?php
         
-        require "../util/connectToDb.php";
+        require "/util/connectToDb.php";
         session_start();
         if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['verifyPassword']) && isset($_POST['addressNo']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
             $first = $_POST['firstName'];
@@ -94,7 +94,7 @@
     
     <head>
         <!--CSS-->
-        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="/styles/register.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <meta charset="utf-8">
@@ -102,9 +102,9 @@
         <title>Qrent</title>
     </head>
     
-    <body>
+    <body class="teal">
         <div class="valign-wrapper center-align">
-            <div class="row white" id="registration-form">                  
+            <div class="row white" id="register-form">                  
                 <form method="post" class="col s12">
                     <h1>Registration</h1>
                     <div class="input-field col s6">
@@ -175,7 +175,7 @@
                     </div>    
                     
                     <input type="submit" class="btn" value="Register">
-                <p>Already have an account? <a href="../pages/login.php">Login here.</a></p>
+                <p>Already have an account? <a href="/login">Login here.</a></p>
                 </form>
             </div>        
         </div>

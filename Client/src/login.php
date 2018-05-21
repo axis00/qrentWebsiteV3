@@ -50,7 +50,7 @@
 				        	</div>
 				        	<div class = "center-align">
 				        		<input type = "submit" value = "Login" class = "btn waves-effect waves-light" style="margin: 1rem;width: 50%">
-				        		<a style="display: block; margin: 1rem;">Forgot password</a>
+				        		<a href = "/recovery.php" style="display: block; margin: 1rem;">Forgot password</a>
 				        	</div>
 						</form>
 					</div>

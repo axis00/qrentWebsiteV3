@@ -12,7 +12,7 @@
 	}
 
 	session_destroy();
-	header("Location:http://laboratory/");
+	header("Location:http:/");
 	die();
 
 ?>

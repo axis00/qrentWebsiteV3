@@ -6,7 +6,7 @@
     
     if ($status == "pending") {
     	echo "
-    		<div class='alert alert-danger' role='alert'>
+    		<div class='center-align red darken-4' id='alert'>
   				<strong>Notification!</strong> Your account is not yet approved.
 			</div>";
     }

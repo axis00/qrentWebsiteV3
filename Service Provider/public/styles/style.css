@@ -7,15 +7,7 @@ h1{
     padding: 1rem;
     text-align: center;
 }
-.regContainer{
-    padding: 2em;
-    height: 100%;
-    width: 40em;
-    background-color: white;
-    border: 1px solid #ccc;
-    text-align: center;
-    margin: 5vh auto;
-}
+
 
 .homeContainer{
     position: fixed;
@@ -60,6 +52,17 @@ h1{
 
 #registerTag{
     padding: 2em;
+}
+
+/*register*/
+.regContainer{
+    padding: 2em;
+    height: 100%;
+    width: 40em;
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin: 5vh auto;
 }
 
 #qrentLogo{

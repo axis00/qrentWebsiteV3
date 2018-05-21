@@ -1,6 +1,6 @@
 <?php
 //    JavaScript for Index
-    echo"<script type='text/javascript' src='../scripts/alert.js'></script>";
+    echo"<script type='text/javascript' src='../scripts/scripts.js'></script>";
     
     require "../util/connectToDb.php";
     session_start();
