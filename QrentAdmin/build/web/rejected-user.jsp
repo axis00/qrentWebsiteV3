@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="icon" href="qrent-logo.png">
-        <title>Approve Pending Users</title>
+        <title>Manage User Accounts</title>
     </head>
     <body id="body">
         <%
@@ -31,7 +31,7 @@
                     <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
                 </div>
                 <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
-                    <h1>Approve Pending Users</h1>
+                    <h1>Manage User Accounts</h1>
                 </div>
             </div>
 
