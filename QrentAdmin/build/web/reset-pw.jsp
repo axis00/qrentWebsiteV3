@@ -13,7 +13,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <title>Register New Admin User</title>
+        <link rel="icon" href="qrent-logo.png">
+        <title>Reset Admin Account Password</title>
     </head>
     <body>
         <%

@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
+        <link rel="icon" href="qrent-logo.png">
         <title>Disable User Account</title>
     </head>
     <body>

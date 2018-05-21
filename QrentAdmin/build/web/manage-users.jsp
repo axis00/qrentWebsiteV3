@@ -17,6 +17,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="qrent-logo.png">
         <title>Approve Pending Users</title>
     </head>
     <body id="body">
@@ -112,7 +113,7 @@
                         while (res.next()) {
                             
                             out.println("<tr scope='row' classtablecontent='row-hover'>");
-                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
