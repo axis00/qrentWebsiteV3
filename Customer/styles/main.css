@@ -13,13 +13,12 @@ a:hover {
     background-color: black;
 }
 
+#alert {
+    width: 100%;
+    padding: 2vh;
+}
 #edit-form {
     width: 70%;
-}
-
-#index-form {
-    width: 100%;
-    margin-top: 20vh;
 }
 
 #login-form {
@@ -30,4 +29,9 @@ a:hover {
 #logo {
     width: 50%;
     height: auto;
+}
+
+#registration-form {
+    padding: 3vh;
+    width: 80%;
 }
