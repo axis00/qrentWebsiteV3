@@ -59,7 +59,7 @@
                             <h3>".$itemRow['itemName']."</h3>
                             <a><h5>".$itemRow['itemOwner']."</h5></a>
                             <div class = 'right-align'>
-                                <a href='/itemview.php?q=".$itemRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
+                                <a href='/itemview?q=".$itemRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,8 @@
                             <h5>".$resRow['itemName']."</h5>
                             <a><h6>".$resRow['itemOwner']."</h6></a>
                             <div class = 'right-align'>
-                                <a href='/itemview.php?q=".$resRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
+                                <a href='/itemview?q=".$resRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
+                                <a class='waves-effect waves-light btn modal-trigger cancel-btn' data-itemno =".$resRow['itemno']." href='#cancel-modal'>Cancel</a>
                             </div>
                         </div>
                     </div>

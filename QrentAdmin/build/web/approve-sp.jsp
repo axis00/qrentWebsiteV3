@@ -8,7 +8,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+        <link rel="icon" href="qrent-logo.png">
         <title>JSP Page</title>
     </head>
     <body>
@@ -28,7 +28,8 @@
                 if (session.getAttribute("username") == null) {
                     response.sendRedirect("index.jsp");
                 } else {
-                    response.sendRedirect("pending-sp.jsp");
+                    out.println("<script>swal('Successful!', 'You have approved the user account of " + username + "', 'success');</script>");
+                    out.println("<script>setTimeout(\"window.location.href = 'approve-accounts.jsp';\",1800);</script>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);
