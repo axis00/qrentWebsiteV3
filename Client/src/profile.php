@@ -59,7 +59,7 @@
                     </div>
                     <?php
                         if($_SESSION['user'] == $_GET['user']) {
-                            echo "<a class='waves-effect waves-light btn' href='#'>Edit Profile</a>";
+                            echo "<a class='waves-effect waves-light btn' href='/editProfile'>Edit Profile</a>";
                         }
                     ?>
                     <div class="divider"></div>
