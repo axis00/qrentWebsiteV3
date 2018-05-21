@@ -62,13 +62,13 @@
               
            <br>
            <div class="row">    
-            <div class="col-sm-3">
-                <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search username..." class="search search-control" style="width:100%;"></input>
+            <div class="col-sm-4">
+                <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
             </div>
-            <div class="col-sm-1" style="padding:5px;">
+            <div class="col-sm-1">
                 View:
             </div>
-            <div class="col-sm-3" style="padding:5px;">
+            <div class="col-sm-3">
                
                 <select class="form-control form-control-sm" id="options" onchange="changepage()">
                     <option value="" hidden>Choose account type here</option>
@@ -89,11 +89,20 @@
                             window.location.href ='pending-sp.jsp';
                         }
                     }
+                    
+                    $(document).ready(function(){
+                        $("#keyword").on("keyup", function() {
+                          var value = $(this).val().toLowerCase();
+                          $("#users tr").filter(function() {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                          });
+                        });
+                    });
                 </script>
             </div>
            </div>
            
-            <table class="bootstrap-table table table-no-bordered" id="approval" data-toggle="table">
+            <table class="bootstrap-table table table-striped table-no-bordered" id="approval" data-toggle="table">
                 <thead>
                     <tr>
                         <th scope="col" data-field="username" data-sortable="true">Username</th>
@@ -117,7 +126,8 @@
                         PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status = 'pending' AND type ='Client'");
 
                         ResultSet res = ps.executeQuery();
-
+                        
+                        out.println("<tbody id='users'>");
                         while (res.next()) {
                             out.println("<tr scope='row' class='row-hover'>");
                             out.println("<td>" + res.getString("username") + "</td>");
@@ -132,6 +142,7 @@
                                     + res.getString("username") + "><input type = 'submit' value = 'Reject' class='btn btn-danger' id='btn-reject'></form></td>");
                             out.println("</tr>");
                         }
+                         out.println("</tbody>");
                     } catch (SQLException ex) {
                         out.println(ex);
                     }
