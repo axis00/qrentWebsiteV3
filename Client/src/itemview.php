@@ -137,7 +137,7 @@
 			                	<div class="container">
 			                    
 			                    <label for="startdate">Start Date</label>
-			                	<input class="datepicker" type="date" name = "startdate" required="required" min='.$minDate.' value="">
+			                	<input class="datepicker" type="date" name = "startdate" required="required" min='.$minDate.' value=" ">
                                 
 			                    <label for="duration">Rental Duration</label>
 			                    <input class="form-control" type="number" name = "duration" id = "duration" required="required" min="1">
