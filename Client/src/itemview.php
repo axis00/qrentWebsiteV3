@@ -127,7 +127,7 @@
 				                    <input class="form-control" type="number" name = "duration" id = "duration" required="required">
 				                    	<div class="center-align">
 						                    <input type="submit" value="Reserve" class="btn itemBtn">
-						                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
+						                    <input type="reset" value="cancel" class="btn modal-close itemBtn " id = "cancelResBtn">
 						            	</div>
 				                    </div>
 				                </form>
