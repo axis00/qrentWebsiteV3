@@ -34,7 +34,7 @@
                         <input type="text" name="username" id="username" class="form-control" placeholder="Username" onblur="checkUsername()" onchange="checkAll()" required/><span id="usernameSpan"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" onblur="validatePW()" onchange="checkAll()" required/><span id="pwSpan"></span>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" onblur="validatePW()" onkeyup="checkPassword()" onchange="checkAll()" required/><span id="pwSpan"></span>
                     </div>
                     <div class="form-group">
                         <input type="password" name="repassword" id="repassword" class="form-control" onkeyup="checkPassword()" placeholder="Re-type password" onchange="checkAll()" required/><span id="checkSpan"></span>
