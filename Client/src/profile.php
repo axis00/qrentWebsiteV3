@@ -28,8 +28,9 @@
     </head>
 
     <body>
+        
         <?php include 'modules/navbar.php'?>
-
+        
         <div class="container">
             <div class="row">
                 <div class="col s3">
@@ -42,6 +43,11 @@
                         echo "<span class='username d-block'>$session_username</span>"
                     ?>
                     </div>
+                    <?php
+                        if($_SESSION['user'] == $session_username) {
+                            echo "<a class='waves-effect waves-light btn' href='#'>Edit Profile</a>";
+                        }
+                    ?>
                     <div class="divider"></div>
                     <ul class="details">
                         <li>
