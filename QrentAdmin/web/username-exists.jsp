@@ -39,9 +39,7 @@
                 
                 
                 if(val.next()){
-                    out.println("<font color='red'>");
                     out.println("Username exists.");
-                    out.println("</font>");
                 } else {
                     out.println("OK");
                 }
