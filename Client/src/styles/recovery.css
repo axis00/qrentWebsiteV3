@@ -2,3 +2,17 @@
 	float: none !important;
 	margin: auto;
 }
+
+.recovery-form-cont{
+	padding : 2rem !important;
+	margin-top : 2rem !important; 
+}
+
+.recovery-form-cont form{
+	padding: 1rem !important;
+}
+
+.recovery-form-cont p{
+	font-size: .6em !important;
+	text-align: center;
+}

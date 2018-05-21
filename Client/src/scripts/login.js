@@ -7,7 +7,19 @@ function successfulLogin(){
 }
 
 function wrongPassword(){
-	alert("wrong Password")
+	alert("wrong Password");
+}
+
+function rejectedUser(){
+	alert("This accounted was rejected");
+}
+
+function pendingUser(){
+	alert("This is a pending account");
+}
+
+function genericError(){
+	alert("Something went wrong, we are gathering our monkeys to solve the issue");
 }
 
 
@@ -29,7 +41,13 @@ $(document).ready(function(){
 					userNotFound();
 				}else if(data == 'wrong password'){
 					wrongPassword();
-				}	
+				}else if(data == 'rejected'){
+					rejectedUser();
+				}else if(data == 'pending'){
+					pendingUser();
+				}else{
+					genericError();
+				}
 			}
 		});
 	});
