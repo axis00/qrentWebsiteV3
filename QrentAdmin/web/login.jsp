@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <title></title>
     </head>
     <body>
@@ -75,12 +76,13 @@
                             response.sendRedirect("homepage.jsp");
                         }
                     } else {
-                        out.println("<script>alert('The password you’ve entered is incorrect.')</script>");
-                        out.println("<script>window.location='index.jsp'</script>");
+                        out.println("<script>swal('Error!', 'The password you’ve entered is incorrect. Please try again.', 'error');</script>");
+                        out.println("<script>setTimeout(\"window.location.href = 'index.jsp';\",2000);</script>");
                     }
                 } else {
-                    out.println("<script>alert('The username you’ve entered doesn’t match any account or your account might have been disabled.')</script>");
-                    out.println("<script>window.location='index.jsp'</script>");
+                    out.println("<script>swal('Error!', 'The username you’ve entered doesn’t match any account or your account might have been disabled. Please try again.', 'error');</script>");
+                    out.println("<script>setTimeout(\"window.location.href = 'index.jsp';\",2000);</script>");
+                  
                 }
 
             } catch (SQLException ex) {

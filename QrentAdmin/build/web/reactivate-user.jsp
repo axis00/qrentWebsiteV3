@@ -8,9 +8,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         
-        <title>JSP Page</title>
+        <title>Enable User Account</title>
     </head>
     <body>
         <%
@@ -31,7 +31,8 @@
                 ps.setString(1, username);
 
                 ps.executeUpdate();
-                response.sendRedirect("manage-users.jsp");
+                out.println("<script>swal('Successful!', 'You have enabled the user account of " + username + "', 'success');</script>");
+                out.println("<script>setTimeout(\"window.location.href = 'manage-users.jsp';\",1800);</script>");
             } catch (SQLException ex) {
                 out.println(ex);
             }
