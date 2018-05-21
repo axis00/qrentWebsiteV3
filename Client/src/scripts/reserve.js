@@ -1,7 +1,10 @@
 $(document).ready(function(){
-	console.log('loaded');
 
-	$('.datepicker').datepicker();
+	$('.datepicker').datepicker({
+	    selectMonths: true,
+	    selectYears: 15,
+	    format: 'yyyy-mm-dd' 
+	});
 	$('#itemReview').on('click',showReview);
 	$('#reserve').on('click',showReserveForm);
 
@@ -24,13 +27,7 @@ function updateTextInput(val) {
 
 function showReserveForm(event){
 
-	console.log('howgin');
-
-	var id = $(event.target).attr('data-resid');
 	$('#reserveFormCont').fadeIn();
-
-	$('#resid').attr('value',id);
-
 }
 
 // carousel js
@@ -41,3 +38,4 @@ $('.carousel.carousel-slider').carousel({
 $('.materialboxed').materialbox();
 
 $('.modal').modal();
+

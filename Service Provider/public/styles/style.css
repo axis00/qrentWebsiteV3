@@ -149,9 +149,8 @@ h1{
 }
 
 .deleteForm{
-    margin: 0;
+    background-color: red;
     text-align: right;
-    width: 100%;
     clear: both;
 }
 
@@ -206,6 +205,26 @@ nav .brand-logo {
     font-size: 40px;
     color: white;
    padding-left: 30px;
+}
+
+.itemname {
+    background-color: red;
+}
+
+.itemdesc {
+    background-color: blue;
+}
+
+.brandtitle{
+    background-color: aqua;
+}
+
+.rptitle {
+    background-color: gray;
+}
+
+.itemstat {
+    background-color: green;
 }
 /*postItem*/
 

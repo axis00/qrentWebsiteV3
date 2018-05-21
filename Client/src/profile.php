@@ -1,4 +1,4 @@
-<?php
+ <?php
     include_once "util/connectToDb.php";
     include_once "util/session.php";
 ?>
@@ -28,6 +28,7 @@
     </head>
 
     <body>
+
         <?php
             $userQuery = $_GET['user'];
             $sessionSql = mysqli_query($conn, "SELECT CONCAT(firstname, ', ', lastname) AS name, username, firstname, lastname, CONCAT(addressno, ' ', street,' ', municipality,' ', province) AS address, contactno, email FROM users NATURAL JOIN customers where username = '$userQuery';");
@@ -58,7 +59,7 @@
                     </div>
                     <?php
                         if($_SESSION['user'] == $_GET['user']) {
-                            echo "<a class='waves-effect waves-light btn' href='#'>Edit Profile</a>";
+                            echo "<a class='waves-effect waves-light btn' href='/editProfile'>Edit Profile</a>";
                         }
                     ?>
                     <div class="divider"></div>
