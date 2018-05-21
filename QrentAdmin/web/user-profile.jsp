@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
         <title>User Profile</title>
+        <link rel="icon" href="qrent-logo.png">
     </head>
     <body id="body">
         <div class="container">

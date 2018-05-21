@@ -7,7 +7,7 @@
     *
     *   @author David Paul Brackin
     */
-    
+    include_once "util/session.php";
     include_once "util/connectToDb.php";
     include_once "util/search.php";
     include_once "util/generators.php";
