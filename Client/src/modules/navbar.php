@@ -36,24 +36,23 @@
                 </div>
                 <div class = "col l2 hide-on-med-and-down">
                     <ul id="nav-mobile" class="center-align">
-                        <li>
-                            <?php
+                        <?php
 
-                                if(isset($_SESSION['user'])){
-                                    echo "  <a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$loggedin_user<i class='material-icons right'>arrow_drop_down</i></a>
-                                            <!-- Dropdown for user -->
-                                            <ul id='UserDropMenu' class='dropdown-content'>
-                                                <li><a href='/profile?user=$loggedin_user'>Profile</a></li>
-                                                <li><a href='/Reservations'>Reservations</a></li>
-                                                <li><a href='/logout'>Logout</a></li>
-                                            </ul>";
-                                }else{
-                                    echo "  <a href='/login'>Login</a>";
-                                }
+                            if(isset($_SESSION['user'])){
+                                echo " <li><a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$loggedin_user<i class='material-icons right'>arrow_drop_down</i></a>
+                                        <!-- Dropdown for user -->
+                                        <ul id='UserDropMenu' class='dropdown-content'>
+                                            <li><a href='/profile?user=$loggedin_user'>Profile</a></li>
+                                            <li><a href='/Reservations'>Reservations</a></li>
+                                            <li><a href='/logout'>Logout</a></li>
+                                        </ul></li>";
+                            }else{
+                                echo " <li> <a href='/login'>Login</a></li>";
+                                echo " <li> <a href='/register'>Register</a></li>";
 
-                            ?>
-                            
-                        </li>
+                            }
+
+                        ?>
                     </ul>
                 </div>
             </div>

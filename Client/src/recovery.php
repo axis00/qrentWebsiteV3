@@ -26,12 +26,16 @@
 	</head>
 	<body>
 
-		<div class="container">
+		<div class="container" style="height: 100vh">
 			<div class = "row">
-				<h3>Password Recovery</h3>
-			</div>
-			<div class = "row">
-				
+				<div class = "col l4 center-col card card-panel">
+					<h3>Password Recovery</h3>
+					<form>
+						<input id="review-text" class="materialize-textarea"></textarea>
+				        <label for="review-text">Review</label>
+					</form>
+				</div>
+
 			</div>
 		</div>
 
