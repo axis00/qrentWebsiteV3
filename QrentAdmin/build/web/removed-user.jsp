@@ -60,18 +60,41 @@
            <%@include file="nav.html"%>
            <%}%>
               
-            <nav class="navbar bg-faded">
-                <div class="navbar-collapse justify-content-md-center">
-                    <ul class="navbar nav">
-                        <li class="nav-item">View by:</li>
-                        <li class="nav-item"><a href="manage-users.jsp" class="nav-link2" >All Users</a></li>
-                        <li class="nav-item"><a href="approved-user.jsp" class="nav-link2">Active Users</a></li>
-                        <li class="nav-item"><a href="rejected-user.jsp" class="nav-link2">Rejected Users</a></li>
-                        <li class="nav-item"><a href="removed-user.jsp" class="nav-link2" id="active-item" >Removed Users</a></li>
-                    </ul>
+            <br>
+            <div class="row">    
+            <div class="col-sm-3">
+                <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search username..." class="search search-control" style="width:100%;"></input>
+            </div>
+            <div class="col-sm-1" style="padding:5px;">
+                View:
+            </div>
+            <div class="col-sm-3" style="padding:5px;">
+               
+                <select class="form-control form-control-sm" id="options" onchange="changepage()">
+                    <option value="" hidden>Choose here</option>
+                    <option value="1">All Accounts</option>
+                    <option value="2" ><b>Enabled Accounts</b></option>
+                    <option value="4" selected disable hidden>Disabled Accounts</option>
+                    <option value="3" >Rejected Accounts</option>
+                                              
+                 </select>
+                
+                <script>
+                    function changepage() {
+                        var x = document.getElementById("options").value;
+                        if(x == '1'){
+                            window.location.href ='manage-users.jsp';
+                        }else if(x == '2'){
+                            window.location.href ='approved-user.jsp';
+                        }else if(x == '3'){
+                            window.location.href ='rejected-user.jsp';
+                        }else if(x == '4'){
+                            window.location.href ='removed-user.jsp';
+                        }
+                    }
+                </script>
                 </div>
-            </nav>
-           <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search username..." class="search search-control"></input>
+            </div>
             <table class="bootstrap-table table table-no-bordered" data-toggle="table" id="users">
                 <thead>
                     <tr>
@@ -108,11 +131,11 @@
                             }else if(res.getString("status").equals("approved")){
                               out.println("<td><span class=\"badge badge-success\">" + res.getString("status").toUpperCase() + "</span></td>");
                               out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-warning'></form></td>");
+                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-warning btn-sm'></form></td>");
                             }else{
                               out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>"); 
                               out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success'></form></td>");
+                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success btn-sm' ></form></td>");
                             }
                             out.println("<td>" + res.getString("type") + "</td>");
                             out.println("</tr>");
