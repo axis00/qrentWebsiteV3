@@ -3,37 +3,46 @@
 
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../styles/style.css">
     <title>Post Item</title>
     <link rel="icon" href="qrent-logo.png">
 </head>
 
 <body>
-    <div class="page-header">
-            <nav class="navbar navbar-expand-lg navbar-light">
-    			<a class="navbar-brand" href="/"><h1>Qrent</h1></a>
-			    <ul class = "nav navbar-nav navbar-right">
-			    	<li class="nav-item">
-			    		<a class = "nav-link" href="/logout">Logout</a>
-			    	</li>
-			    	<li class="nav-item">
-			    		<a class = "nav-link" href="/console">Console</a>
-			    	</li>
-			    	<li class="nav-item">
-			    		<a class = "nav-link" href="/console/reservations">Reservations</a>
-			    	</li>
-			    </ul>
-    		</nav>
-        </div>
-    <div class="content-postItem">
-        <div class="jumbotron">
-            <p> Post Item</p>
+    <nav>
+            <div class="nav-wrapper">
+              <a href="#!" class="brand-logo">Qrent</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="/console">Console</a></li>
+                <li><a href="/console/reservations">Reservations</a></li>
+                <li><a href="/postItem">Post Item</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </div>
+        </nav>
+
+      <ul class="sidenav" id="mobile-demo">
+                 <li><a href="/console">Console</a></li>
+                <li><a href="/console/reservations">Reservations</a></li>
+                <li><a href="/postItem">Post Item</a></li>
+                <li><a href="/logout">Logout</a></li>
+      </ul>
+    <div class="container content-postItem">
+        <div class="container postItemContainer">
+            <p id="postTag"> Post Item</p>
             <form action="/postItem" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <input type="text" name="title" placeholder="Item Name" class="form-control" required>
-                    <textarea type="text" rows="5" name="description" placeholder="Description" class="form-control" resize="none" required=""></textarea>
-                    <select class="form-control" id="brand" name = "brand" required>
+                <div class="input-field">
+                    <div class="input-field">
+                        <input type="text" name="title" id="itemName"  required>
+                        <label class="active" for="itemName">Item Name</label>
+                    </div> 
+                    <div class="input-field">
+                        <textarea type="text" name="description" id="description" class="materialize-textarea" required=""></textarea>
+                        <label class="active" for="description">Description</label>
+                    </div>
+                    <select  id="brand" name = "brand" required>
         
                         <option>Canon</option>
                         <option>Nikon</option>
@@ -47,8 +56,14 @@
                         <option>Others</option>
 
                     </select>
-                    <input type="Number" name="rentPrice" id="rentPrice" placeholder="Rent Price -- PHP/Day" class="form-control" required>
-                    <input type="Number" name="origPrice" id="origPrice" placeholder="Original Price -- PHP" class="form-control" required>
+                    <div class="input-field">
+                        <input type="Number" name="rentPrice" id="rentPrice" required>
+                        <label class="active" for="rentPrice">Rent Price -- PHP/Day</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="Number" name="origPrice" id="origPrice" required>
+                        <label class="active" for="origPrice">Original Price -- PHP</label>
+                    </div>
                     <input type="file" name="images" multiple="multiple" class="form-control" required>
 <!--
                     <div class="row">
@@ -71,11 +86,13 @@
                     </div>
 -->
                 </div>
-                <input type="submit" value="Post Item" class="btn btn-success">
+                <input type="submit" value="Post Item" class="btn btn-primary">
                 
             </form>
         </div>
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </body>
 
 </html>

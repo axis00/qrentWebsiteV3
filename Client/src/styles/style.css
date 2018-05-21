@@ -85,3 +85,12 @@ a{
 	padding: 2rem;
 }
 
+#register-form {
+    width: 70%;
+    margin-top: 2rem;
+}
+
+#edit-form {
+    width: 70%;
+}
+

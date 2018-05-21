@@ -17,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="icon" href="qrent-logo.png">
-        <title>Approve Pending Users</title>
+        <title>Manage User Accounts</title>
     </head>
     <body id="body">
         <%
@@ -31,55 +31,55 @@
                     <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
                 </div>
                 <div class="cols-xs-5 col-xs-offset-1 col-sm-offset-0 text-left" id="page-header">
-                    <h1>Approve Pending Users</h1>
+                    <h1>Manage User Accounts</h1>
                 </div>
             </div>
 
-           <% if(session.getAttribute("username").equals("super")) {%>
-           <%@include file="supernav.html"%>
-           <%}else{%>
-           <%@include file="nav.html"%>
-           <%}%>
-              
+            <% if (session.getAttribute("username").equals("super")) {%>
+            <%@include file="supernav.html"%>
+            <%} else {%>
+            <%@include file="nav.html"%>
+            <%}%>
+
             <br>
             <div class="row">    
                 <div class="col-sm-4">
-                        <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
-                    </div>
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+                </div>
                 <div class="col-sm-1" style="padding:5px;">
                     View:
                 </div>
                 <div class="col-sm-3" style="padding:5px;">
 
                     <select class="form-control form-control-sm" id="options" onchange="changepage()">
-                                 <option value="" hidden>Choose here</option>
-                                 <option value="1">All Accounts</option>
-                                 <option value="2" ><b>Enabled Accounts</b></option>
-                                 <option value="3" selected disable hidden>Rejected Accounts</option>
-                                 <option value="4" >Disabled Accounts</option>
-                     </select>
+                        <option value="" hidden>Choose here</option>
+                        <option value="1">All Accounts</option>
+                        <option value="2" ><b>Enabled Accounts</b></option>
+                        <option value="3" selected disable hidden>Rejected Accounts</option>
+                        <option value="4" >Disabled Accounts</option>
+                    </select>
 
                     <script>
                         function changepage() {
                             var x = document.getElementById("options").value;
-                            if(x == '1'){
-                                window.location.href ='manage-users.jsp';
-                            }else if(x == '2'){
-                                window.location.href ='approved-user.jsp';
-                            }else if(x == '3'){
-                                window.location.href ='rejected-user.jsp';
-                            }else if(x == '4'){
-                                window.location.href ='removed-user.jsp';
+                            if (x == '1') {
+                                window.location.href = 'manage-users.jsp';
+                            } else if (x == '2') {
+                                window.location.href = 'approved-user.jsp';
+                            } else if (x == '3') {
+                                window.location.href = 'rejected-user.jsp';
+                            } else if (x == '4') {
+                                window.location.href = 'removed-user.jsp';
                             }
                         }
-                        $(document).ready(function(){
-                            $("#keyword").on("keyup", function() {
-                                var value = $(this).val().toLowerCase();  
-                                  $("#users tr").filter(function() {
+                        $(document).ready(function () {
+                            $("#keyword").on("keyup", function () {
+                                var value = $(this).val().toLowerCase();
+                                $("#users tr").filter(function () {
                                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                                });  
-                            });    
-                        });        
+                                });
+                            });
+                        });
                     </script>
                 </div>
             </div>
@@ -113,17 +113,17 @@
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
-                            if(res.getString("status").equals("rejected")){
-                              out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");  
-                              out.println("<td></td>");
-                            }else if(res.getString("status").equals("approved")){
-                              out.println("<td><span class=\"badge badge-success\">" + res.getString("status").toUpperCase() + "</span></td>");
-                              out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'Remove user' class='btn btn-warning btn-sm'></form></td>");
-                            }else{
-                              out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>"); 
+                            if (res.getString("status").equals("rejected")) {
+                                out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");
+                                out.println("<td></td>");
+                            } else if (res.getString("status").equals("approved")) {
+                                out.println("<td><span class=\"badge badge-success\">" + res.getString("status").toUpperCase() + "</span></td>");
+                                out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
+                                        + res.getString("username") + "><input type = 'submit' value = 'Remove user' class='btn btn-warning btn-sm'></form></td>");
+                            } else {
+                                out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>");
                                 out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'Reactivate user' class='btn btn-warning btn-sm'></form></td>");
+                                        + res.getString("username") + "><input type = 'submit' value = 'Reactivate user' class='btn btn-warning btn-sm'></form></td>");
                             }
                             out.println("<td>" + res.getString("type") + "</td>");
                             out.println("</tr>");
@@ -134,6 +134,6 @@
                     }
                 %>
             </table>
-           </div>
+        </div>
     </body>
 </html>
