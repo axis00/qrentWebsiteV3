@@ -93,52 +93,91 @@
 <html>
     
     <head>
+        <!--CSS-->
+        <link rel="stylesheet" href="../styles/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Qrent</title>
     </head>
     
     <body>
-            <div class="jumbotron">
-                <h1>Registration</h1>
-            <form action="register.php" method="post">
-                <div class="form-group">          
-                    <input type="text" class="form-control" name="firstName" placeholder="First Name"><br>
+        <div class="valign-wrapper center-align">
+            <div class="row white" id="registration-form">                  
+                <form method="post" class="col s12">
+                    <h1>Registration</h1>
+                    <div class="input-field col s6">
+                        <input type="text"  id="first" name="firstName" placeholder="First Name">
+                        <label for="first">First Name</label>
+                    </div>
+                    
+                    <div class="input-field col s6">
+                        <input type="text" id="last" name="lastName" placeholder="Last Name">
+                        <label for="last">Last Name</label>
+                    </div>
+                    
+                    <div class="input-field col s4">
+                        <input type="text"  id="user" name="username" placeholder="Username">
+                        <label for="user">Username</label>
+                    </div>
+                    
+                    <div class="input-field col s4">
+                        <input type="email"  id="email" name="email" placeholder="E-mail Address">
+                        <label for="email">E-mail Address</label>
+                    </div>
+                    
+                    <div class="input-field col s4">
+                        <input type="text" id="phone" name="mobileNumber" placeholder="Mobile Number">
+                        <label for="phone">Contact No.</label>
+                    </div>
             
-                    <input type="text"class="form-control" name="lastName" placeholder="Last Name"><br>
-                
-                    <input type="text" class="form-control" name="username" placeholder="Username"><br>
-
-                    <input type="email" class="form-control" name="email" placeholder="E-mail Address"><br>
+                    <div class="input-field col s6">
+                        <input type="password" id="pass" name="password" placeholder="Password">
+                        <label for="pass">Password</label>
+                    </div>
+                    
+                    <div class="input-field col s6">
+                        <input type="password" id="rePass" name="verifyPassword" placeholder="Re-enter Password">
+                        <label for="rePass">Re-type Password</label>
+                    </div>
             
-                    <input type="text" class="form-control" name="mobileNumber" placeholder="Mobile Number"><br>
-            
-                    <input type="password" class="form-control" name="password" placeholder="Password"><br>
-            
-                    <input type="password" class="form-control" name="verifyPassword" placeholder="Re-enter Password"><br>
-            
-                    <p>Birthday: <br>
-                        <input type="date" class="form-control" name="birthday"><br>
-                    </p>
-                
-                    <p>Address: <br>
-                        <input type="text" class="form-control" name="addressNo" placeholder="Address Number"> <br>
-                        
-                        <input type="text" class="form-control" name="street" placeholder="Street"> <br>
-                
-                        <input type="text" class="form-control" name=" municipality" placeholder="Municipality"> <br>
-            
-                        <input type="text" class="form-control" name="province" placeholder="Province"> <br>
-                            
-                        <input type="text" class="form-control" name="postalCode" placeholder="Postal Code"> <br>
-                    </p>
-                </div>
-                
-                <div id="button-reg">
-                    <input type="submit" class="btn btn-primary" value="Register">
-                </div>
+                    <div class="input-field col s12">
+                        <input type="date" id="bdate" name="birthday">
+                        <label for="bdate">Birthdate</label>
+                    </div>
+                    
+                    <p class="center-align">Address</p>
+                    
+                    <div class="input-field col s2">
+                        <input type="text" id="no" name="addressNo" placeholder="Address Number">
+                        <label for="no">Address No.</label>
+                    </div>    
+                    
+                    <div class="input-field col s2">    
+                        <input type="text" id="st" name="street" placeholder="Street">
+                        <label for="st">Street</label>
+                    </div>    
+                    
+                    <div class="input-field col s3">
+                        <input type="text" id="mun" name=" municipality" placeholder="Municipality">
+                        <label for="mun">Municipality</label>
+                    </div>    
+                    
+                    <div class="input-field col s3">   
+                        <input type="text" id="prov" name="province" placeholder="Province">
+                        <label for="prov">Province</label>
+                    </div>    
+                    
+                    <div class="input-field col s2">        
+                        <input type="text" id="pc" name="postalCode" placeholder="Postal Code">
+                         <label for="pc">Postal Code</label>
+                    </div>    
+                    
+                    <input type="submit" class="btn" value="Register">
                 <p>Already have an account? <a href="../pages/login.php">Login here.</a></p>
-            </form>
-            </div>
+                </form>
+            </div>        
+        </div>
     </body>
 </html>

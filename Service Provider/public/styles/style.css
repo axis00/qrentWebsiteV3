@@ -8,23 +8,6 @@ h1{
     text-align: center;
 }
 
-.loginContainer{
-    padding: 2em;
-    width: 28em;
-    margin: 20vh auto;
-    background-color: white;
-    border: 1px solid #ccc;
-    text-align: center;
-}
-.regContainer{
-    padding: 2em;
-    height: 100%;
-    width: 40em;
-    background-color: white;
-    border: 1px solid #ccc;
-    text-align: center;
-    margin: 5vh auto;
-}
 
 .homeContainer{
     position: fixed;
@@ -37,11 +20,28 @@ h1{
     padding: 20px;
 }
 
+/*login*/
+.loginContainer{
+    padding: 2em;
+    width: 28em;
+    margin: 20vh auto;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.loginHeader{
+    text-align: center; 
+}
 
 .loginTag{
     font-size: 40px;
     text-align: left;
     padding-left: 15%;
+}
+
+.btn-login{
+    width: 50%;
+    margin-top: 20px;
 }
 
 .signUpTag{
@@ -52,6 +52,17 @@ h1{
 
 #registerTag{
     padding: 2em;
+}
+
+/*register*/
+.regContainer{
+    padding: 2em;
+    height: 100%;
+    width: 40em;
+    background-color: white;
+    border: 1px solid #ccc;
+    text-align: center;
+    margin: 5vh auto;
 }
 
 #qrentLogo{
@@ -78,10 +89,7 @@ h1{
 }
 
 
-.btn-login{
-    width: 60%;
-    height: 10%;
-}
+
 
 #filter{
     margin: 1rem auto;
@@ -243,10 +251,7 @@ textarea {
 
 }
 
-#loginHeader{
-    padding-top: 10%;
-    text-align: center; 
-}
+
 
 .card-deck{
     max-width: 70rem;

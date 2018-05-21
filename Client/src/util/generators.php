@@ -85,6 +85,7 @@
                         <div>
                             <h5>".$resRow['itemName']."</h5>
                             <a><h6>".$resRow['itemOwner']."</h6></a>
+                            <h6>".$resRow['diff']." days until you get the item</h6>
                             <div class = 'right-align'>
                                 <a href='/itemview?q=".$resRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
                                 <a class='waves-effect waves-light btn modal-trigger cancel-btn' data-itemno =".$resRow['itemno']." href='#cancel-modal'>Cancel</a>

@@ -72,7 +72,7 @@
 
         require_once 'connecttoDb.php';
 
-        $sql = "SELECT * FROM `qrent`.`Reservation` NATURAL JOIN `qrent`.`Item` WHERE client = ? ".$cond;
+        $sql = "SELECT *, datediff(startdate,now()) AS diff FROM qrent.Reservation NATURAL JOIN qrent.Item WHERE client = ? ".$cond;
 
         global $conn;
 
@@ -90,5 +90,4 @@
         return $res;
 
     }
-
 ?>

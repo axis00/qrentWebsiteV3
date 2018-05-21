@@ -30,6 +30,9 @@
 			<div class = "row">
 				<h3>Password Recovery</h3>
 			</div>
+			<div class = "row">
+				
+			</div>
 		</div>
 
 	</body>
