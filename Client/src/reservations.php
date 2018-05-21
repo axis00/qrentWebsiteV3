@@ -86,5 +86,21 @@
             </div>
         </div>
 
+        <div id="cancel-modal" class="modal">
+            <h3>Cancel Your Reservation</h3>
+            <form>
+                <input type="hidden" id = "itemToCancel" name = "itemToCancel" value = "">
+                <div class="input-field col s12">
+                    <textarea name = "cancel-reason" id="cancel-text" class="materialize-textarea" required="required"></textarea>
+                    <label for="review-text">Please Provide a reason</label>
+                </div>
+                <div>
+                    <input type = "submit" class="btn itemBtn center-align" value = "Cancel Reservation">
+                </div>
+            </form>
+        </div>
+
+        <script src="scripts/reservations.js"></script>
+
 	</body>
 </html>
