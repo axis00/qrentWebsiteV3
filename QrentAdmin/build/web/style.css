@@ -55,14 +55,15 @@
 }
 
 .nav-link:hover{
-    background-color: #7ab1b5;
+    background-color: #F7EBEC;
     color: #C33C54;
-    
+    border-radius: 10px;
 }
 
 .nav-item{
     margin-right: 20px;
 }
+
 
 #active-item{
     color: #C33C54;
