@@ -71,7 +71,8 @@
                     }
 
                 } else {
-                    out.println("User does not exist.");
+                    out.println("<script>swal('Error!', 'The username "+ username +" does not exist!', 'error');</script>");
+                    out.println("<script>setTimeout(\"window.location.href ='super-reset-pw.jsp';\",1800);</script>");
                 }
             } catch (SQLException ex) {
                 out.println(ex);
