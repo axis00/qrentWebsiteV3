@@ -8,7 +8,6 @@
     *   @author David Paul Brackin
     */
 
-    include_once "util/userSession.php";
     include_once "util/connectToDb.php";
     include_once "util/search.php";
     include_once "util/generators.php";

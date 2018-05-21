@@ -62,4 +62,33 @@
 
     }
 
+    /**
+    *   A function that returns the reservations of the client
+    *   @param String $client the username of the client in question
+    *   @param String $cond additional query conditions
+    *   @return Array An array of reservations
+    */
+    function getClientReservations($client,$cond = ""){
+
+        require_once 'connecttoDb.php';
+
+        $sql = "SELECT * FROM `qrent`.`Reservation` NATURAL JOIN `qrent`.`Item` WHERE client = ? ".$cond;
+
+        global $conn;
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s',$client);
+        $stmt->execute();
+
+        $queryResult = $stmt->get_result();
+        $res = array();
+
+        for($i = 0; $row = $queryResult->fetch_assoc(); $i++){
+            $res[$i] = $row;
+        }
+
+        return $res;
+
+    }
+
 ?>
