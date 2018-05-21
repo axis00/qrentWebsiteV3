@@ -34,9 +34,9 @@ $(document).ready(function () {
         loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
 
     });
-    $('.sidenav').sidenav();
+
 });
-    
+    $('.sidenav').sidenav();  
 function loaditems(lower,upper,filter) {
 
     var cont = $('#content');
@@ -52,12 +52,12 @@ function loaditems(lower,upper,filter) {
             for(var i = 0; i < data.length; i++){
                 var itemCont = $('<div class="card card-panel horizontal hoverable row">');
                 var imgCont = $('<div>');
-                var itemLink = $('<a class = "qrent-link">');
-                var itemNameTitle = $('<h2 class="card-title">');
-                var itemDescTitle = $('<h7 class="card-text">');
-                var itemBrandTitle = $('<p>');
-                var itemRPTitle = $('<h4>');
-                var itemStatus = $('<h4>');
+                var itemLink = $('<a class = "qrent-link col s12">');
+                var itemNameTitle = $('<div class="card-title col m12 itemname">');
+                var itemDescTitle = $('<div class="card-text col s6 itemdesc">');
+                var itemBrandTitle = $('<div class="card-text col s6 brandtitle">');
+                var itemRPTitle = $('<div class="card-text col s6 rptitle">');
+                var itemStatus = $('<div class="card-text itemstat">');
                 
                 var deleteForm = $('<form>');
                 deleteForm.on('submit',function(evnt){
