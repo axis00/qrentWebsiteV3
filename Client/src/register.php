@@ -107,69 +107,69 @@
                 <form method="post" class="col s12">
                     <h1>Registration</h1>
                     <div class="input-field col s6">
-                        <input type="text"  id="first" name="firstName" placeholder="First Name">
+                        <input type="text" class="validate" required="required"  id="first" name="firstName">
                         <label for="first">First Name</label>
                     </div>
                     
                     <div class="input-field col s6">
-                        <input type="text" id="last" name="lastName" placeholder="Last Name">
+                        <input type="text" id="last" name="lastName" >
                         <label for="last">Last Name</label>
                     </div>
                     
                     <div class="input-field col s4">
-                        <input type="text"  id="user" name="username" placeholder="Username">
+                        <input type="text" class="validate" required="required" id="user" name="username">
                         <label for="user">Username</label>
                     </div>
                     
                     <div class="input-field col s4">
-                        <input type="email"  id="email" name="email" placeholder="E-mail Address">
+                        <input type="email" class="validate" required="required" id="email" name="email">
                         <label for="email">E-mail Address</label>
                     </div>
                     
                     <div class="input-field col s4">
-                        <input type="text" id="phone" name="mobileNumber" placeholder="Mobile Number">
+                        <input type="text" class="validate" required="required" id="phone" name="mobileNumber">
                         <label for="phone">Contact No.</label>
                     </div>
             
                     <div class="input-field col s6">
-                        <input type="password" id="pass" name="password" placeholder="Password">
+                        <input type="password" class="validate" required="required" id="pass" name="password">
                         <label for="pass">Password</label>
                     </div>
                     
                     <div class="input-field col s6">
-                        <input type="password" id="rePass" name="verifyPassword" placeholder="Re-enter Password">
+                        <input type="password" class="validate" required="required" id="rePass" name="verifyPassword">
                         <label for="rePass">Re-type Password</label>
                     </div>
             
                     <div class="input-field col s12">
-                        <input type="date" id="bdate" name="birthday">
+                        <input type="date" class="validate" required="required" id="bdate" name="birthday">
                         <label for="bdate">Birthdate</label>
                     </div>
                     
                     <p class="center-align">Address</p>
                     
                     <div class="input-field col s2">
-                        <input type="text" id="no" name="addressNo" placeholder="Address Number">
+                        <input type="text" class="validate" required="required" id="no" name="addressNo">
                         <label for="no">Address No.</label>
                     </div>    
                     
                     <div class="input-field col s2">    
-                        <input type="text" id="st" name="street" placeholder="Street">
+                        <input type="text" class="validate" required="required" id="st" name="street">
                         <label for="st">Street</label>
                     </div>    
                     
                     <div class="input-field col s3">
-                        <input type="text" id="mun" name=" municipality" placeholder="Municipality">
+                        <input type="text" class="validate" required="required" id="mun" name=" municipality">
                         <label for="mun">Municipality</label>
                     </div>    
                     
                     <div class="input-field col s3">   
-                        <input type="text" id="prov" name="province" placeholder="Province">
+                        <input type="text" class="validate" required="required" id="prov" name="province">
                         <label for="prov">Province</label>
                     </div>    
                     
                     <div class="input-field col s2">        
-                        <input type="text" id="pc" name="postalCode" placeholder="Postal Code">
+                        <input type="text" class="validate" required="required" id="pc" name="postalCode">
                          <label for="pc">Postal Code</label>
                     </div>    
                     
