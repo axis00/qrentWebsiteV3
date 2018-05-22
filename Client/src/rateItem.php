@@ -1,5 +1,12 @@
 <?php
 
+	/**
+    *   rateItem.php
+    *
+    *
+    *   @author David Paul Brackin
+    */
+
 	require_once 'util/session.php';
 
 	if(isset($_SESSION['user'])){

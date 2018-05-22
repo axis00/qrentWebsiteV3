@@ -1,5 +1,12 @@
 <?php
 
+	/**
+    *   return.php
+    *
+    *
+    *   @author David Paul Brackin
+    */
+
 	require_once 'session.php';
 
 	if(isset($_SESSION['user'])){
