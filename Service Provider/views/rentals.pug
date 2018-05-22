@@ -1,0 +1,53 @@
+doctype html
+html
+	head
+		script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+
+			//- Materialize
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js")
+
+		link(rel='stylesheet' type='text/css' href='../styles/style.css')
+		title Reservations
+		link(rel="icon" href="/qrent-logo.png")
+
+		script(src='../scripts/f_rentals.js')
+
+	body
+
+		include nav.html
+
+		div.container
+			h2 Ongoing Rentals
+			div.row
+				div.col.l12
+					each rental in rentals
+						div.card.card-panel(id = "rent-" + rental.ReservationID)
+							h4 #{rental.itemName}
+							h5 Client :
+								- var userLink = "http://www.qrent.com/profile?user=" + rental.client 
+								a(href=userLink target='_blank')  #{rental.client}
+							h5.startDate Start Date : #{rental.startdate}
+							h5.startDate Due Date : #{rental.enddate}
+					
+							if rental.status == 'accepted'
+								- var loanNotifId = "loanNotif-" + rental.ReservationID
+								h5.inline.red-text(id = loanNotifId) This item has been accepted but isn't with the client
+									button.loanBtn.margined.btn.right-align(data-rentID = rental.ReservationID data-itemno = rental.itemno) Loan this item
+
+							if rental.status == 'endedrental'
+								h5.inline.red-text The client has returned this item
+									button.confirmReturn.margined.btn(data-rentID = rental.ReservationID data-itemno = rental.itemno) confirm
+							else if rental.status != 'accepted'
+								if rental.diff == 0
+									h5.red-text This item is due today
+								else if rental.diff > 0
+									h5 This item is due in 
+										span.green-text #{rental.diff}
+											span  day/s
+								else
+									h5 This item is over due by 
+										span.red-text#overdue
+											script $('#rent-#{rental.ReservationID} #overdue').html(Math.abs(#{rental.diff}))
+											span  day/s

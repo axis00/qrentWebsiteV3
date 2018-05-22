@@ -133,6 +133,67 @@ app.get('/console',(request,response) => {
 	}
 });
 
+app.get('/rentals',(request,response) => {
+	if(request.session.user){
+		
+		services.getRentals(request.session.user,(err,res) => {
+			console.log(res);
+			response.render('rentals',{rentals : res});
+
+		})
+
+	}else{
+		response.redirect('/login');
+	}
+});
+
+app.post('/confirmReturn', (request,response) => {
+
+	if(request.session.user){
+
+		services.confirmReturn(request.session.user,request.fields['itemno'],request.fields['rentId'],(err) =>{
+			response.writeHead(200,{'Content-Type' : 'text/plain'});
+
+			if(err){
+				console.log(err);
+				response.write('error');
+			}else{
+				response.write('success');
+			}
+
+			response.end();
+
+		});
+
+	}else{
+		response.redirect('/login');
+	}
+
+});
+
+app.post('/loan',(request,response) => {
+	if(request.session.user){
+
+		console.log('loaing');
+
+		services.loanItem(request.session.user,request.fields['itemno'],request.fields['rentId'],(err) => {
+			response.writeHead(200,{'Content-Type' : 'text/plain'});
+
+			if(err){
+				console.log(err);
+				response.write('error');
+			}else{
+				response.write('success');
+			}
+
+			response.end();
+		});
+
+	}else{
+		response.redirect('/login');
+	}
+});
+
 app.post('/register', (request,response) => {
 	services.addUser(request.fields,function(){
 		response.end();

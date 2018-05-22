@@ -135,7 +135,7 @@ exports.getItemImg = function(id,callback){
 }
 
 exports.getReservations = function(user,lowLim,upLim,callback){
-	var sql = "SELECT * FROM qrent.Reservation join qrent.Item on (Item.itemno = Reservation.itemno) where itemOwner = ? AND status = 'pending' LIMIT ?,?";
+	var sql = "SELECT * FROM qrent.Reservation join qrent.Item on (Item.itemno = Reservation.itemno) where itemOwner = ? AND (status = 'pending' OR status = 'canceled') LIMIT ?,?";
 
 	conn.query(sql,[user,parseInt(lowLim),parseInt(upLim)],(err,res,fields) => {
 
@@ -148,9 +148,84 @@ exports.getReservations = function(user,lowLim,upLim,callback){
 	});
 }
 
+exports.getRentals = function(usr,callback){
+
+	var sql = "SELECT *,datediff(enddate,now()) AS diff FROM qrent.Reservation join qrent.Item on (Item.itemno = Reservation.itemno) where itemOwner = ? AND (status = 'accepted' or status = 'ongoingrental' or status = 'endedrental')";
+
+	conn.query(sql,[usr],(err,res,fields)=>{
+
+		if(!err){
+			callback(null,res);
+		}else{
+			callback(null);
+		}
+
+	});
+
+}
+
+exports.loanItem = function(usr,itemno,rentId,callback){
+
+	var sql = "UPDATE `qrent`.`Reservation` SET `status`='ongoingrental' WHERE `ReservationID`= ?";
+	conn.query(sql,[rentId],(err,res) => {
+
+		if(err){
+			callback(err);
+		}else{
+
+			sql = "UPDATE `qrent`.`Item` SET `retStatus`='loaned' WHERE `itemno`= ? ;"
+
+			conn.query(sql,[itemno],(e,r)=>{
+
+				if(e){
+					callback(e);
+				}else{
+					callback(null);
+				}
+
+			});
+
+		}
+
+	});
+
+}
+
+exports.confirmReturn = function(user,itemId,resId,callback){
+
+	var sql = "UPDATE Item SET retStatus = 'available' WHERE itemno = ?";
+
+	conn.query(sql,[itemId],(err,res,fields) => {
+		if(err){
+			callback(err);
+		}else{
+			
+			sql = "INSERT INTO `qrent`.`transaction` (`paymentDate`, `paymentAmount`, `paymentType`, `reservation`) VALUES ( NULL, (SELECT datediff(returndate,startdate) * itemRentPrice from qrent.Reservation NATURAL JOIN qrent.Item WHERE ReservationID = ?) ,'Paypal', ?)";
+			conn.query(sql,[resId,resId],(er,re,fi) => {
+
+
+				if(er){
+					callback(er);
+				}else{
+					sql = "UPDATE `qrent`.`Reservation` SET `status`= NULL WHERE `ReservationID`= ?";
+					conn.query(sql,[resId],(e,r) => {
+						if(e){
+							callback(e)
+						}else{
+							callback(null);
+						}
+					});
+				}
+
+			});
+
+		}
+	});
+
+}
 
 exports.approveReservation = function(user,reservationID,callback){
-	sql = "UPDATE Reservation SET status='accepted' WHERE ReservationID= ?";
+	var sql = "UPDATE Reservation SET status='accepted' WHERE ReservationID= ?";
 
 	conn.query(sql,[reservationID],(err,res,fields) => {
 		if(err){

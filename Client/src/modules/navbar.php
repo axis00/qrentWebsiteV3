@@ -39,12 +39,13 @@
                         <?php
 
                             if(isset($_SESSION['user'])){
-                                echo " <li><a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$session_first<i class='material-icons right'>arrow_drop_down</i></a>
+                                echo " <li style = 'min-width:10rem'><a class='dropdown-trigger' href='#' data-target='UserDropMenu'>$session_first<i class='material-icons right'>arrow_drop_down</i></a>
                                         <!-- Dropdown for user -->
                                         <ul id='UserDropMenu' class='dropdown-content'>
                                             <li><a href='/profile?user=$loggedin_user'>Profile</a></li>
                                             <li><a href='/Reservations'>Reservations</a></li>
                                             <li><a href='/ongoingrentals'>Rentals</a></li>
+                                            <li><a href='/history'>Transaction History</a></li>
                                             <li><a href='/logout'>Logout</a></li>
                                         </ul></li>";
                             }else{
