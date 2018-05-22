@@ -41,10 +41,12 @@
             <%@include file="nav.html"%>
             <%}%>
             <br>
+            Click on a username to view the user's profile.
             <div class="row">    
                 <div class="col-sm-4">
-                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." width="100%"/>
                 </div>
+                <div class="col-sm-4"></div>
                 <div class="col-sm-1" style="padding:5px;">
                     View:
                 </div>

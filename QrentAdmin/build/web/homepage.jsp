@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
         <link rel="icon" href="qrent-logo.png">
         <title>Admin Homepage</title>
     </head>
@@ -42,7 +43,41 @@
                 <h1 class="display-4">Welcome <b><%out.println(session.getAttribute("username"));%></b>!</h1>
 
             </div>
-            <br><br>
+
+            <div class="jumbotron">
+                <h1>Qrent Total Income</h1>      
+                <%
+                    Connection con;
+                    try {
+
+                        Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://qrentdb.cqmw41ox1som.ap-southeast-1.rds.amazonaws.com/qrent", "root", "letmein12#");
+
+                        response.setContentType("text/html");
+
+                        PreparedStatement trans = con.prepareStatement("SELECT *, SUM(paymentAmount) FROM transaction WHERE MONTH(paymentDate) = 05 GROUP BY MONTH(paymentDate)");
+
+                        ResultSet res = trans.executeQuery();
+
+                        if (!res.next()) {
+                            out.println("<p class=\"card-text\">No Income for this month.</p>");
+                        } else {
+                            res.previous();
+
+                            while (res.next()) {
+                                String amount = res.getString("SUM(paymentAmount)");
+                                double amt = Double.parseDouble(amount);
+                                amount = String.format("Php %,.2f", amt);
+                                out.println("<p class=\"card-text\">The total income for this month is <b><a href=\"user-transaction.jsp\">" + amount + "</a></b>.</p>");
+
+                            }
+                        }
+                    } catch (SQLException ex) {
+                        out.println(ex);
+                    }
+                %>
+            </div>
+
             <div class="card-deck">
 
                 <div class="card bg-info mb-3" style="max-width: 18rem;">
@@ -57,7 +92,6 @@
                     <div class="card-body">
                         <h5 class="card-title">Pending Users</h5>
                         <%
-                            Connection con;
                             try {
 
                                 Class.forName("com.mysql.jdbc.Driver");
@@ -140,7 +174,7 @@
                                     res.previous();
                                     while (res.next()) {
                                         out.println("<p class=\"card-text\">There is/are <b><a href=\"user-transaction.jsp\">" + res.getString("COUNT(paymentID)") + "</a></b> transaction/s in Qrent.</p>");
-
+                                            
                                     }
                                 }
                             } catch (SQLException ex) {

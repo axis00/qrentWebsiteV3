@@ -31,9 +31,22 @@
                 ps.setString(1, username);
 
                 ps.executeUpdate();
-                
-                out.println("<script>swal('Successful!', 'You have disabled the user account of " + username + "', 'success');</script>");
-                out.println("<script>setTimeout(\"window.location.href = 'manage-users.jsp';\",1800);</script>");
+                ps = con.prepareStatement("SELECT email, firstname FROM users WHERE username =?");
+                ps.setString(1, username);
+                ResultSet res = ps.executeQuery();
+                while (res.next()) {
+                    String email = res.getString("email");
+                    String name = res.getString("firstname");
+                    String message ="We%20have%20deactivated%20your%20Qrent%20account.%20%0D%0A%0D%0AQrent%20Admin%20Team";
+                    if (session.getAttribute("username") == null) {
+                        response.sendRedirect("index.jsp");
+                    } else {
+                        
+                        out.println("<script>swal('Successful!', 'You have rejected the user account of " + username + "', 'success');</script>");
+                        out.println("<script>setTimeout(\"window.location.href = 'manage-users.jsp';\",1800);</script>");
+                        out.println("<script>window.location.href = 'mailto:" + email + "?subject=Qrent%20Account%20Confirmation&body=Hi%20"+ name +"%20!%0D%0A%0D%0A" + message + "'</script>");
+                    }
+                }
             } catch (SQLException ex) {
                 out.println(ex);
             }

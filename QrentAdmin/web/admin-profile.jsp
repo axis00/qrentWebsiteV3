@@ -45,7 +45,7 @@
 
                     response.setContentType("text/html");
                     String username = request.getParameter("username");
-                    PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, registrationdate FROM users WHERE username = ?");
+                    PreparedStatement ps = con.prepareStatement("SELECT *, COUNT(itemno) FROM users INNER JOIN Item ON Item.itemOwner=users.username WHERE username = ?");
                     ps.setString(1, username);
                     ResultSet res = ps.executeQuery();
 
@@ -71,10 +71,53 @@
                         out.println("<th scope='row'>Registration Date:</th>");
                         out.println("<td>" + res.getString("registrationdate") + "</td>");
                         out.println("</tr>");
+                         out.println("<tr>");
+                        out.println("<th scope='row'>Items posted:</th>");
+                        out.println("<th>" + res.getString("COUNT(itemno)") + "</th>");
+                        out.println("</tr>");
+                        
                         out.println("</tbody>");
                         out.println("</table>");
                         out.println("</div>");
 
+                    }
+                    
+                    PreparedStatement trans = con.prepareStatement("SELECT *, COUNT(itemno) FROM users INNER JOIN Item ON Item.itemOwner=users.username WHERE username = ?");
+
+                    trans.setString(1, username);
+                    ResultSet rs = trans.executeQuery();
+
+                    while (rs.next()) {
+                        out.println("<div>");
+                        out.println("<table class='bootstrap-table table table-no-bordered' data-toggle='table' id='users'>");
+                        out.println("<thead id='profile-tran-thead'>");
+                        out.println("<tr>");
+                        out.println("<th scope='col' data-field='date' data-sortable='true'>Item No.</th>");
+                        out.println("<th scope='col' data-field='num' data-sortable='true'>Item Name</th>");
+                        out.println("<th scope='col' data-field='item' data-sortable='true'>Description</th>");
+                        out.println("<th scope='col' data-field='itemnum' data-sortable='true'>Brand</th>");
+                        out.println("<th scope='col' data-field='days' data-sortable='true'>Rent Price</th>");
+                        out.println("<th scope='col' data-field='price' data-sortable='true'>Original Price</th>");
+                        out.println("<th scope='col' data-field='payment' data-sortable='true'>Condition</th>");
+                        out.println("<th scope='col' data-field='payment' data-sortable='true'>Status</th>");
+                        out.println("<th></th>");
+                        out.println("</tr>");
+                        out.println("</thead>");
+                        out.println("<tbody id='profile-tran-tbody'>");
+                        out.println("<tr scope='row' class='row-hover'>");
+                        out.println("<td>" + rs.getString("itemno") + "</td>");
+                        out.println("<td>" + rs.getString("itemName") + "</td>");
+                        out.println("<td>" + rs.getString("itemDescription") + "</td>");
+                        out.println("<td>" + rs.getString("itemBrand") + "</td>");
+                        out.println("<td>" + rs.getString("itemRentPrice") + "</td>");
+                        out.println("<td>" + rs.getString("itemOrigPrice") + "</td>");
+                        out.println("<td>" + rs.getString("itemCondition") + "</td>");
+                        out.println("<td>" + rs.getString("retStatus") + "</td>");
+                        out.println("</tr>");
+                        out.println("</tbody>");
+                        out.println("</table>");
+                        out.println("</div>");
+                        out.println("</div>");
                     }
 
                 } catch (SQLException ex) {

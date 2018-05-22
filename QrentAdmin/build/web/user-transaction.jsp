@@ -42,7 +42,34 @@
             <%} else {%>
             <%@include file="nav.html"%>
             <%}%>
-            <input type="text" id="keyword" onkeyup="searchword()" placeholder="Search transaction no..." class="search search-control">
+            <br>
+            
+            <div class="row">
+                <div class="col-sm-4">
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." width="100%"/>
+                </div>
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1">
+                   
+                </div>
+                <div class="col-sm-3">
+
+                    
+
+                    <script>
+                       
+
+                        $(document).ready(function () {
+                            $("#keyword").on("keyup", function () {
+                                var value = $(this).val().toLowerCase();
+                                $("#users tr").filter(function () {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
             <table class="bootstrap-table table table-no-bordered" data-toggle="table" id="users">
                 <thead>
                     <tr>
@@ -52,10 +79,11 @@
                         <th scope="col" data-field="owner" data-sortable="true">Owner</th>
                         <th scope="col" data-field="item" data-sortable="true">Item Name</th>
                         <th scope="col" data-field="itemnum" data-sortable="true">Item No.</th>
-                        <th scope="col" data-field="days" data-sortable="true">Rent Duration</th>
                         <th scope="col" data-field="price" data-sortable="true">Rent Price</th>
-                        <th scope="col" data-field="payment" data-sortable="true">Mode of Payment</th>
-                        <th></th>
+                        <th scope="col" data-field="price" data-sortable="true">Duration</th>
+                        <th scope="col" data-field="tota" data-sortable="true">Total Charge</th>
+                        <th scope="col" data-field="payment" data-sortable="true">Payment Mode</th>
+                        
                     </tr>
                 </thead>
                 <%
@@ -66,8 +94,7 @@
 
                         response.setContentType("text/html");
 
-                        PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
-                                + " Reservation.itemno, itemRentPrice, paymentType, duration, itemOwner FROM "
+                        PreparedStatement ps = con.prepareStatement("SELECT * FROM "
                                 + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
                                 + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
                                 + " Item.itemno = Reservation.itemno)ORDER BY paymentdate ASC");
@@ -75,7 +102,7 @@
                         ResultSet res = ps.executeQuery();
 
                         if (!res.next()) {
-                            out.println("<tr><td> There are no transactions available </td></tr>");
+                            out.println("<tbody id='users'><tr><td> There are no transactions available </td></tr>");
                         } else {
                             res.previous();
                             while (res.next()) {
@@ -88,8 +115,9 @@
                                 out.println("<td>" + res.getString("itemno") + "</td>");
                                 out.println("<td>" + res.getString("duration") + "</td>");
                                 out.println("<td>" + res.getString("itemRentPrice") + "</td>");
+                                out.println("<td>" + res.getString("paymentAmount") + "</td>");
                                 out.println("<td>" + res.getString("paymentType") + "</td>");
-                                out.println("</tr>");
+                                out.println("</tr></tbody>");
                             }
                         }
                     } catch (SQLException ex) {
