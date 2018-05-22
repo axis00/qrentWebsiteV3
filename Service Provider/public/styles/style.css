@@ -208,23 +208,23 @@ nav .brand-logo {
 }
 
 .itemname {
-    background-color: red;
+
 }
 
 .itemdesc {
-    background-color: blue;
+
 }
 
 .brandtitle{
-    background-color: aqua;
+ 
 }
 
 .rptitle {
-    background-color: gray;
+
 }
 
 .itemstat {
-    background-color: green;
+
 }
 /*postItem*/
 
@@ -302,4 +302,8 @@ textarea {
 .card-deck{
     max-width: 70rem;
     padding: 1re
+}
+
+select {
+    display: block;
 }

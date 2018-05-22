@@ -71,7 +71,32 @@
 			//     //Content
 			//     $mail->isHTML(true);                                  // Set email format to HTML
 			//     $mail->Subject = 'Here is the subject';
-			//     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+			//     $mail->Body    = '<div style = "
+			// 	margin: 0 auto;
+			// 	max-width: 600px;
+			// 	font-family: Arial;
+			// 	color: white;
+			// 	border: 1px solid #00695c;">
+			// <h1 style = "
+			// 	border: 1px solid white;
+			// 	 padding: 10px;
+			// 	 background-color: #00695c;
+			//  	margin: 0 auto;
+			// 	"> Qrent </h1>
+			// <div style ="
+			// 	border: 2px solid #00695c;
+			// 	margin: 40px;
+			// ">
+			// <p style = "
+			// 	border: 1px solid white;
+			// 	margin: 0 auto;
+			// 	font-size: 20px;
+			// 	height: 500px;
+			// 	background-color: #1dad9b;
+			// 	padding-top: 15%;
+			// 	padding-right: 40px;
+			// 	padding-left: 40px
+			// "> you absolute donkey, how could you forget your password? you wanker here is a recovery link: </p>';
 			//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 			//     $mail->send();
