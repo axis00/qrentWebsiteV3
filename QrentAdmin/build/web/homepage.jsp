@@ -68,7 +68,7 @@
                                 String amount = res.getString("SUM(paymentAmount)");
                                 double amt = Double.parseDouble(amount);
                                 amount = String.format("Php %,.2f", amt);
-                                out.println("<p class=\"card-text\">The total income for this month is <b><a href=\"user-transaction.jsp\">" + amount + "</a></b>.</p>");
+                                out.println("<p class=\"lead\">The total income for this month is <b>" + amount + "</b>.</p>");
 
                             }
                         }
@@ -76,6 +76,11 @@
                         out.println(ex);
                     }
                 %>
+                <hr class="my-4">
+
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="monthly-trans.jsp" role="button">Check This Month Transactions</a>
+                </p>
             </div>
 
             <div class="card-deck">
@@ -174,7 +179,7 @@
                                     res.previous();
                                     while (res.next()) {
                                         out.println("<p class=\"card-text\">There is/are <b><a href=\"user-transaction.jsp\">" + res.getString("COUNT(paymentID)") + "</a></b> transaction/s in Qrent.</p>");
-                                            
+
                                     }
                                 }
                             } catch (SQLException ex) {
