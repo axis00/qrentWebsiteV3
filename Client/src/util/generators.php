@@ -106,7 +106,7 @@
 
         $thumbImgId = getItemImgIDs($rentRow['itemno']);
 
-        $html = "<div class = 'card card-panel horizontal hoverable row'>
+        $html = "<div class = 'card card-panel horizontal hoverable row' id = 'rent-".$rentRow['ReservationID']."'>
                     <div class = 'col l4' style = 'overflow: hidden; max-height: 10rem'>
                         <img class='searchres-img' src = /util/itemimage.php?img=".$thumbImgId[0].">
                     </div>
@@ -126,7 +126,7 @@
                         
                            $html .= "<div class = 'right-align'>
                                 <a href='/itemview?q=".$rentRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
-                                <a class='waves-effect waves-light btn modal-trigger return-btn' data-itemno =".$rentRow['itemno']." href='#return-modal'>Return</a>
+                                <a class='waves-effect waves-light btn modal-trigger return-btn' data-itemno = ".$rentRow['itemno']." data-resid =".$rentRow['ReservationID']." href='#return-modal'>Return</a>
                             </div>
                         </div>
                     </div>
