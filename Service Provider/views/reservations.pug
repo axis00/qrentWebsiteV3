@@ -2,16 +2,21 @@ doctype html
 html
 	head
 		script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
-		script(src='../scripts/f_reservation.js')
+		script(async src='../scripts/f_reservation.js')
 		script(src='../styles/bootstrap/dist/js/bootstrap.min.js')
 		link(rel='stylesheet' type='text/css' href='../styles/bootstrap/dist/css/bootstrap.css')
+
+			//- Materialize
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+		link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js")
+
 		link(rel='stylesheet' type='text/css' href='../styles/style.css')
 		title Reservations
 		link(rel="icon" href="/qrent-logo.png")
 	body
 
-		include header.pug
-		+header({'Console' : '/console','Post Item' : '/postItem'})
+		include nav.html
 
 		h1 Client Reservations
 
@@ -27,15 +32,22 @@ html
 
 				div.col-2
 
-		div.reservation#reservationTemplate.jumbotron
-				h2.reservationTitle.card-title Item
+		div.reservation#reservationTemplate.card.card-panel
+				h2.reservationTitle Item
 				h4.reservationStatus Pending
-				h7.requestDate dec
-				h7.endDate jan
-				h3.rentPrice 150
+				div
+					h6.inline Date Requested : 
+					h7.requestDate.inline dec
+				div
+					h6.inline Start Date : 
+					h7.startDate.inline jan
+				div
+					h6.inline End Date : 
+					h7.endDate.inline jan
+				h3.rentPrice 150 #{profile}
 					span  PHP/DAY
 				span Reserved By 
-					a(class = "reservee" href = "#") profile
+					a(class = "reservee" rel="noopener noreferrer" target = "_blank") profile
 				div.resvBtn
 					button#approve.btn-resv.shadow-sm.btn.btn-success Approve
 					button#cancel.btn-resv.shadow-sm.btn.btn-danger Reject

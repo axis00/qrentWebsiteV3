@@ -1,17 +1,14 @@
 <html>
     <head>
-
         <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+        
         <!-- Materialize -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
-        <!-- <link rel="stylesheet" type="text/css" href="styles/bootstrap/dist/css/bootstrap.css">
-        <script src='../styles/bootstrap/dist/js/bootstrap.min.js'></script> -->
         <link rel="stylesheet" type="text/css" href="../styles/style.css">
-        <script src="../scripts/f_console.js"></script>
+        <script aync src="../scripts/f_console.js"></script>
         <title>Qrent Console</title>
         <link rel="icon" href="qrent-logo.png">
     </head>
@@ -31,10 +28,10 @@
         </nav>
 
       <ul class="sidenav" id="mobile-demo">
-            <li><a href="/console">Console</a></li>
-            <li><a href="/console/reservations">Reservations</a></li>
-            <li><a href="/postItem">Post Item</a></li>
-            <li><a href="/logout">Logout</a></li>
+                 <li><a href="/console">Console</a></li>
+                <li><a href="/console/reservations">Reservations</a></li>
+                <li><a href="/postItem">Post Item</a></li>
+                <li><a href="/logout">Logout</a></li>
       </ul>
         <h1> Rental Console </h1>
         <div class="container">
@@ -47,19 +44,19 @@
                             <div class="form-check">
                                 <p>
                                 <label>
-                                    <input value="available" checked="checked" class="indeterminate-checkbox" id="ch_available" type="checkbox" />
+                                    <input value="returned" checked="checked" class="indeterminate-checkbox" id="ch_available" type="checkbox" />
                                     <span>Available Items</span>
                                 </label>
                                 </p>
                                 <p>
                                 <label>
-                                    <input value="loaned" checked="checked" class="indeterminate-checkbox" id="ch_loaned" type="checkbox" />
+                                    <input value="returned" checked="checked" class="indeterminate-checkbox" id="ch_loaned" type="checkbox" />
                                     <span>On Going</span>
                                 </label>
                                 </p>
                                 <p>
                                 <label>
-                                    <input value="missing" checked="checked" class="indeterminate-checkbox" id="ch_missing" type="checkbox" />
+                                    <input value="returned" checked="checked" class="indeterminate-checkbox" id="ch_missing" type="checkbox" />
                                     <span>Missing</span>
                                 </label>
                                 </p>

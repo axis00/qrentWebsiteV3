@@ -85,7 +85,7 @@ function loaditems(lower,upper,filter) {
                 
                 itemCont.attr('id', data[i].itemNumber);
                 deleteForm.html('<input name = "itemToDelete" type = "hidden" value = ' + data[i].itemNumber + '>' +
-                                    '<input type = "submit" value = "Delete" class="shadow-sm btn btn-danger btn-delete">'
+                                    '<input type = "submit" value = "Delete" class="shadow-sm btn btn-danger">'
                                  );
                 deleteForm.attr('class', 'deleteForm');
 
