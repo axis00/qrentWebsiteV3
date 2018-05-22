@@ -69,7 +69,7 @@
     
     <body style="background-color: #F7EBEC;">
          <?php include 'modules/navbar.php';?>
-        
+        <main>
         <div class="valign-wrapper center-align container">
             <div class="row white" id="edit-form">
                 <form method="post" class="col s12">
@@ -136,8 +136,9 @@
                     <input type="submit" class="btn btn-primary" value="Save Changes">
                 </form>
             </div>
-             
+
         </div>
+    </main>
        <?php include 'modules/footer.php';?>
     </body>
 </html>

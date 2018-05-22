@@ -96,6 +96,7 @@
         <link rel="stylesheet" href="/styles/register.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        <script type="text/javascript" src="./scripts/register.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Qrent</title>
@@ -142,8 +143,8 @@
                     </div>
             
                     <div class="input-field col s12">
-                        <input type="date" id="bdate" name="birthday">
-                        <label for="bdate">Birthdate</label>
+                        <input type="date" class="datepicker" id="bdate" name="birthday">
+                        <label for="birthday">Birthdate</label>
                     </div>
                     
                     <p class="center-align">Address</p>
