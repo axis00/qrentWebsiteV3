@@ -64,52 +64,50 @@
                         String contactno = res.getString(13);
                         String registrationdate = res.getString(14);
                         String address = addressno + " " + street + ", " + municipality + ", " + province + ", " + postalcode;
-                        
+
                         out.println("<div class='card' style='width:inherit' id='profile-card'>");
-                            
-                            out.println("<div class='card-body'>");
-                            out.println("<h1 class='card-title'>"+username+"</h1>");
-                                out.println("<h4 class='card-subtitle mb-2 text-muted'>"+type+"</h4>");
-                                out.println("<div class='card-text'>");
-                                    out.println("<table class='table table-borderless'");
-                                        out.println("<tbody>");
-                                        out.println("<tr>");
-                                        out.println("<th scope='row'>Name:</th>");
-                                        out.println("<td>"+firstname+" "+lastname+"</td>");
-                                        out.println("</tr>");
-                                        out.println("<tr>");
-                                        out.println("<th scope='row'>Email:</th>");
-                                        out.println("<td>"+email+"</td>");
-                                        out.println("</tr>");
-                                        out.println("<tr>");
-                                        out.println("<th scope='row'>Contact Number:</th>");
-                                        out.println("<td>"+contactno+"</td>");
-                                        out.println("</tr>");
-                                        out.println("<tr>");
-                                        out.println("<th scope='row'>Birthdate:</th>");
-                                        out.println("<td>"+birthdate+"</td>");
-                                        out.println("</tr>");
-                                        out.println("<tr>");
-                                        out.println("<th scope='row'>Address:</th>");
-                                        out.println("<td>"+address+"</td>");
-                                        out.println("</tr>");
-                                        out.println("<tr>");
-                                        out.println("<th scope='row'>Registration Date:</th>");
-                                        out.println("<td>"+registrationdate+"</td>");
-                                        out.println("</tr>");
-                                        out.println("</tbody>");
-                                    out.println("</table>");
-                                out.println("</div>");
-                        
-                        
-                        
+
+                        out.println("<div class='card-body'>");
+                        out.println("<h1 class='card-title'>" + username + "</h1>");
+                        out.println("<h4 class='card-subtitle mb-2 text-muted'>" + type + "</h4>");
+                        out.println("<div class='card-text'>");
+                        out.println("<table class='table table-borderless'");
+                        out.println("<tbody>");
+                        out.println("<tr>");
+                        out.println("<th scope='row'>Name:</th>");
+                        out.println("<td>" + firstname + " " + lastname + "</td>");
+                        out.println("</tr>");
+                        out.println("<tr>");
+                        out.println("<th scope='row'>Email:</th>");
+                        out.println("<td>" + email + "</td>");
+                        out.println("</tr>");
+                        out.println("<tr>");
+                        out.println("<th scope='row'>Contact Number:</th>");
+                        out.println("<td>" + contactno + "</td>");
+                        out.println("</tr>");
+                        out.println("<tr>");
+                        out.println("<th scope='row'>Birthdate:</th>");
+                        out.println("<td>" + birthdate + "</td>");
+                        out.println("</tr>");
+                        out.println("<tr>");
+                        out.println("<th scope='row'>Address:</th>");
+                        out.println("<td>" + address + "</td>");
+                        out.println("</tr>");
+                        out.println("<tr>");
+                        out.println("<th scope='row'>Registration Date:</th>");
+                        out.println("<td>" + registrationdate + "</td>");
+                        out.println("</tr>");
+                        out.println("</tbody>");
+                        out.println("</table>");
+                        out.println("</div>");
+
                     }
 
-                    PreparedStatement trans = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
-                            + " Reservation.itemno, itemRentPrice, paymentType, duration FROM "
-                            + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
-                            + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
-                            + " Item.itemno = Reservation.itemno) WHERE username = ? ORDER BY paymentdate ASC");
+                    PreparedStatement trans = con.prepareStatement("SELECT paymentdate, paymentid, itemName,"
+                                + " Reservation.itemno, itemRentPrice, paymentType, duration, itemOwner FROM "
+                                + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
+                                + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
+                                + " Item.itemno = Reservation.itemno) WHERE username=? ORDER BY paymentdate ASC");
 
                     trans.setString(1, username);
                     ResultSet rs = trans.executeQuery();
@@ -126,6 +124,7 @@
                         out.println("<th scope='col' data-field='days' data-sortable='true'>Rent Duration</th>");
                         out.println("<th scope='col' data-field='price' data-sortable='true'>Rent Price</th>");
                         out.println("<th scope='col' data-field='payment' data-sortable='true'>Mode of Payment</th>");
+                        out.println("<th scope='col' data-field='payment' data-sortable='true'>Item Owner</th>");
                         out.println("<th></th>");
                         out.println("</tr>");
                         out.println("</thead>");
@@ -138,6 +137,7 @@
                         out.println("<td>" + rs.getString("duration") + "</td>");
                         out.println("<td>" + rs.getString("itemRentPrice") + "</td>");
                         out.println("<td>" + rs.getString("paymentType") + "</td>");
+                        out.println("<td>" + rs.getString("itemOwner") + "</td>");
                         out.println("</tr>");
                         out.println("</tbody>");
                         out.println("</table>");
@@ -151,7 +151,7 @@
             %>
 
         </div>
-
+        <%@include file="footer.html"%>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -35,54 +35,54 @@
                 </div>
             </div>
 
-           <% if(session.getAttribute("username").equals("super")) {%>
-           <%@include file="supernav.html"%>
-           <%}else{%>
-           <%@include file="nav.html"%>
-           <%}%>
-              
-           <br>
-           <div class="row">    
-            <div class="col-sm-4">
-                <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
-            </div>
-            <div class="col-sm-1">
-                View:
-            </div>
-            <div class="col-sm-3">
-               
-                <select class="form-control form-control-sm" id="options" onchange="changepage()">
-                    <option value="" hidden>Choose account type here</option>
-                    <option value="1">All Accounts</option>
-                    <option value="2" selected disable hidden>Client Accounts</option>
-                    <option value="3">Service Provider Accounts</option>
-                             
-                </select>
-                
-                <script>
-                    function changepage() {
-                        var x = document.getElementById("options").value;
-                        if(x == '1'){
-                            window.location.href ='approve-accounts.jsp';
-                        }else if(x == '2'){
-                            window.location.href ='pendingclients.jsp';
-                        }else if(x == '3'){
-                            window.location.href ='pending-sp.jsp';
+            <% if (session.getAttribute("username").equals("super")) {%>
+            <%@include file="supernav.html"%>
+            <%} else {%>
+            <%@include file="nav.html"%>
+            <%}%>
+
+            <br>
+            <div class="row">    
+                <div class="col-sm-4">
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+                </div>
+                <div class="col-sm-1">
+                    View:
+                </div>
+                <div class="col-sm-3">
+
+                    <select class="form-control form-control-sm" id="options" onchange="changepage()">
+                        <option value="" hidden>Choose account type here</option>
+                        <option value="1">All Accounts</option>
+                        <option value="2" selected disable hidden>Client Accounts</option>
+                        <option value="3">Service Provider Accounts</option>
+
+                    </select>
+
+                    <script>
+                        function changepage() {
+                            var x = document.getElementById("options").value;
+                            if (x == '1') {
+                                window.location.href = 'approve-accounts.jsp';
+                            } else if (x == '2') {
+                                window.location.href = 'pendingclients.jsp';
+                            } else if (x == '3') {
+                                window.location.href = 'pending-sp.jsp';
+                            }
                         }
-                    }
-                    
-                    $(document).ready(function(){
-                        $("#keyword").on("keyup", function() {
-                          var value = $(this).val().toLowerCase();
-                          $("#users tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                          });
+
+                        $(document).ready(function () {
+                            $("#keyword").on("keyup", function () {
+                                var value = $(this).val().toLowerCase();
+                                $("#users tr").filter(function () {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
                         });
-                    });
-                </script>
+                    </script>
+                </div>
             </div>
-           </div>
-           
+
             <table class="bootstrap-table table table-striped table-no-bordered" id="approval" data-toggle="table">
                 <thead>
                     <tr>
@@ -107,7 +107,7 @@
                         PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status = 'pending' AND type ='Client'");
 
                         ResultSet res = ps.executeQuery();
-                        
+
                         out.println("<tbody id='users'>");
                         while (res.next()) {
                             out.println("<tr scope='row' class='row-hover'>");
@@ -123,12 +123,13 @@
                                     + res.getString("username") + "><input type = 'submit' value = 'Reject' class='btn btn-danger' id='btn-reject'></form></td>");
                             out.println("</tr>");
                         }
-                         out.println("</tbody>");
+                        out.println("</tbody>");
                     } catch (SQLException ex) {
                         out.println(ex);
                     }
                 %>
             </table>
-           </div>
+        </div>
+        <%@include file="footer.html"%>
     </body>
 </html>
