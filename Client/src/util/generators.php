@@ -77,7 +77,7 @@
 
         $thumbImgId = getItemImgIDs($resRow['itemno']);
 
-        $html = "<div class = 'card card-panel horizontal hoverable row'>
+        $html = "<div class = 'card card-panel horizontal hoverable row' id = 'res-".$resRow['ReservationID']."'>
                     <div class = 'col l4' style = 'overflow: hidden; max-height: 10rem'>
                         <img class='searchres-img' src = /util/itemimage.php?img=".$thumbImgId[0].">
                     </div>
@@ -85,10 +85,48 @@
                         <div>
                             <h5>".$resRow['itemName']."</h5>
                             <a><h6>".$resRow['itemOwner']."</h6></a>
-                            <h6>".$resRow['diff']." days until you get the item</h6>
+                            <h6>".$resRow['diff']." day/s until requested rental date</h6>
                             <div class = 'right-align'>
                                 <a href='/itemview?q=".$resRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
-                                <a class='waves-effect waves-light btn modal-trigger cancel-btn' data-itemno =".$resRow['itemno']." href='#cancel-modal'>Cancel</a>
+                                <a class='wave-effect waves-light btn modal-trigger cancel-btn' data-resID ='".$resRow['ReservationID']."' href='#cancel-modal'>Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>";
+
+        return $html;
+
+    }
+
+    /**
+    *   @param Array $rentRow A row from the reservations table that coresponds to and on going rental
+    *   @return String Html markup that represents a rental
+    */
+    function generateClientRentals($rentRow){
+
+        $thumbImgId = getItemImgIDs($rentRow['itemno']);
+
+        $html = "<div class = 'card card-panel horizontal hoverable row'>
+                    <div class = 'col l4' style = 'overflow: hidden; max-height: 10rem'>
+                        <img class='searchres-img' src = /util/itemimage.php?img=".$thumbImgId[0].">
+                    </div>
+                    <div class = 'col l8'>
+                        <div>
+                            <h5>".$rentRow['itemName']."</h5>
+                            <a><h6>".$rentRow['itemOwner']."</h6></a>";
+
+                            if($rentRow['diff'] > 0){
+                                $html .= "<h6>".$rentRow['diff']." days left for this rental</h6>";
+                            }else if($rentRow['diff'] == 0){
+                                $html .= "<h6 class = 'red-text text-darken-4'>This Item is Due Today</h6>";
+                            }else{
+                                $html .= "<h6 class = 'red-text text-darken-4'>This Item is Overdue By ".abs($rentRow['diff'])." day/s</h6>";
+                            }
+
+                        
+                           $html .= "<div class = 'right-align'>
+                                <a href='/itemview?q=".$rentRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>
+                                <a class='waves-effect waves-light btn modal-trigger return-btn' data-itemno =".$rentRow['itemno']." href='#return-modal'>Return</a>
                             </div>
                         </div>
                     </div>

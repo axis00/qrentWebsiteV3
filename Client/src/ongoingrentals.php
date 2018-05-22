@@ -3,7 +3,7 @@
 	/**
     *   reservations.php
     *
-    *   A page mean to show the reservations of the logged in user
+    *   A page mean to show the rentals of the logged in user
     *
     *   @author David Paul Brackin
     */
@@ -19,7 +19,7 @@
         $page = 0;
         $pageCount = 10;
 
-        $reservations = getClientReservations($_SESSION['user']);
+        $rentals = getClientRentals($_SESSION['user']);
 
     }else{
     	header('Location: /login.php');
@@ -42,6 +42,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
         <link rel="stylesheet" href="/styles/style.css">
+        <link rel="stylesheet" href="/styles/ongoing.css">
 
 	</head>
 	<body>
@@ -52,14 +53,14 @@
 
         <div class="container">
             <div class="row">
-                <h3>Reservations</h3>
+                <h3>On Going Rentals</h3>
             </div>
             <div class = "rows">
                 <div class = "col l9">
                     <?php
 
-                        foreach($reservations as $r){
-                            echo generateReservation($r);
+                        foreach($rentals as $r){
+                            echo generateClientRentals($r);
                         }
 
                     ?>
@@ -74,7 +75,7 @@
                             echo '<a href= '.$url.'&page='.($page - 1).'><i class="material-icons">navigate_before</i>Prev</a>';
                         }
 
-                        if(count($reservations) < $pageCount){
+                        if(count($rentals) < $pageCount){
                             echo '<a>Next<i class="material-icons">navigate_next</i></a>';
                         }else{
                             echo '<a href= '.$url.'&page='.($page + 1).'>Next<i class="material-icons">navigate_next</i></a>';
@@ -84,22 +85,29 @@
                 </div>
             </div>
         </div>
+        <div id="return-modal" class="modal">
+                <form action = "util/return.php" method= "POST" id = "returnForm">
+                    <div class="modal-content">
+                        <h4>Return this item with a review</h4>
+                        <div class="input-field col s12">
+                            <textarea name="reviewText" id="review-text" class="materialize-textarea"></textarea>
+                            <label for="review-text">Write a Review For this item</label>
+                        </div>
+                        <p class="range-field">
+                            <label for="rangeRating">Rate this product (slide)</label>
+                            <input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" required="required">
+                            <span class="center-align" id="ratingText" value="Rating">50</span><span>%</span>
+                            <input id = "itemToReturnNumber" name = "itemno" type = "hidden" >
+                            <div class="center-align">
+                                  <input type="submit" class="btn itemBtn center-align" value="Return Item" id="reviewSubmit">
+                                  <input type="reset" value="cancel" class="btn modal-close itemBtn" id = "cancelBtn">
+                            </div>
+                        </p>
 
-        <div id="cancel-modal" class="modal">
-            <h3>Cancel Your Reservation</h3>
-            <form id = "cancelForm">
-                <input type="hidden" id = "itemToCancel" name = "resToCancel" value = "">
-                <div class="input-field col s12">
-                    <textarea name = "cancel-reason" id="cancel-text" class="materialize-textarea" required="required"></textarea>
-                    <label for="review-text">Please Provide a reason</label>
-                </div>
-                <div>
-                    <input type = "submit" class="btn itemBtn center-align" value = "Cancel Reservation">
-                </div>
-            </form>
-        </div>
-
-        <script src="scripts/reservations.js"></script>
+                    </div>
+                </form>
+            </div>
+        <script src="scripts/rentals.js"></script>
 
 	</body>
 </html>

@@ -8,3 +8,12 @@ input[type="date"]:focus::-webkit-calendar-picker-indicator {
     -webkit-appearance: none;
 }
 
+#reviewForm{
+	padding: 2rem;
+}
+
+
+#reviewForm #rangeRating{
+	display: inline;
+	width: 40%;
+}
