@@ -83,6 +83,7 @@
                 </div>
             </div>
         </div>
+        <?php include 'modules/footer.php';?>
     </body>
 
     </html>

@@ -165,6 +165,7 @@
 		?>
 
         </div>
+        <?php include 'modules/footer.php';?>
         <script src="./scripts/itemView.js"></script>
     </body>
 
