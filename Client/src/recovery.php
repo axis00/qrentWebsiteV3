@@ -103,12 +103,12 @@
 					</div>';
 			    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 			    $mail->send();
-
+			    echo "<script>alert('Please check your email (".$email.") for recovery directions')</script>";
+				echo "<script>window.location.assign('/')</script>";
 			}catch(Exception $e){
 				echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 			}
-			echo "<script>alert('Please check your email (".$email.") for recovery directions')</script>";
-			echo "<script>window.location.assign('/')</script>";
+			
 		}else{
 			echo "<script>alert('Error : User not found')</script>";
 		}
@@ -161,7 +161,7 @@
 				</div>
 			</div>
 		</div>
-
+		<?php include 'modules/footer.php';?>
 	</body>
 
 </html>

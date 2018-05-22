@@ -48,7 +48,7 @@
 					die();
 				}else{
 
-					echo "<script>alert('Your password has been changed, Please Login')</script>"
+					echo "<script>alert('Your password has been changed, Please Login')</script>";
 
 					header('Location: /login.php');
 					die();
@@ -151,7 +151,7 @@
 				</div>
 			</div>
 		</div>
-
+		<?php include 'modules/footer.php';?>
 	</body>
 
 </html>

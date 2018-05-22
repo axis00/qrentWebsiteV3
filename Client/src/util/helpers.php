@@ -72,7 +72,36 @@
 
         require_once 'connecttoDb.php';
 
-        $sql = "SELECT *, datediff(startdate,now()) AS diff FROM qrent.Reservation NATURAL JOIN qrent.Item WHERE client = ? ".$cond;
+        $sql = "SELECT *, datediff(startdate,now()) AS diff FROM qrent.Reservation NATURAL JOIN qrent.Item WHERE client = ? AND status != 'canceled' AND status != 'ongoingrental' AND status != 'endedrental '".$cond;
+
+        global $conn;
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s',$client);
+        $stmt->execute();
+
+        $queryResult = $stmt->get_result();
+        $res = array();
+
+        for($i = 0; $row = $queryResult->fetch_assoc(); $i++){
+            $res[$i] = $row;
+        }
+
+        return $res;
+
+    }
+
+    /**
+    *   A function that returns the on going rental of the client
+    *   @param String $client the username of the client in question
+    *   @param String $cond additional query conditions
+    *   @return Array An array of ongoing rentals
+    */
+    function getClientRentals($client,$cond = ""){
+
+        require_once 'connecttoDb.php';
+
+        $sql = "SELECT *, datediff(enddate,now()) AS diff FROM qrent.Reservation NATURAL JOIN qrent.Item WHERE client = ? AND status = 'ongoingrental' ".$cond;
 
         global $conn;
 

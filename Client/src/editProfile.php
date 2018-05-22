@@ -136,6 +136,8 @@
                     <input type="submit" class="btn btn-primary" value="Save Changes">
                 </form>
             </div>
+             
         </div>
+       <?php include 'modules/footer.php';?>
     </body>
 </html>

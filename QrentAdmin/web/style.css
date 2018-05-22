@@ -111,10 +111,21 @@
 
 #profile-card {
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
 }
 
-#profile-user{
-    font-size: 15px;
-    font-style: bold;
+#profile-tran-tbody {
+    height: 50px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #F7EBEC;
+    color: #37888E;
+    text-align: center;
 }
