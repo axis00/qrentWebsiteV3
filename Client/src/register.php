@@ -80,7 +80,6 @@
                                     }elseif (!$stmt2->execute()){
                                         echo $stmt2->error;
                                         }else{
-                                            $_SESSION['user'] = $username;
                                             echo "<script>successfull()</script>";
                                         }
                                 }
