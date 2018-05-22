@@ -125,7 +125,7 @@ exports.getItemImg = function(id,callback){
 }
 
 exports.getReservations = function(user,lowLim,upLim,callback){
-	var sql = "SELECT * FROM qrent.Reservation join qrent.Item on (Item.itemno = Reservation.itemno) where itemOwner = ? LIMIT ?,?";
+	var sql = "SELECT * FROM qrent.Reservation join qrent.Item on (Item.itemno = Reservation.itemno) where itemOwner = ? AND status = 'pending' LIMIT ?,?";
 
 	conn.query(sql,[user,parseInt(lowLim),parseInt(upLim)],(err,res,fields) => {
 
