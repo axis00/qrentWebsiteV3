@@ -200,7 +200,7 @@ exports.confirmReturn = function(user,itemId,resId,callback){
 			callback(err);
 		}else{
 			
-			sql = "INSERT INTO `qrent`.`transaction` (`paymentDate`, `paymentAmount`, `paymentType`, `reservation`) VALUES ( NULL, (SELECT datediff(now(),returndate) * itemRentPrice from qrent.Reservation NATURAL JOIN qrent.Item WHERE ReservationID = ?) ,'Paypal', ?)";
+			sql = "INSERT INTO `qrent`.`transaction` (`paymentDate`, `paymentAmount`, `paymentType`, `reservation`) VALUES ( NULL, (SELECT datediff(returndate,startdate) * itemRentPrice from qrent.Reservation NATURAL JOIN qrent.Item WHERE ReservationID = ?) ,'Paypal', ?)";
 			conn.query(sql,[resId,resId],(er,re,fi) => {
 
 
