@@ -49,6 +49,7 @@
                         <th scope="col" data-field="date" data-sortable="true">Trans. Date</th>
                         <th scope="col" data-field="num" data-sortable="true">Trans. No.</th>
                         <th scope="col" data-field="username" data-sortable="true">Client</th>
+                        <th scope="col" data-field="owner" data-sortable="true">Owner</th>
                         <th scope="col" data-field="item" data-sortable="true">Item Name</th>
                         <th scope="col" data-field="itemnum" data-sortable="true">Item No.</th>
                         <th scope="col" data-field="days" data-sortable="true">Rent Duration</th>
@@ -66,7 +67,7 @@
                         response.setContentType("text/html");
 
                         PreparedStatement ps = con.prepareStatement("SELECT paymentdate, paymentid, username, itemName,"
-                                + " Reservation.itemno, itemRentPrice, paymentType, duration FROM "
+                                + " Reservation.itemno, itemRentPrice, paymentType, duration, itemOwner FROM "
                                 + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
                                 + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
                                 + " Item.itemno = Reservation.itemno)ORDER BY paymentdate ASC");
@@ -82,6 +83,7 @@
                                 out.println("<td>" + res.getString("paymentdate") + "</td>");
                                 out.println("<td>" + res.getString("paymentid") + "</td>");
                                 out.println("<td>" + res.getString("username") + "</td>");
+                                out.println("<td>" + res.getString("itemOwner") + "</td>");
                                 out.println("<td>" + res.getString("itemName") + "</td>");
                                 out.println("<td>" + res.getString("itemno") + "</td>");
                                 out.println("<td>" + res.getString("duration") + "</td>");
