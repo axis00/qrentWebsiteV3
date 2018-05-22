@@ -86,7 +86,7 @@
             </div>
         </div>
         <div id="return-modal" class="modal">
-                <form action = "util/return.php" method= "POST" id = "returnForm">
+                <form id = "returnForm">
                     <div class="modal-content">
                         <h4>Return this item with a review</h4>
                         <div class="input-field col s12">
@@ -97,7 +97,8 @@
                             <label for="rangeRating">Rate this product (slide)</label>
                             <input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" required="required">
                             <span class="center-align" id="ratingText" value="Rating">50</span><span>%</span>
-                            <input id = "itemToReturnNumber" name = "itemno" type = "hidden" >
+                            <input id = "resNumber" name = "resId" type = "hidden" >
+                            <input id = "itemNumber" name = "itemno" type = "hidden" >
                             <div class="center-align">
                                   <input type="submit" class="btn itemBtn center-align" value="Return Item" id="reviewSubmit">
                                   <input type="reset" value="cancel" class="btn modal-close itemBtn" id = "cancelBtn">
