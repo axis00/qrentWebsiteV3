@@ -58,7 +58,7 @@
                     ?>
                     </div>
                     <?php
-                        if($_SESSION['user'] == $_GET['user']) {
+                        if(isset($_SESSION['user']) && $_SESSION['user'] == $_GET['user']) {
                             echo "<a class='waves-effect waves-light btn' href='/editProfile'>Edit Profile</a>";
                         }
                     ?>

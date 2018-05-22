@@ -325,3 +325,11 @@ textarea {
 select {
     display: block;
 }
+
+.inline{
+    display: inline !important;
+}
+
+.padded{
+    padding: 2rem;
+}
