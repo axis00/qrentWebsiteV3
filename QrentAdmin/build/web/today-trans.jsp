@@ -8,6 +8,7 @@
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,6 +43,13 @@
             <%} else {%>
             <%@include file="nav.html"%>
             <%}%>
+            
+            <br>
+            <%
+                Date date = new Date();
+                out.println("<h2>Today's Date: "+ date.toString() +"</h2>");
+            %>
+            
             <br>
 
             <div class="row">
@@ -54,11 +62,11 @@
                 </div>
                 <div class="col-sm-3">
                         <select class="form-control form-control-sm" id="options" onchange="changepage()">
-                        <option value="" selected disable hidden>Choose transaction date here</option>
-                        <option value="1"  hidden>All Transactions</option>
+                        <option value="1" hidden>Choose transaction date here</option>
+                        <option value="1"  >All Transactions</option>
                         <option value="2">This Year Transactions</option>
                         <option value="3">This Month Transactions</option>
-                        <option value="4">Today Transactions</option>
+                        <option value="4" selected disable hidden>Today Transactions</option>
                     </select>
 
 
@@ -114,9 +122,9 @@
                             response.setContentType("text/html");
 
                             PreparedStatement ps = con.prepareStatement("SELECT * FROM "
-                                    + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
-                                    + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
-                                    + " Item.itemno = Reservation.itemno)ORDER BY paymentdate ASC");
+                                + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
+                                + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
+                                + " Item.itemno = Reservation.itemno) WHERE  MONTH(paymentDate) = MONTH(CURDATE()) AND YEAR(paymentDate) = YEAR(CURDATE()) AND DAY(paymentDate) = DAY(CURDATE())ORDER BY paymentdate ASC");
 
                             ResultSet res = ps.executeQuery();
 

@@ -46,6 +46,7 @@
                 <div class="col-sm-4">
                     <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
                 </div>
+                <div class="col-sm-4"></div>
                 <div class="col-sm-1">
                     View:
                 </div>
