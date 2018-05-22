@@ -14,6 +14,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
         <link rel="stylesheet" type="text/css" href="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="icon" href="qrent-logo.png">
@@ -25,7 +26,7 @@
                 response.sendRedirect("index.jsp");
             }
         %>
-        <div class="container">
+        <div class="container" >
             <div class="row hidden-xs topper" id="top-nav-container">
                 <div class="cols-xs-7 col-sm-7">
                     <a href="homepage.jsp"><img src="qrent-logo.png" id="nav-logo" class="img-responsive"/></a>
@@ -40,21 +41,22 @@
             <%} else {%>
             <%@include file="nav.html"%>
             <%}%>
-
             <br>
-            <div class="row">    
+            Click on a username to view the user's profile.
+            <div class="row">
                 <div class="col-sm-4">
-                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." width="100%"/>
                 </div>
-                <div class="col-sm-1" style="padding:5px;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-1">
                     View:
                 </div>
-                <div class="col-sm-3" style="padding:5px;">
+                <div class="col-sm-3">
 
                     <select class="form-control form-control-sm" id="options" onchange="changepage()">
-                        <option value="" hidden>Choose here</option>
-                        <option value="1">All Accounts</option>
-                        <option value="2" ><b>Enabled Accounts</b></option>
+                        <option value="" hidden>Choose account status here</option>
+                        <option value="1"  >All Accounts</option>
+                        <option value="2"><b>Enabled Accounts</b></option>
                         <option value="4" selected disable hidden>Disabled Accounts</option>
                         <option value="3" >Rejected Accounts</option>
 
@@ -85,6 +87,8 @@
                     </script>
                 </div>
             </div>
+           
+            
             <table class="bootstrap-table table table-striped table-no-bordered" data-toggle="table">
                 <thead>
                     <tr>
@@ -93,7 +97,7 @@
                         <th scope="col" data-field="lastname" data-sortable="true">Last Name</th>
                         <th scope="col" data-field="email" data-sortable="true">Email</th>
                         <th scope="col" data-field="status" data-sortable="true">Status</th>
-                        <th scope="col" data-field="action" data-sortable="true">Action</th>
+                        <th scope="col" >Action</th>
                         <th scope="col" data-field="type" data-sortable="true">Type</th>
                     </tr>
                 </thead>
@@ -105,13 +109,19 @@
 
                         response.setContentType("text/html");
 
-                        PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status = 'disabled'");
+                        PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status = 'disabled' AND username != 'super'");
 
                         ResultSet res = ps.executeQuery();
+
                         out.println("<tbody id='users'>");
                         while (res.next()) {
-                            out.println("<tr scope='row' class='row-hover'>");
-                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input class='btn btn-link btn-color' type='submit' value='" + res.getString("username") + "'/></form></td>");
+
+                            out.println("<tr scope='row' classtablecontent='row-hover'>");
+                            if (res.getString("type").equals("Admin")) {
+                                out.println("<td><form action='admin-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            } else {
+                                out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            }
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
@@ -119,13 +129,13 @@
                                 out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");
                                 out.println("<td></td>");
                             } else if (res.getString("status").equals("approved")) {
-                                out.println("<td><span class=\"badge badge-success\">" + res.getString("status").toUpperCase() + "</span></td>");
+                                out.println("<td><span class=\"badge badge-success\">ENABLED</span></td>");
                                 out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                        + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-warning btn-sm'></form></td>");
+                                        + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-danger btn-sm'></form></td>");
                             } else {
                                 out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>");
                                 out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                        + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success btn-sm' ></form></td>");
+                                        + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success btn-sm'></form></td>");
                             }
                             out.println("<td>" + res.getString("type") + "</td>");
                             out.println("</tr>");

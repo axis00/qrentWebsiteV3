@@ -42,10 +42,12 @@
             <%@include file="nav.html"%>
             <%}%>
             <br>
+            Click on a username to view the user's profile.
             <div class="row">
                 <div class="col-sm-4">
-                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." width="100%"/>
                 </div>
+                <div class="col-sm-4"></div>
                 <div class="col-sm-1">
                     View:
                 </div>
@@ -85,6 +87,8 @@
                     </script>
                 </div>
             </div>
+           
+            
             <table class="bootstrap-table table table-striped table-no-bordered" data-toggle="table">
                 <thead>
                     <tr>
@@ -113,10 +117,12 @@
                         while (res.next()) {
 
                             out.println("<tr scope='row' classtablecontent='row-hover'>");
-                            if (res.getString("type").equals("Admin")) {
+                            if (res.getString("type").equals("Service Provider")) {
                                 out.println("<td><form action='admin-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
-                            } else {
+                            } else if (res.getString("type").equals("Client")){
                                 out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            }else{
+                                out.println("<td><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></td>");
                             }
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
