@@ -20,6 +20,12 @@
         $page = 0;
         $pageCount = 10;
 
+        if(isset($_GET['Available'])){
+
+            $cond .= " AND retStatus = 'Available'";
+
+        }
+
         if(isset($_GET['page'])){
             $page = $_GET['page'];
             $cond .= "Limit " . (($page-1) * 10) . "," . $pageCount;
@@ -74,7 +80,7 @@
                             <form action="find" method="GET">
                                 <input type = "hidden" name ="q" value = <?php echo $_GET['q']?> >
                                 <label>
-                                    <input name="Available" id="indeterminate-checkbox" type="checkbox" />
+                                    <input name="Available" id="indeterminate-checkbox" type="checkbox" <?php if(isset($_GET['Available'])) echo 'checked'; ?> >
                                     <span>Available</span>
                                 </label>
                                 <div class="center-align filter-submit-cont">
