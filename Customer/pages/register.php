@@ -18,7 +18,7 @@
     function successfull()
     {
         alert("Registration Success!");
-        window.location.href = "http://laboratory/pages/home";
+        window.location.href = " /";
     }
     function allFields()
     {
@@ -29,7 +29,6 @@
 <?php
         
         require "../util/connectToDb.php";
-        session_start();
         if( isset($_POST['firstName']) && isset($_POST['lastName']) && isset($_POST['birthday']) && isset($_POST['email']) && isset($_POST['mobileNumber']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['verifyPassword']) && isset($_POST['addressNo']) && isset($_POST['street']) && isset($_POST['municipality']) && isset($_POST['province']) && isset($_POST['postalCode'])){
             $first = $_POST['firstName'];
             $last = $_POST['lastName'];
@@ -80,7 +79,6 @@
                                     }elseif (!$stmt2->execute()){
                                         echo $stmt2->error;
                                         }else{
-                                            $_SESSION['user'] = $username;
                                             echo "<script>successfull()</script>";
                                         }
                                 }
