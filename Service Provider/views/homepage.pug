@@ -16,29 +16,41 @@ html
 
 
 		include nav.html
+
 		h1 Welcome #{user}
-	div.container
 		div.row
-			div.col.l4
-				div.card.blue-grey.darken-1
-					div.card-content.white-text
-						span.card-title Service Provider
+			div.col.l7
+				div.col.l4
+					div.card.blue-grey.darken-1
+						div.card-content.white-text
+							span.card-title Service Provider
+							div.divider
+							h5.card-title Reminder
+							p.card-text.text-white Make Sure to Approve or Decline Reservations, Don't keep Clients Waiting
+				div.col.l4
+					div.card.blue-grey.darken-1
+						div.card-content.white-text
+							span.card-title Items
+							div.divider
+							h5.card-title Total Items
+							p.card-text You have #{totItems} item/s for rent
+							a.text-blue(href="/console") Manage Them Here
+				div.col.l4
+					div.card.blue-grey.darken-1
+						div.card-content.white-text
+							div.card-title Requests
+							div.divider
+							h5.card-title Pending Requests
+							p.card-text You have #{totPending} Pending Reservation/s
+							a.text-blue(href="/console/reservations") Manage Them Here
+			div.col.l5.s12
+				div.container.blue-grey.white-text.z-depth-3
+					div.container.info
+						h5 Username
 						div.divider
-						h5.card-title Reminder
-						p.card-text.text-white Make Sure to Approve or Decline Reservations, Don't keep Clients Waiting
-			div.col.l4
-				div.card.blue-grey.darken-1
-					div.card-content.white-text
-						span.card-title Items
-						div.divider
-						h5.card-title Total Items
-						p.card-text You have #{totItems} item/s for rent
-						a.text-blue(href="/console") Manage Them Here
-			div.col.l4
-				div.card.blue-grey.darken-1
-					div.card-content.white-text
-						div.card-title Requests
-						div.divider
-						h5.card-title Pending Requests
-						p.card-text You have #{totPending} Pending Reservation/s
-						a.text-blue(href="/console/reservations") Manage Them Here
+						p 09052238394
+						p 2000-11-02
+						p Address No.
+						p Street
+						p Municipality
+						p Postal Code

@@ -113,7 +113,11 @@
                         while (res.next()) {
 
                             out.println("<tr scope='row' classtablecontent='row-hover'>");
-                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            if (res.getString("type").equals("Admin")) {
+                                out.println("<td><form action='admin-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            } else {
+                                out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            }
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");

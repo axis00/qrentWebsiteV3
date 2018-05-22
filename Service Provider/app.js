@@ -42,11 +42,20 @@ app.get('/',(request,response) => {
 	}else{
 		services.getStats(request.session.user,(err,stat) => {
 			if(!err){
-				response.render('homepage',{ user : request.session.user , totItems : stat.totItems, totPending : stat.totReservations});
+				response.render('homepage',{ user : request.session.user , totItems : stat.totItems, totPending : stat.totReservations
+													});
 			}else{
 
 			}
 		});
+		// services.getSP(request.session.user,(err,info) => {
+		// 	if(!err){
+		// 		response.render('homepage',{contact: info.contactno});
+		// 	}else {
+
+		// 	}
+		// });
+
 	}
 	
 });
