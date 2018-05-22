@@ -20,10 +20,6 @@
         alert("Registration Success!");
         window.location.href = " /";
     }
-    function allFields()
-    {
-        alert("All fields must be filled");
-    }
 </script>
 
 <?php
@@ -55,7 +51,6 @@
             $count = mysqli_num_rows($results);
 
             if($first == null || $last == null || $birthday == null || $email == null || $mobile == null || $username == null || $password == null || $verifyPassword == null || $addressNo == null || $street == null || $municipality == null || $province == null || $postalCode == null){
-                    echo "<script> allFields() </script>";
             }else{
                 $query2 = "SELECT username FROM users where username = '$username'";
                 $results2 = mysqli_query($conn, $query2);
@@ -68,6 +63,10 @@
                         if($count == 1){
                             echo "<script>emailValidate()</script>";
                             }else{
+                                if($password != $verifyPassword){
+                                    echo "<script>passwordValidationF()</script>";
+                                    die();
+                                }else
                                 $password = password_hash($password, PASSWORD_DEFAULT); 
                                 $stmt = $conn->prepare("INSERT INTO users(username, password, type, firstname, lastname, email, status, registrationdate) VALUES(?,?,?,?,?,?,?,NOW())");
                                 $stmt->bind_param("sssssss", $username, $password, $type, $first, $last, $email, $status);
