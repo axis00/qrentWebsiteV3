@@ -105,7 +105,7 @@
 
                         response.setContentType("text/html");
 
-                        PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status != 'pending'");
+                        PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status != 'pending' AND username != 'super'");
 
                         ResultSet res = ps.executeQuery();
                         
@@ -113,7 +113,7 @@
                         while (res.next()) {
                             
                             out.println("<tr scope='row' classtablecontent='row-hover'>");
-                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
+                            out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
