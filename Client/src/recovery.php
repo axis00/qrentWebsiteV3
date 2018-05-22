@@ -43,7 +43,7 @@
 			$stmt->bind_param('ss',$recoverid,$_POST['user']);
 			$stmt->execute();
 
-			$url = "www.qrent.com/passwordreset?user=".$_POST['user']."&resettoken=".$recoverid;
+			$recoveryUrl = "www.qrent.com/passwordreset?user=".$_POST['user']."&resettoken=".$recoverid;
 
 			// $mail = new PHPMailer(true);
 			// try{
@@ -66,11 +66,11 @@
 
 			//     //Recipients
 			//     $mail->setFrom('noreplyr@qrent.com');
-			//     $mail->addAddress('dp.brackin@gmail.com', 'David');     // Add a recipient
+			//     $mail->addAddress($email);     // Add a recipient
 
 			//     //Content
 			//     $mail->isHTML(true);                                  // Set email format to HTML
-			//     $mail->Subject = 'Here is the subject';
+			//     $mail->Subject = 'Password Reset';
 			//     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
 			//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 

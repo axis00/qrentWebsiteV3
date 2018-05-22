@@ -106,7 +106,7 @@
 				$itemno = $_GET['q'];
 			echo
 			'<div id="review-modal" class="modal">
-		    	<form>
+		    	<form id = "reserveform">
 				    <div class="modal-content">
 				      	<h4>Review This Item</h4>
 				      	<div class="input-field col s12">
@@ -145,7 +145,7 @@
                                 
 			                    	<div class="center-align">
 					                    <input type="submit" value="Reserve" class="btn itemBtn">
-					                    <input type="reset" value="cancel" class="btn itemBtn" id = "cancelResBtn">
+					                    <input type="reset" value="cancel" class="btn itemBtn modal-close" id = "cancelResBtn">
 					            	</div>
 			                    </div>
 				            </div>
@@ -165,7 +165,7 @@
 		?>
 
         </div>
-        <script src="./scripts/reserve.js"></script>
+        <script src="./scripts/itemView.js"></script>
     </body>
 
     </html>
