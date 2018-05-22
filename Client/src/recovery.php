@@ -45,40 +45,68 @@
 
 			$recoveryUrl = "www.qrent.com/passwordreset?user=".$_POST['user']."&resettoken=".$recoverid;
 
-			// $mail = new PHPMailer(true);
-			// try{
+			$mail = new PHPMailer(true);
+			try{
 
-			// 	$mail->SMTPOptions = array(
-			// 	    'ssl' => array(
-			// 	    'verify_peer' => false,
-			// 	    'verify_peer_name' => false,
-			// 	    'allow_self_signed' => true
-			// 	    )
-			// 	);
+				$mail->SMTPOptions = array(
+				    'ssl' => array(
+				    'verify_peer' => false,
+				    'verify_peer_name' => false,
+				    'allow_self_signed' => true
+				    )
+				);
 
-			//     $mail->isSMTP();                                      
-			//     $mail->Host = "smtp.gmail.com";  
-			//     $mail->SMTPAuth = true;                               
-			//     $mail->Username = 'qrentsmtp@gmail.com';                 
-			//     $mail->Password = 'qrentadmin12345';                           
-			//     $mail->SMTPSecure = 'tls';                            
-			//     $mail->Port = 587; 
+			    $mail->isSMTP();                                      
+			    $mail->Host = "smtp.gmail.com";  
+			    $mail->SMTPAuth = true;                               
+			    $mail->Username = 'qrentsmtp@gmail.com';                 
+			    $mail->Password = 'qrentadmin12345';                           
+			    $mail->SMTPSecure = 'tls';                            
+			    $mail->Port = 587; 
 
-			//     //Recipients
-			//     $mail->setFrom('noreplyr@qrent.com');
-			//     $mail->addAddress($email);     // Add a recipient
+			    //Recipients
+			    $mail->setFrom('noreplyr@qrent.com');
+			    $mail->addAddress($email);     // Add a recipient
 
-			//     //Content
-			//     $mail->isHTML(true);                                  // Set email format to HTML
-			//     $mail->Subject = 'Password Reset';
-			//     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-			//     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+			    //Content
+			    $mail->isHTML(true);                                  // Set email format to HTML
 
-			//     $mail->send();
+			    $mail->Subject = 'Password Reset';
+				    $mail->Body    = '
+				    <div style = "
+					margin: 0 auto;
+					max-width: 600px;
+					font-family: Arial;
+					color: white;
+					border: 1px solid #00695c;">
+						<h1 style = "
+							border: 1px solid white;
+							 padding: 10px;
+							 background-color: #00695c;
+						 	margin: 0 auto;
+							"> Qrent </h1>
+						<div style ="
+							border: 2px solid #00695c;
+							margin: 40px;
+						">
+							<p style = "
+								border: 1px solid white;
+								margin: 0 auto;
+								font-size: 20px;
+								height: 500px;
+								background-color: #1dad9b;
+								padding-top: 15%;
+								padding-right: 40px;
+								padding-left: 40px
+							"> Please follow this recovery link: <a href = '.$recoveryUrl.'>'.$recoveryUrl.'</a> to recover your account </p>
+						</div>
+					</div>';
+			    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+			    $mail->send();
 
-			// }catch(Exception $e){
-			// 	echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-			// }
+			}catch(Exception $e){
+				echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+			}
 			echo "<script>alert('Please check your email (".$email.") for recovery directions')</script>";
 			echo "<script>window.location.assign('/')</script>";
 		}else{
@@ -117,8 +145,8 @@
 								<img src = 'images/qrent-logo.png'>
 								<h2>Qrent</h2>
 							</div>
-							<h4 style="margin-left: 1rem;">Password Recovery</h4>
-							<p>We will send you an email to recover your password</p>
+							<h4 style="margin-left: 1rem;">Account Recovery</h4>
+							<p>We will send you an email to recover your account</p>
 						</div>
 						<form method="POST" action="recovery">
 							<div class="input-field">

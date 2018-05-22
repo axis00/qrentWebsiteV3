@@ -46,10 +46,14 @@
 					echo '<script>alert("something went wrong, please try again ")</script>';
 					header('Location: /recovery');
 					die();
-				}
+				}else{
 
-				header('Location: /');
-				die();
+					echo "<script>alert('Your password has been changed, Please Login')</script>"
+
+					header('Location: /login.php');
+					die();
+				}
+				
 
 			}else{
 				header('Location: /');
@@ -126,7 +130,7 @@
 								<img src = 'images/qrent-logo.png'>
 								<h2>Qrent</h2>
 							</div>
-							<h4 style="margin-left: 1rem;">Password Reset</h4>
+							<h4 style="margin-left: 1rem;">Enter a new password</h4>
 						</div>
 						<form method="POST" action="passwordreset">
 							<div class="input-field">

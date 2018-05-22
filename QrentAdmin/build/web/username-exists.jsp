@@ -13,7 +13,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script src="//code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
         <link rel="icon" href="qrent-logo.png">
-        <title>Error Username Exists</title>
+        <title></title>
     </head>
     <body>
         <%
@@ -40,7 +40,9 @@
                 
                 
                 if(val.next()){
+                    out.println("<p>");
                     out.println("Username exists.");
+                    out.println("</p>");
                 } else {
                     out.println("OK");
                 }
