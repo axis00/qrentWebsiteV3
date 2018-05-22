@@ -44,6 +44,7 @@
                                         <ul id='UserDropMenu' class='dropdown-content'>
                                             <li><a href='/profile?user=$loggedin_user'>Profile</a></li>
                                             <li><a href='/Reservations'>Reservations</a></li>
+                                            <li><a href='/ongoingrentals'>Rentals</a></li>
                                             <li><a href='/logout'>Logout</a></li>
                                         </ul></li>";
                             }else{

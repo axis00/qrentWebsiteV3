@@ -94,6 +94,7 @@
                         <div class="col m4" id="itemReview"><a class="waves-effect waves-light btn modal-trigger" href="#review-modal">Review</a></div>
                     </div>
                     <div class="center-align itemBtn">
+                    	<!--- check if already reserved -->
                         <td> <button class='waves-effect waves-light btn-large btnReserve modal-trigger' href="#reserve-modal" id="reserve" data-resId=".$row['itemno'].">Reserve</button> </td>
                     </div>
                 </div>
@@ -106,19 +107,19 @@
 				$itemno = $_GET['q'];
 			echo
 			'<div id="review-modal" class="modal">
-		    	<form id = "reserveform">
+		    	<form id = "reviewForm">
 				    <div class="modal-content">
 				      	<h4>Review This Item</h4>
 				      	<div class="input-field col s12">
-				          	<textarea id="review-text" class="materialize-textarea"></textarea>
-				          	<label for="review-text">Review</label>
+				          	<textarea name="reviewText" id="review-text" class="materialize-textarea"></textarea>
+				          	<label for="review-text">Write a Review For this item</label>
 				        </div>
 				      	<p class="range-field">
-					      	<input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" />
 					      	<label for="rangeRating">Rate this product (slide)</label>
+					      	<input name = "rating" type="range" id="rangeRating" min="0" max="100" oninput="updateTextInput(this.value);" />
+					      	<span class="center-align" id="ratingText" value="Rating">50</span><span>%</span>
 					      	<input name = "itemno" value= '.$itemno.' type = "hidden" >
 					      	<div class="center-align">
-							      <p class="center-align" id="textInput" value="Rating">50</p>
 							      <input type="submit" class="btn itemBtn center-align" value="Submit Review" id="reviewSubmit">
 							      <input type="reset" value="cancel" class="btn modal-close itemBtn" id = "cancelResBtn">
 						  	</div>
