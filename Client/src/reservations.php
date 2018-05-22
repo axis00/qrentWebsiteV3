@@ -100,6 +100,6 @@
         </div>
 
         <script src="scripts/reservations.js"></script>
-
+        <?php include 'modules/footer.php';?>
 	</body>
 </html>

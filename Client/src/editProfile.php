@@ -70,8 +70,8 @@
     <body style="background-color: #F7EBEC;">
          <?php include 'modules/navbar.php';?>
         
-        <div class="valign-wrapper center-align">
-            <div class="row" id="edit-form">
+        <div class="valign-wrapper center-align container">
+            <div class="row white" id="edit-form">
                 <form method="post" class="col s12">
                     <h1>Edit Profile Information</h1>
                     <div class="input-field col s6">
@@ -136,6 +136,8 @@
                     <input type="submit" class="btn btn-primary" value="Save Changes">
                 </form>
             </div>
+             
         </div>
+       <?php include 'modules/footer.php';?>
     </body>
 </html>

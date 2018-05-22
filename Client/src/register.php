@@ -80,7 +80,6 @@
                                     }elseif (!$stmt2->execute()){
                                         echo $stmt2->error;
                                         }else{
-                                            $_SESSION['user'] = $username;
                                             echo "<script>successfull()</script>";
                                         }
                                 }
@@ -103,7 +102,7 @@
     </head>
     
     <body class="teal">
-        <div class="valign-wrapper center-align">
+        <div class="valign-wrapper center-align container">
             <div class="row white" id="register-form">                  
                 <form method="post" class="col s12">
                     <h1>Registration</h1>
@@ -179,5 +178,6 @@
                 </form>
             </div>        
         </div>
+        <?php include 'modules/footer.php';?>
     </body>
 </html>

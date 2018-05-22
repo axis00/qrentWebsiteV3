@@ -64,9 +64,9 @@
             ?>
             
         </ul>
-
+        <?php include 'modules/footer.php';?>
     </body>
-
+    
     <script src = "/scripts/homepage.js"></script>
 
 </html>
