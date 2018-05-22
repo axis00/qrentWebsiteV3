@@ -103,7 +103,7 @@
     </head>
     
     <body class="teal">
-        <div class="valign-wrapper center-align">
+        <div class="valign-wrapper center-align container">
             <div class="row white" id="register-form">                  
                 <form method="post" class="col s12">
                     <h1>Registration</h1>
