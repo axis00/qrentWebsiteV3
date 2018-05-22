@@ -72,7 +72,7 @@
 
         require_once 'connecttoDb.php';
 
-        $sql = "SELECT *, datediff(startdate,now()) AS diff FROM qrent.Reservation NATURAL JOIN qrent.Item WHERE client = ? AND status != 'canceled' AND status != 'ongoingrental' AND status != 'endedrental '".$cond;
+        $sql = "SELECT *, datediff(startdate,now()) AS diff FROM qrent.Reservation NATURAL JOIN qrent.Item WHERE client = ? AND status != '' AND status != 'canceled' AND status != 'ongoingrental' AND status != 'endedrental '".$cond;
 
         global $conn;
 

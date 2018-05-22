@@ -4,12 +4,12 @@ $(document).ready(function () {
 
     var pageNumber = 1;
     
-    loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+    loaditems((pageNumber - 1) * 10,10);
 
     $('#nextBtn').on('click',function(){
         if(!last){
             pageNumber++;
-            loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+            loaditems((pageNumber - 1) * 10,10);
         }
         
     });
@@ -17,7 +17,7 @@ $(document).ready(function () {
     $('#backBtn').on('click',function(){
         if(pageNumber){
             pageNumber--;
-            loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+            loaditems((pageNumber - 1) * 10,10);
         }
     });
 

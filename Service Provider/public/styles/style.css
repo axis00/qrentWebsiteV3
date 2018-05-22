@@ -329,3 +329,7 @@ select {
 .padded{
     padding: 2rem;
 }
+
+.margined{
+    margin: 1em;
+}

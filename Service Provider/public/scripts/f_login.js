@@ -2,7 +2,7 @@ var homeurl = "http://service.qrent.com";
 
 $(document).ready(function(){
 	
-	$("#loginform").submit(function(evnt){
+	$("#loginform").on('submit',function(evnt){
 		evnt.preventDefault();
 		$.ajax({
 			url:'/login',
