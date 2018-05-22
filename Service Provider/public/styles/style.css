@@ -45,6 +45,10 @@ h1{
     margin-left: 0px;
 }
 
+.info {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 /*login*/
 .loginContainer{
     padding: 2em;

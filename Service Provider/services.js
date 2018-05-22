@@ -32,6 +32,16 @@ exports.addUser = function(usr,callback){
 	});
 
 }
+exports.getSP = function(usr,callback){
+
+	var sql = "SELECT username,contactno,birthdate,addressno,street,municipality,province,postalcode FROM customers WHERE username = ?";
+
+	conn.query(sql,[usr],(err,res,fields) => {
+		if(!err){
+			callback(null,info);
+				}
+			});
+		}
 
 exports.getStats = function(usr,callback){
 	var stats = new Object();
