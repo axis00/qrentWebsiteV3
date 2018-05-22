@@ -82,43 +82,44 @@
 
                     }
                     
-                    PreparedStatement trans = con.prepareStatement("SELECT *, COUNT(itemno) FROM users INNER JOIN Item ON Item.itemOwner=users.username WHERE username = ?");
+                    PreparedStatement trans = con.prepareStatement("SELECT * FROM users INNER JOIN Item ON Item.itemOwner=users.username WHERE username = ?");
 
+                   
                     trans.setString(1, username);
                     ResultSet rs = trans.executeQuery();
-
-                    while (rs.next()) {
-                        out.println("<div>");
+                    
+                    out.println("<div>");
                         out.println("<table class='bootstrap-table table table-no-bordered' data-toggle='table' id='users'>");
                         out.println("<thead id='profile-tran-thead'>");
                         out.println("<tr>");
-                        out.println("<th scope='col' data-field='date' data-sortable='true'>Item No.</th>");
-                        out.println("<th scope='col' data-field='num' data-sortable='true'>Item Name</th>");
-                        out.println("<th scope='col' data-field='item' data-sortable='true'>Description</th>");
-                        out.println("<th scope='col' data-field='itemnum' data-sortable='true'>Brand</th>");
-                        out.println("<th scope='col' data-field='days' data-sortable='true'>Rent Price</th>");
-                        out.println("<th scope='col' data-field='price' data-sortable='true'>Original Price</th>");
-                        out.println("<th scope='col' data-field='payment' data-sortable='true'>Condition</th>");
-                        out.println("<th scope='col' data-field='payment' data-sortable='true'>Status</th>");
+                        out.println("<th scope='col' data-field='itemnum' data-sortable='true'>Item No.</th>");
+                        out.println("<th scope='col' data-field='item' data-sortable='true'>Item Name</th>");
+                        out.println("<th scope='col' data-field='price' data-sortable='true'>Rent Price</th>");
+                        out.println("<th scope='col' data-field='orig' data-sortable='true'>Original Price</th>");
+                        out.println("<th scope='col' data-field='cond' data-sortable='true'>Item Condition</th>");
+                        out.println("<th scope='col' data-field='desc' data-sortable='true'>Item Desc.</th>");
+                        
                         out.println("<th></th>");
                         out.println("</tr>");
                         out.println("</thead>");
+                    while (rs.next()) {
+                        
                         out.println("<tbody id='profile-tran-tbody'>");
                         out.println("<tr scope='row' class='row-hover'>");
                         out.println("<td>" + rs.getString("itemno") + "</td>");
                         out.println("<td>" + rs.getString("itemName") + "</td>");
-                        out.println("<td>" + rs.getString("itemDescription") + "</td>");
-                        out.println("<td>" + rs.getString("itemBrand") + "</td>");
                         out.println("<td>" + rs.getString("itemRentPrice") + "</td>");
                         out.println("<td>" + rs.getString("itemOrigPrice") + "</td>");
                         out.println("<td>" + rs.getString("itemCondition") + "</td>");
-                        out.println("<td>" + rs.getString("retStatus") + "</td>");
+                        out.println("<td>" + rs.getString("itemDescription") + "</td>");
                         out.println("</tr>");
-                        out.println("</tbody>");
+                        
+                    }
+                    
+                    out.println("</tbody>");
                         out.println("</table>");
                         out.println("</div>");
                         out.println("</div>");
-                    }
 
                 } catch (SQLException ex) {
                     out.println(ex);
