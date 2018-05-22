@@ -1,3 +1,8 @@
+
+$(document).ready(function(){
+    $('.sidenav').sidenav();
+});
+
 var last = false;
 var _filters = ['available','loaned','missing'];
 
@@ -5,12 +10,12 @@ $(document).ready(function () {
 
     var pageNumber = 1;
     
-    loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+    loaditems((pageNumber - 1) * 10,10);
 
     $('#nextBtn').on('click',function(){
         if(!last){
             pageNumber++;
-            loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+            loaditems((pageNumber - 1) * 10,10);
         }
         
     });
@@ -18,7 +23,7 @@ $(document).ready(function () {
     $('#backBtn').on('click',function(){
         if(pageNumber > 1){
             pageNumber--;
-            loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+            loaditems((pageNumber - 1) * 10,10);
         }
     });
 
@@ -31,12 +36,12 @@ $(document).ready(function () {
 
         console.log(_filters);
 
-        loaditems((pageNumber - 1) * 10,((pageNumber - 1) * 10) + 10);
+        loaditems((pageNumber - 1) * 10,10);
 
     });
 
 });
-    $('.sidenav').sidenav();  
+
 function loaditems(lower,upper,filter) {
 
     var cont = $('#content');
