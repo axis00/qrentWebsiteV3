@@ -90,6 +90,5 @@
                             out.println(ex);
                         }
                     %>
-                    <%@include file="footer.html"%>
                 </body>
 </html>
