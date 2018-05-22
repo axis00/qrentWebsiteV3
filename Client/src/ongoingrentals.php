@@ -110,5 +110,7 @@
             </div>
         <script src="scripts/rentals.js"></script>
 
+        <?php include 'modules/footer.php';?>
+        
 	</body>
 </html>
