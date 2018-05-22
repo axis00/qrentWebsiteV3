@@ -36,55 +36,55 @@
                 </div>
             </div>
 
-           <% if(session.getAttribute("username").equals("super")) {%>
-           <%@include file="supernav.html"%>
-           <%}else{%>
-           <%@include file="nav.html"%>
-           <%}%>
-           <br>
-           <div class="row">
-            <div class="col-sm-4">
-                <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
-            </div>
-            <div class="col-sm-1">
-                View:
-            </div>
-            <div class="col-sm-3">
-               
-                <select class="form-control form-control-sm" id="options" onchange="changepage()">
-                    <option value="" selected disable hidden>Choose account status here</option>
-                    <option value="1"  hidden>All Accounts</option>
-                    <option value="2"><b>Enabled Accounts</b></option>
-                    <option value="4" >Disabled Accounts</option>
-                    <option value="3" >Rejected Accounts</option>
-                             
-                </select>
-                
-                <script>
-                    function changepage() {
-                        var x = document.getElementById("options").value;
-                        if(x == '1'){
-                            window.location.href ='manage-users.jsp';
-                        }else if(x == '2'){
-                            window.location.href ='approved-user.jsp';
-                        }else if(x == '3'){
-                            window.location.href ='rejected-user.jsp';
-                        }else if(x == '4'){
-                            window.location.href ='removed-user.jsp';
+            <% if (session.getAttribute("username").equals("super")) {%>
+            <%@include file="supernav.html"%>
+            <%} else {%>
+            <%@include file="nav.html"%>
+            <%}%>
+            <br>
+            <div class="row">
+                <div class="col-sm-4">
+                    <input class="form-control form-control-sm" id="keyword" type="text" placeholder="Search username, first name, last name, email, etc..." style="width:100%"></input>
+                </div>
+                <div class="col-sm-1">
+                    View:
+                </div>
+                <div class="col-sm-3">
+
+                    <select class="form-control form-control-sm" id="options" onchange="changepage()">
+                        <option value="" selected disable hidden>Choose account status here</option>
+                        <option value="1"  hidden>All Accounts</option>
+                        <option value="2"><b>Enabled Accounts</b></option>
+                        <option value="4" >Disabled Accounts</option>
+                        <option value="3" >Rejected Accounts</option>
+
+                    </select>
+
+                    <script>
+                        function changepage() {
+                            var x = document.getElementById("options").value;
+                            if (x == '1') {
+                                window.location.href = 'manage-users.jsp';
+                            } else if (x == '2') {
+                                window.location.href = 'approved-user.jsp';
+                            } else if (x == '3') {
+                                window.location.href = 'rejected-user.jsp';
+                            } else if (x == '4') {
+                                window.location.href = 'removed-user.jsp';
+                            }
                         }
-                    }
-                    
-                    $(document).ready(function(){
-                        $("#keyword").on("keyup", function() {
-                          var value = $(this).val().toLowerCase();
-                          $("#users tr").filter(function() {
-                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                          });
+
+                        $(document).ready(function () {
+                            $("#keyword").on("keyup", function () {
+                                var value = $(this).val().toLowerCase();
+                                $("#users tr").filter(function () {
+                                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                                });
+                            });
                         });
-                    });
-                </script>
+                    </script>
+                </div>
             </div>
-           </div>
             <table class="bootstrap-table table table-striped table-no-bordered" data-toggle="table">
                 <thead>
                     <tr>
@@ -108,36 +108,37 @@
                         PreparedStatement ps = con.prepareStatement("SELECT username, firstname, lastname, email, type, status FROM users WHERE status != 'pending' AND username != 'super'");
 
                         ResultSet res = ps.executeQuery();
-                        
+
                         out.println("<tbody id='users'>");
                         while (res.next()) {
-                            
+
                             out.println("<tr scope='row' classtablecontent='row-hover'>");
                             out.println("<td><form action='user-profile.jsp' method='GET' target='_blank'><input name = 'username' class='btn btn-link' type='submit' value='" + res.getString("username") + "'/></form></td>");
                             out.println("<td>" + res.getString("firstname") + "</td>");
                             out.println("<td>" + res.getString("lastname") + "</td>");
                             out.println("<td>" + res.getString("email") + "</td>");
-                            if(res.getString("status").equals("rejected")){
-                              out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");  
-                              out.println("<td></td>");
-                            }else if(res.getString("status").equals("approved")){
-                              out.println("<td><span class=\"badge badge-success\">ENABLED</span></td>");
-                              out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-danger btn-sm'></form></td>");
-                            }else{
-                              out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>"); 
-                              out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
-                                    + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success btn-sm'></form></td>");
+                            if (res.getString("status").equals("rejected")) {
+                                out.println("<td><span class=\"badge badge-danger\">" + res.getString("status").toUpperCase() + "</span></td>");
+                                out.println("<td></td>");
+                            } else if (res.getString("status").equals("approved")) {
+                                out.println("<td><span class=\"badge badge-success\">ENABLED</span></td>");
+                                out.println("<td><form action = 'remove-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
+                                        + res.getString("username") + "><input type = 'submit' value = 'DISABLE' class='btn btn-danger btn-sm'></form></td>");
+                            } else {
+                                out.println("<td><span class=\"badge badge-secondary\">" + res.getString("status").toUpperCase() + "</span></td>");
+                                out.println("<td><form action = 'reactivate-user.jsp' method = 'POST'><input type = 'hidden' name = 'username' value = "
+                                        + res.getString("username") + "><input type = 'submit' value = 'ENABLE' class='btn btn-success btn-sm'></form></td>");
                             }
                             out.println("<td>" + res.getString("type") + "</td>");
                             out.println("</tr>");
                         }
-                         out.println("</tbody>");
+                        out.println("</tbody>");
                     } catch (SQLException ex) {
                         out.println(ex);
                     }
                 %>
             </table>
-           </div>
+        </div>
+        <%@include file="footer.html"%>
     </body>
 </html>

@@ -19,18 +19,18 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     </head>
     <body class="text-center" id="body">
-        
-            <form class="form-signin" method="post" action="login.jsp" id="formblock">
-                <img src="./qrent-logo.png" id="login-logo"/>
-                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-                <label for="username" class="sr-only">Username</label>
-                <input type="text" name="username" id="username" placeholder="Username" class="inputBox form-control" id="usernamebox"/>
-                <input type="password" name="password" id="password" placeholder="Password" class="inputBox form-control" id="pwbox"/>
-                <br><br><input class="btn btn-primary" type="submit" value="Login" id="loginButton"/>
-            </form>
-        
+
+        <form class="form-signin" method="post" action="login.jsp" id="formblock">
+            <img src="./qrent-logo.png" id="login-logo"/>
+            <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" name="username" id="username" placeholder="Username" class="inputBox form-control" id="usernamebox"/>
+            <input type="password" name="password" id="password" placeholder="Password" class="inputBox form-control" id="pwbox"/>
+            <br><br><input class="btn btn-primary" type="submit" value="Login" id="loginButton"/>
+        </form>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        
+        <%@include file="footer.html"%>
     </body>
 </html>
