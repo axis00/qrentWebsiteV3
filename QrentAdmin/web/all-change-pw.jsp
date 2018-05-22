@@ -64,8 +64,8 @@
 
                         ps.execute();
 
-                        out.println("<script>swal('Successful!', 'Your password has been changed!', 'success');</script>");
-                        out.println("<script>setTimeout(\"window.location.href ='change-pw.jsp';\",1800);</script>");
+                        out.println("<script>swal('Successful!', 'Your password has been changed! Log-in again', 'success');</script>");
+                        out.println("<script>setTimeout(\"window.location.href ='index.jsp';\",3000);</script>");
                         
 
                     } catch (SQLException ex) {

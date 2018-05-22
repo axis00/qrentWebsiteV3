@@ -38,7 +38,7 @@
                 <form method="POST" class="form" action="all-change-pw.jsp" >
                     <p>Change your password</p>
                     <div class="form-group">
-                        <input type="text" name="username" id="username" class="form-control" value='<% out.println(session.getAttribute("username").toString()); %>'/>
+                        <input type="text" name="username" id="username" class="form-control" value='<% out.println(session.getAttribute("username").toString()); %>' readonly=""/>
                     </div>
                     <div class="form-group">
                         <input type="password" name="oldpassword" id="oldPW" class="form-control" placeholder="Current Password" onkeyup="checkOldPW()" onchange="checkAll()" required/><span id="oldPWSpan"></span>
