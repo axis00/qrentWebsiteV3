@@ -1,6 +1,9 @@
 <footer class="page-footer" style="
 	background-color: #00695c;
-	text-align: center;">
+	text-align: center;
+	position: static;
+	bottom: 0;
+	width: 100%">
 	<div class="divider"> </div>
 	<div class="footer-copyright valign-wrapper">
 		<div class="container" style="
