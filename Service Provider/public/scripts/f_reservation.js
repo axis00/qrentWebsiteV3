@@ -42,10 +42,19 @@ function loaditems(lower,upper) {
                     var sel = '#' + contTemp.attr('id');
                     $(sel + ' .reservationTitle').html(data[i].itemName);
                     $(sel + ' .reservationStatus').html(data[i].status);
-                    $(sel + ' .requestDate').html(data[i].requestdate);
-                    $(sel + ' .endDate').html(data[i].enddate);
+
+                    var reqDate = new Date(Date.parse(data[i].requestdate));
+                    $(sel + ' .requestDate').html(reqDate.toDateString());
+
+                    var startDate = new Date(Date.parse(data[i].startdate));
+                    $(sel + ' .startDate').html(startDate.toDateString());
+
+                    var endDate = new Date(Date.parse(data[i].enddate));
+                    $(sel + ' .endDate').html(endDate.toDateString());
+
                     $(sel + ' .rentPrice').html(data[i].itemRentPrice + " PHP/DAY");
                     $(sel + ' .reservee').html(data[i].client);
+                    $(sel + ' .reservee').attr('href','http://www.qrent.com/profile?user=' + data[i].client);
                     $(sel + ' #approve').on('click',function(){
                         var resId = data[i].ReservationID;
                         console.log(resId);
