@@ -43,9 +43,19 @@
             <div class = "row">
                 <?php
 
+                    $showcasedItems = getShowcasedItems();
+
+                    echo generateItemShowCase($showcasedItems);
+                ?>
+            </div>
+            <h5>More Items ... </h5>
+            <div class = 'row'>
+                <?php
+
                     $featured = getFeaturedItems();
 
-                    echo generateItemShowCase($featured);
+                    echo generateItemCards($featured);
+
                 ?>
             </div>
 

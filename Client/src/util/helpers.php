@@ -37,14 +37,14 @@
     }
 
     /**
-	*	A function that returns the featured items
+	*	A function that returns the showcased featured items
 	*	@return Array An array of Item objects
     */
-    function getFeaturedItems(){
+    function getShowcasedItems(){
 
     	require_once 'connectToDb.php';
 
-    	$sql = "SELECT * FROM `qrent`.`Item` LIMIT 5";
+    	$sql = "SELECT Item.itemno,itemName,itemRentPrice,itemBrand,itemDescription,itemOwner,itemOrigPrice,itemCondition,retStatus, avg(rating) as aveRating FROM qrent.Item LEFT JOIN qrent.itemRating on (Item.itemno = itemRating.itemno) group by Item.itemno order by aveRating desc limit 0,5";
 
     	global $conn;
 
@@ -59,6 +59,33 @@
     	}
 
     	return $res;
+
+    }
+
+
+    /**
+    *   A function that returns the featured items
+    *   @return Array An array of Item objects
+    */
+    function getFeaturedItems(){
+
+        require_once 'connectToDb.php';
+
+        $sql = "SELECT Item.itemno,itemName,itemRentPrice,itemBrand,itemDescription,itemOwner,itemOrigPrice,itemCondition,retStatus, avg(rating) as aveRating FROM qrent.Item LEFT JOIN qrent.itemRating on (Item.itemno = itemRating.itemno) group by Item.itemno order by aveRating desc limit 4,20";
+
+        global $conn;
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        $queryResult = $stmt->get_result();
+        $res = array();
+
+        for($i = 0; $row = $queryResult->fetch_assoc(); $i++){
+            $res[$i] = new Item($row);
+        }
+
+        return $res;
 
     }
 

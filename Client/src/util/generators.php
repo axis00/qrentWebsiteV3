@@ -11,10 +11,31 @@
     include_once "helpers.php";                 
 
     /**
-    *   @param Array $itemRow A row from the Item table that corresponds to the item to be rendered
-    *   @return String Html markup that represents the item (materialize card)
+    *   @param Array $items An Array of the featured items
+    *   @return String Html markup that represent the feature list for the homepage
     */
-    function generateItemCard($itemRow){
+    function generateItemCards($items){
+
+        $html = "<div class = 'featured-cont'>";
+
+        $numCols = 4;
+        $numRows = count($items) / $numCols;
+
+        foreach($items as $i){
+            $imgs = getItemImgIDs($i->num);
+            $html .= "<div class = 'card hoverable'>
+                        <div class = 'card-image'>
+                            <a href='/itemview.php?q=".$i->num."'>
+                                <img src = '/util/itemimage.php?img=".$imgs[0]."'>
+                                <div class = 'card-title featured-title'><h6>".$i->name."</h6></div>
+                            </a>
+                        </div>
+                    </div>";
+        }
+
+        $html .= "</div>";
+
+        return $html;
 
     }
 
