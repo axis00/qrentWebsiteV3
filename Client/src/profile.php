@@ -18,6 +18,20 @@
         <link rel="stylesheet" href="./styles/style.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+        
+        <!--Ajax-->
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+        
+        <script>
+            $(function() {
+               $(".tabs a").click(function(){
+                   var page = this.hash.substr(1);
+                   $.get(page,function(html) {
+                       $(".content").html(html);
+                   });
+               }) 
+            });
+        </script>
 
         <!--Icons-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -68,7 +82,7 @@
                             <i class="material-icons">location_on</i>
                             <?php 
                                 echo "<span class='label'>$session_address</span>";
-                            ?>
+                            ?> 
                         </li>
                         <li>
                             <i class="material-icons">contact_phone</i>
@@ -78,8 +92,20 @@
                         </li>
                     </ul>
                 </div>
+                
                 <div class="col s9">
-                    <p>Stuff goes here</p>
+                    <div class="row">
+                        <ul class="tabs">
+                            <?php
+                                echo "<li class='tab'><a href='#userDetails?user=$userQuery'>User Details</a></li>"
+                            ?>
+                        </ul>
+                        <div id="content-wrapper">
+                            <div class="content">
+                            
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
