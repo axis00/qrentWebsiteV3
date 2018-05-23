@@ -57,6 +57,7 @@
                     <div class = 'col l8'>
                         <div>
                             <h3>".$itemRow['itemName']."</h3>
+                            <h4>".$itemRow['itemRentPrice']." PHP/DAY </h4>
                             <a><h5>".$itemRow['itemOwner']."</h5></a>
                             <div class = 'right-align'>
                                 <a href='/itemview?q=".$itemRow['itemno']."'><button class = 'waves-effect waves-light btn'>View</button></a>

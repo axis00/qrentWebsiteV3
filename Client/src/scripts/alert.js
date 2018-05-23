@@ -21,7 +21,7 @@ function loginSuccess()
 function success() 
 {
     alert("Successfully updated profile");
-    window.location.href = "../pages/profile.php";
+    window.history.back();
 }
 
 function takenEmail() 
