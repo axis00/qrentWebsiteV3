@@ -104,16 +104,15 @@
                     }
 
                     PreparedStatement trans = con.prepareStatement("SELECT paymentdate, paymentid, itemName,"
-                                + " Reservation.itemno, itemRentPrice, paymentType, duration, itemOwner FROM "
-                                + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
-                                + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
-                                + " Item.itemno = Reservation.itemno) WHERE username=? ORDER BY paymentdate ASC");
+                            + " Reservation.itemno, itemRentPrice, paymentType, duration, itemOwner FROM "
+                            + "(((transaction INNER JOIN Reservation ON transaction.reservation = Reservation.ReservationID) "
+                            + "INNER JOIN customers ON customers.username = Reservation.client) INNER JOIN Item ON"
+                            + " Item.itemno = Reservation.itemno) WHERE username=? ORDER BY paymentdate ASC");
 
                     trans.setString(1, username);
                     ResultSet rs = trans.executeQuery();
-
-                    while (rs.next()) {
-                        out.println("<div>");
+                    
+                    out.println("<div>");
                         out.println("<table class='bootstrap-table table table-no-bordered' data-toggle='table' id='users'>");
                         out.println("<thead id='profile-tran-thead'>");
                         out.println("<tr>");
@@ -128,6 +127,8 @@
                         out.println("<th></th>");
                         out.println("</tr>");
                         out.println("</thead>");
+                    while (rs.next()) {
+                        
                         out.println("<tbody id='profile-tran-tbody'>");
                         out.println("<tr scope='row' class='row-hover'>");
                         out.println("<td>" + rs.getString("paymentdate") + "</td>");
@@ -139,11 +140,14 @@
                         out.println("<td>" + rs.getString("paymentType") + "</td>");
                         out.println("<td>" + rs.getString("itemOwner") + "</td>");
                         out.println("</tr>");
-                        out.println("</tbody>");
+                        
+                    }
+                    
+                    out.println("</tbody>");
                         out.println("</table>");
                         out.println("</div>");
                         out.println("</div>");
-                    }
+
 
                 } catch (SQLException ex) {
                     out.println(ex);
